@@ -1,0 +1,7 @@
+# Default owners for everything
+* @your-github-username
+
+# Optional: route specific areas
+.github/ @your-github-username
+docs/ @your-github-username
+src/ @your-github-username
