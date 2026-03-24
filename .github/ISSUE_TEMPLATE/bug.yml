@@ -1,0 +1,74 @@
+name: Bug Report
+description: Report a bug with reproducible steps and expected behavior.
+title: "[Bug]: "
+labels: ["type:bug", "status:backlog"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken?
+      placeholder: "When I click Save, the form hangs indefinitely."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      placeholder: "Save succeeds and success message appears."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: Actual Behavior
+      placeholder: "Spinner never ends, no error shown."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: User/business impact and severity.
+      placeholder: "Blocks checkout for all logged-in users."
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "prod/staging, browser, OS, app version, commit SHA"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Screenshots
+      description: Paste relevant logs, stack traces, links, or screenshots.
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Fix Acceptance Criteria
+      placeholder: |
+        - [ ] Bug no longer reproduces with listed steps
+        - [ ] Regression test added
+        - [ ] No side effects in related flows
+    validations:
+      required: true
