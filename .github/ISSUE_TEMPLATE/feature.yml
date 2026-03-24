@@ -1,0 +1,92 @@
+name: Feature Request
+description: Plan and implement a new feature with clear acceptance criteria.
+title: "[Feature]: "
+labels: ["type:feature", "status:backlog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please complete this template so AI agents and reviewers can execute without ambiguity.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What business/user outcome should this deliver?
+      placeholder: "As a user, I want..., so that..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Use checklist format. Be testable and specific.
+      placeholder: |
+        - [ ] User can ...
+        - [ ] API returns ...
+        - [ ] Error state shows ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of Scope
+      description: What is explicitly not included in this work?
+      placeholder: "No redesign, no analytics changes, no mobile updates..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation_notes
+    attributes:
+      label: Implementation Notes
+      description: Constraints, dependencies, and suggested files/components.
+      placeholder: "Touch only X and Y, must use existing service Z..."
+
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk
+      options:
+        - low
+        - medium
+        - high
+    validations:
+      required: true
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      options:
+        - S
+        - M
+        - L
+    validations:
+      required: true
+
+  - type: textarea
+    id: test_plan
+    attributes:
+      label: Test Plan
+      description: How should this be validated?
+      placeholder: |
+        - Unit tests:
+        - Manual checks:
+        - Edge cases:
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: definition_of_done
+    attributes:
+      label: Definition of Done
+      options:
+        - label: Acceptance criteria are complete and verifiable.
+          required: true
+        - label: Tests are added/updated and passing.
+          required: true
+        - label: Docs/comments updated if behavior changed.
+          required: true
