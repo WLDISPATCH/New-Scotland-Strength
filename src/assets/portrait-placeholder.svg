@@ -1,0 +1,16 @@
+<svg width="1200" height="1400" viewBox="0 0 1200 1400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1400" rx="48" fill="#12161B"/>
+  <rect x="72" y="72" width="1056" height="1256" rx="36" fill="url(#paint0_linear_1_2)" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="600" cy="470" r="170" fill="#2B3036"/>
+  <path d="M355 1090C355 930.942 483.942 802 643 802H557C716.058 802 845 930.942 845 1090V1148H355V1090Z" fill="#2B3036"/>
+  <rect x="110" y="110" width="980" height="1180" rx="28" stroke="rgba(230,183,74,0.35)" stroke-width="2" stroke-dasharray="10 12"/>
+  <path d="M140 1210H1060" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <text x="140" y="170" fill="#E6B74A" font-family="Arial, sans-serif" font-size="42" letter-spacing="8">TRAINER PORTRAIT</text>
+  <text x="140" y="1248" fill="rgba(255,255,255,0.55)" font-family="Arial, sans-serif" font-size="30" letter-spacing="4">Replace with Josh Dunbar headshot</text>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="132" y1="94" x2="990" y2="1264" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A1F25"/>
+      <stop offset="1" stop-color="#0D1014"/>
+    </linearGradient>
+  </defs>
+</svg>

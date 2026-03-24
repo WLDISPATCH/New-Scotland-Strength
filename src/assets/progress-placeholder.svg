@@ -1,0 +1,17 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="38" fill="#101419"/>
+  <rect x="54" y="54" width="1092" height="792" rx="28" fill="url(#paint0_linear_4_2)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="124" y="180" width="360" height="520" rx="24" fill="#242A32"/>
+  <rect x="716" y="180" width="360" height="520" rx="24" fill="#242A32"/>
+  <path d="M600 290V610" stroke="#E6B74A" stroke-width="10" stroke-linecap="round"/>
+  <path d="M560 570L600 610L640 570" stroke="#E6B74A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="130" y="140" fill="#E6B74A" font-family="Arial, sans-serif" font-size="34" letter-spacing="7">RESULTS / PROGRESS IMAGE</text>
+  <text x="210" y="770" fill="rgba(255,255,255,0.55)" font-family="Arial, sans-serif" font-size="26" letter-spacing="4">BEFORE</text>
+  <text x="810" y="770" fill="rgba(255,255,255,0.55)" font-family="Arial, sans-serif" font-size="26" letter-spacing="4">AFTER</text>
+  <defs>
+    <linearGradient id="paint0_linear_4_2" x1="92" y1="92" x2="1060" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#191F26"/>
+      <stop offset="1" stop-color="#0F1318"/>
+    </linearGradient>
+  </defs>
+</svg>

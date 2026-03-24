@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.netlify/
+vite-dev.log
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example

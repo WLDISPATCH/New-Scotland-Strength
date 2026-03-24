@@ -1,0 +1,17 @@
+<svg width="1600" height="1100" viewBox="0 0 1600 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1100" rx="44" fill="#0B0E12"/>
+  <rect x="64" y="64" width="1472" height="972" rx="30" fill="url(#paint0_linear_3_2)" stroke="rgba(255,255,255,0.08)"/>
+  <path d="M150 780L1450 340" stroke="#E6B74A" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+  <path d="M230 860L1530 420" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/>
+  <rect x="290" y="320" width="240" height="440" rx="24" fill="#20262E"/>
+  <rect x="1070" y="260" width="240" height="500" rx="24" fill="#20262E"/>
+  <rect x="630" y="440" width="340" height="160" rx="28" fill="#2B323B"/>
+  <text x="140" y="170" fill="#E6B74A" font-family="Arial, sans-serif" font-size="38" letter-spacing="8">GYM / FACILITY IMAGE</text>
+  <text x="140" y="925" fill="rgba(255,255,255,0.55)" font-family="Arial, sans-serif" font-size="28" letter-spacing="4">Replace with environment, equipment, or brand photography</text>
+  <defs>
+    <linearGradient id="paint0_linear_3_2" x1="130" y1="110" x2="1360" y2="980" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#181D23"/>
+      <stop offset="1" stop-color="#101419"/>
+    </linearGradient>
+  </defs>
+</svg>
