@@ -21,6 +21,12 @@
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#9f6734" />
 
+    <!-- Geo / Local signals -->
+    <meta name="geo.region" content="CA-NS" />
+    <meta name="geo.placename" content="Halifax, Nova Scotia" />
+    <meta name="geo.position" content="44.6488;-63.5752" />
+    <meta name="ICBM" content="44.6488, -63.5752" />
+
     <!-- Canonical -->
     <link rel="canonical" href="https://www.newscotlandstrength.com/" />
 
@@ -52,39 +58,113 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "HealthClub",
+        "@type": ["LocalBusiness", "HealthClub"],
         "name": "New Scotland Strength",
         "url": "https://www.newscotlandstrength.com/",
         "email": "newscotlandstrength@gmail.com",
+        "telephone": "(902) 000-0000",
         "image": "https://www.newscotlandstrength.com/og-image.jpg",
-        "description": "Personal training and strength coaching in Halifax, Nova Scotia by Josh Dunbar.",
+        "description": "Personal training and strength coaching in Halifax, Nova Scotia by Josh Dunbar. In-person 1-on-1 sessions, online coaching, custom programs, and meal plans for clients in Halifax, Dartmouth, Bedford, and the wider HRM.",
+        "priceRange": "$70 – $150",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Halifax",
+          "addressRegion": "NS",
+          "postalCode": "B3H",
+          "addressCountry": "CA"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Halifax" },
+          { "@type": "City", "name": "Dartmouth" },
+          { "@type": "City", "name": "Bedford" },
+          { "@type": "AdministrativeArea", "name": "Halifax Regional Municipality" }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "3",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Personal Training Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Online Training + Meal Plan",
+                "description": "Monthly online coaching with custom training plan, meal plan support, and regular check-ins."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "1-on-1 Personal Training Sessions",
+                "description": "In-person personal training sessions in Halifax, NS with hands-on coaching, form correction, and progression."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom Training Program",
+                "description": "Standalone personalized strength training program built around your goals and schedule."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Meal Plan",
+                "description": "Standalone custom nutrition and meal plan for clients who want dietary structure without full coaching."
+              }
+            }
+          ]
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Josh Dunbar"
+        },
+        "sameAs": [
+          "https://www.instagram.com/newscotlandstrength",
+          "https://www.tiktok.com/@newscotlandstrength",
+          "https://www.facebook.com/share/1ChXD9ThrZ/",
+          "https://youtube.com/@newscotlandstrength8672"
+        ]
+      }
+    </script>
+
+    <!-- Josh Dunbar — Personal Trainer / Coach Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Josh Dunbar",
+        "jobTitle": "Personal Trainer and Strength Coach",
+        "description": "Josh Dunbar is a personal trainer and strength coach based in Halifax, Nova Scotia. He works with clients in-person in the HRM and online, providing strength training, custom programming, and nutrition planning through New Scotland Strength.",
+        "url": "https://www.newscotlandstrength.com/about",
+        "image": "https://www.newscotlandstrength.com/og-image.jpg",
+        "worksFor": {
+          "@type": "LocalBusiness",
+          "name": "New Scotland Strength",
+          "url": "https://www.newscotlandstrength.com/"
+        },
+        "knowsAbout": [
+          "Strength Training",
+          "Powerlifting",
+          "Strongman",
+          "Personal Training",
+          "Nutrition Planning",
+          "Online Coaching"
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Halifax",
           "addressRegion": "NS",
           "addressCountry": "CA"
-        },
-        "areaServed": [
-          {
-            "@type": "City",
-            "name": "Halifax"
-          },
-          {
-            "@type": "City",
-            "name": "Dartmouth"
-          },
-          {
-            "@type": "City",
-            "name": "Bedford"
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Halifax Regional Municipality"
-          }
-        ],
-        "founder": {
-          "@type": "Person",
-          "name": "Josh Dunbar"
         },
         "sameAs": [
           "https://www.instagram.com/newscotlandstrength",
