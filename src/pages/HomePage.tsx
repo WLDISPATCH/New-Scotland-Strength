@@ -7,9 +7,6 @@ import Reveal from "../components/Reveal";
 import Section from "../components/Section";
 import { brandPhotos } from "../assets/photoLibrary";
 import {
-  aboutStory,
-  business,
-  faqPreview,
   homeStats,
   processSteps,
   services,
@@ -30,8 +27,8 @@ export default function HomePage() {
     },
     {
       icon: Compass,
-      title: "Strength-first",
-      text: "Built for busy adults who want direction, not random workouts.",
+      title: "Flexible",
+      text: "Programs that will help you accomplish your goals, regardless of your schedule.",
     },
   ];
 
@@ -149,8 +146,14 @@ export default function HomePage() {
       <Section
         eyebrow="What You Get"
         title="Coaching options that are easy to understand and easier to stick with"
-        description="Each service is built around real schedules, clear communication, and training that has a point."
       >
+        <p className="mb-8 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)] sm:mb-12 sm:text-lg">
+          Decide which option is best for you, or{" "}
+          <Link to="/contact" className="font-semibold text-[var(--color-ink)] underline underline-offset-2 hover:text-[var(--color-accent)] transition-colors">
+            reach out if you need help
+          </Link>
+          !
+        </p>
         <div className="grid gap-6 lg:grid-cols-3">
           {services.map((service, index) => (
             <Reveal key={service.title} delayMs={index * 90} className="h-full">
@@ -179,35 +182,8 @@ export default function HomePage() {
       </Section>
 
       <Section
-        eyebrow="About Josh"
-        title="A practical coaching style built around strength, consistency, and common sense"
-        className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
-      >
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-          <div className="space-y-5">
-            <ExpandableCopy
-              preview="New Scotland Strength is built for people who want to train seriously without being treated like they live in the gym."
-              full={aboutStory.slice(0, 2).join(" ")}
-              buttonLabel="Read Josh's approach"
-            />
-            <Link to="/about" className="btn-secondary mt-2">
-              Read Josh's Story
-            </Link>
-          </div>
-          <div className="panel overflow-hidden p-3">
-            <img
-              src={brandPhotos.servicesEnvironment}
-              alt="New Scotland Strength gym environment and training setup"
-              loading="lazy"
-              className="h-full min-h-[360px] w-full rounded-[1.75rem] object-cover"
-            />
-          </div>
-        </div>
-      </Section>
-
-      <Section
         eyebrow="How It Works"
-        title="A simple process from first conversation to better training"
+        title="A simple step-by-step process, from consultation to results."
       >
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {processSteps.map((step, index) => (
@@ -250,32 +226,10 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section
-        eyebrow="Local Focus"
-        title={`Local coaching for Halifax, ${business.areasServed[1]}, and ${business.areasServed[2]}`}
-      >
-        <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="panel p-7">
-            <ExpandableCopy
-              preview="If you are looking for a coach in Halifax or nearby, the goal here is simple: make it easy to understand what Josh offers and how to get started."
-              full="If you are looking for a coach in Halifax, Dartmouth, or Bedford, the goal here is simple: make it easy to understand what Josh offers, who it is for, and how to take the next step without digging through vague sales language."
-              buttonLabel="Read local details"
-            />
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-            {faqPreview.map((item) => (
-              <article key={item.question} className="panel p-6">
-                <h3 className="text-lg font-semibold text-[var(--color-ink)]">{item.question}</h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)]">{item.answer}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </Section>
-
       <CTASection
-        title="Build strength with a plan you can actually follow."
-        description="If you want coaching that feels clear, practical, and built around real life, the next step is a consultation."
+        eyebrow=""
+        title="Don't Just Start Strong — Stay Strong."
+        description="Reach your health and fitness goals with a sustainable plan that is tailored for you!"
         secondaryLabel="See Results"
         secondaryTo="/results"
       />

@@ -65,6 +65,19 @@ export default function AboutPage() {
         }}
       />
 
+      <section className="py-10 sm:py-14">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div className="panel p-7 sm:p-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent)]">
+              Built Through Strength. Driven by Results.
+            </p>
+            <p className="mt-5 max-w-4xl text-lg leading-8 text-[var(--color-ink)] sm:text-xl sm:leading-9">
+              With multiple Nova Scotia's Strongest wins, an Atlantic title, and three top-five finishes at the national level, I bring proven experience to every client I coach. Whether your goal is to lose weight, get stronger, move better, or compete at a higher level, I am devoted to using the same principles that built my success to help you reach yours!
+            </p>
+          </div>
+        </div>
+      </section>
+
       <Section
         eyebrow="About"
         title="About the coach and the kind of training this brand is built around"

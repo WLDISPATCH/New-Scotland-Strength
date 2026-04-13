@@ -5,6 +5,7 @@ import Reveal from "./Reveal";
 type CTASectionProps = {
   title: string;
   description: string;
+  eyebrow?: string;
   primaryLabel?: string;
   primaryTo?: string;
   secondaryLabel?: string;
@@ -14,6 +15,7 @@ type CTASectionProps = {
 export default function CTASection({
   title,
   description,
+  eyebrow = "Start Strong",
   primaryLabel = "Book a Consultation",
   primaryTo = "/contact",
   secondaryLabel,
@@ -26,9 +28,11 @@ export default function CTASection({
           <div className="overflow-hidden rounded-[1.75rem] border border-[var(--color-line)] bg-[radial-gradient(circle_at_top_left,rgba(159,103,52,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(110,85,48,0.12),transparent_30%),linear-gradient(135deg,rgba(255,250,242,0.98),rgba(244,233,216,0.96))] p-6 shadow-[0_28px_70px_rgba(78,51,25,0.16)] sm:rounded-[2rem] sm:p-12">
           <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-end">
             <div>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent)]">
-                Start Strong
-              </p>
+              {eyebrow ? (
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent)]">
+                  {eyebrow}
+                </p>
+              ) : null}
               <h2 className="max-w-3xl text-2xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-4xl">
                 {title}
               </h2>
