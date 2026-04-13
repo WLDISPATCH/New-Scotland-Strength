@@ -11,9 +11,58 @@ export default function AboutPage() {
   return (
     <>
       <PageMeta
-        title="About Josh Dunbar | New Scotland Strength"
-        description="Learn about Josh Dunbar, the coaching philosophy behind New Scotland Strength, and the approach to personal training and strength coaching in Halifax, Nova Scotia."
+        title="About Josh Dunbar | Personal Trainer Halifax, NS | New Scotland Strength"
+        description="Josh Dunbar is a Halifax-based personal trainer and strength coach. Learn about New Scotland Strength's coaching approach, philosophy, and in-person and online services for Halifax, Dartmouth, and Bedford."
         path="/about"
+      />
+
+      {/* BreadcrumbList schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
+              { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.newscotlandstrength.com/about" }
+            ]
+          })
+        }}
+      />
+
+      {/* Person schema for Josh Dunbar */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Josh Dunbar",
+            "jobTitle": "Personal Trainer and Strength Coach",
+            "description": "Josh Dunbar is a personal trainer and strength coach based in Halifax, Nova Scotia. He works with clients in-person in the HRM and online, providing strength training, custom programming, and nutrition planning through New Scotland Strength.",
+            "url": "https://www.newscotlandstrength.com/about",
+            "image": "https://www.newscotlandstrength.com/og-image.jpg",
+            "worksFor": {
+              "@type": "LocalBusiness",
+              "name": "New Scotland Strength",
+              "url": "https://www.newscotlandstrength.com/"
+            },
+            "knowsAbout": ["Strength Training", "Powerlifting", "Strongman", "Personal Training", "Nutrition Planning", "Online Coaching"],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Halifax",
+              "addressRegion": "NS",
+              "addressCountry": "CA"
+            },
+            "sameAs": [
+              "https://www.instagram.com/newscotlandstrength",
+              "https://www.tiktok.com/@newscotlandstrength",
+              "https://www.facebook.com/share/1ChXD9ThrZ/",
+              "https://youtube.com/@newscotlandstrength8672"
+            ]
+          })
+        }}
       />
 
       <Section

@@ -11,9 +11,88 @@ export default function ServicesPage() {
   return (
     <>
       <PageMeta
-        title="Services | Personal Training Halifax | New Scotland Strength"
-        description="Explore personal training, strength coaching, and online coaching services from New Scotland Strength in Halifax, Nova Scotia."
+        title="Personal Training Services Halifax, NS | New Scotland Strength"
+        description="In-person and online personal training, strength coaching, custom programs, and meal plans in Halifax, Nova Scotia. View services and pricing from New Scotland Strength."
         path="/services"
+      />
+
+      {/* BreadcrumbList schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.newscotlandstrength.com/services" }
+            ]
+          })
+        }}
+      />
+
+      {/* Service ItemList schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Personal Training Services — New Scotland Strength",
+            "description": "Personal training and strength coaching services available in Halifax, NS and online.",
+            "url": "https://www.newscotlandstrength.com/services",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "Service",
+                  "name": "Online Training + Meal Plan",
+                  "description": "Monthly online coaching with a custom training plan, meal plan support, and regular check-ins. Available for clients in Halifax and anywhere online.",
+                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "areaServed": "Worldwide",
+                  "url": "https://www.newscotlandstrength.com/services"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "Service",
+                  "name": "1-on-1 Personal Training Sessions",
+                  "description": "In-person personal training sessions in Halifax, NS. Hands-on coaching, form correction, and session-by-session progression.",
+                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "areaServed": "Halifax, Nova Scotia",
+                  "url": "https://www.newscotlandstrength.com/services"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "Service",
+                  "name": "Custom Training Program",
+                  "description": "Standalone personalized strength training program. Built around your goals, schedule, and training history.",
+                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "areaServed": "Worldwide",
+                  "url": "https://www.newscotlandstrength.com/services"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@type": "Service",
+                  "name": "Meal Plan",
+                  "description": "Standalone custom nutrition and meal plan for clients who want dietary structure without a full coaching package.",
+                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "areaServed": "Worldwide",
+                  "url": "https://www.newscotlandstrength.com/services"
+                }
+              }
+            ]
+          })
+        }}
       />
 
       <Section

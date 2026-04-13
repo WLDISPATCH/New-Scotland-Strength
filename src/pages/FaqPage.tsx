@@ -49,7 +49,7 @@ export default function FaqPage() {
   return (
     <>
       <PageMeta
-        title="FAQ | Personal Training Questions | New Scotland Strength"
+        title="FAQ | Halifax Personal Trainer | New Scotland Strength"
         description="Answers to common questions about personal training, strength coaching, and online coaching with Josh Dunbar at New Scotland Strength in Halifax, Nova Scotia."
         path="/faq"
       />

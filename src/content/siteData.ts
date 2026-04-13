@@ -132,7 +132,7 @@ export const services: ServiceItem[] = [
       "Form correction and progression",
       "Clear session structure",
     ],
-    audience: "Best for Halifax-area clients who want in-person coaching and accountability.",
+    audience: "Best for clients in Halifax, NS and the surrounding HRM who want in-person coaching and accountability.",
   },
 ];
 
@@ -175,7 +175,7 @@ export const processSteps = [
 ];
 
 export const aboutStory = [
-  "New Scotland Strength is built around straightforward coaching for people who want to get stronger without getting buried in gym culture nonsense.",
+  "New Scotland Strength is built around straightforward coaching for people in Halifax, Nova Scotia who want to get stronger without getting buried in gym culture nonsense.",
   "The idea is simple: train hard, train with a reason, and build a plan you can actually keep up with alongside work, family, and everything else.",
   "That means looking honestly at what you can recover from, what you can stay consistent with, and what will move you forward over time.",
 ];
@@ -254,7 +254,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Is online coaching available outside Halifax?",
     answer:
-      "Yes. Online coaching is not tied to location. Clients train remotely from anywhere with check-ins, custom programming, and consistent support.",
+      "Yes. Online coaching is not tied to location. Clients train remotely from Halifax, across Nova Scotia and Canada, and anywhere else with check-ins, custom programming, and consistent support.",
   },
   {
     question: "What kind of goals do you coach for?",
@@ -289,7 +289,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What gym do you train clients at?",
     answer:
-      "In-person sessions are available for Halifax-area clients. Reach out through the contact page and that detail will be covered during your consultation.",
+      "In-person sessions are available for clients in Halifax, NS and the surrounding HRM. Reach out through the contact page and that detail will be covered during your consultation.",
   },
   {
     question: "How do I know which service is right for me?",

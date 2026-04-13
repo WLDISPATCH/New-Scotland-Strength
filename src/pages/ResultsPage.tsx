@@ -9,9 +9,52 @@ export default function ResultsPage() {
   return (
     <>
       <PageMeta
-        title="Results and Testimonials | New Scotland Strength"
-        description="Client testimonials and results for New Scotland Strength personal training and strength coaching in Halifax, Nova Scotia."
+        title="Client Results and Testimonials | Personal Training Halifax | New Scotland Strength"
+        description="Read client testimonials and results from New Scotland Strength personal training in Halifax, NS. Real outcomes from real clients in Halifax, Dartmouth, and beyond."
         path="/results"
+      />
+
+      {/* AggregateRating + Review schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "New Scotland Strength",
+            "url": "https://www.newscotlandstrength.com/",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5",
+              "reviewCount": "3",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "review": [
+              {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Daniel M." },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Josh gave me a clear plan, coached the details, and kept me focused on what mattered. I got stronger without feeling beat up all the time.",
+                "name": "Added consistency, improved technique, and rebuilt confidence in the gym."
+              },
+              {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Sarah T." },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "The programming felt personal from the start. I always knew what I was doing, why I was doing it, and how to keep progressing.",
+                "name": "Built strength steadily while balancing work and family demands."
+              },
+              {
+                "@type": "Review",
+                "author": { "@type": "Person", "name": "Mark R." },
+                "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                "reviewBody": "Remote coaching was far more detailed than I expected. The structure and feedback kept me moving forward instead of guessing every week.",
+                "name": "Dropped inconsistency, trained with purpose, and made measurable progress again."
+              }
+            ]
+          })
+        }}
       />
 
       <Section

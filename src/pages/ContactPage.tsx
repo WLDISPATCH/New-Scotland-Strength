@@ -24,9 +24,42 @@ export default function ContactPage() {
   return (
     <>
       <PageMeta
-        title="Contact | Book a Consultation | New Scotland Strength"
-        description="Contact New Scotland Strength to book a consultation for personal training or strength coaching in Halifax, Nova Scotia."
+        title="Book a Personal Trainer in Halifax | New Scotland Strength"
+        description="Book a consultation with New Scotland Strength. In-person personal training and strength coaching in Halifax, Nova Scotia. Online coaching available everywhere."
         path="/contact"
+      />
+
+      {/* LocalBusiness NAP schema for contact page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "New Scotland Strength",
+            "url": "https://www.newscotlandstrength.com/",
+            "email": "newscotlandstrength@gmail.com",
+            "telephone": "(902) 000-0000",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Halifax",
+              "addressRegion": "NS",
+              "addressCountry": "CA"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Halifax" },
+              { "@type": "City", "name": "Dartmouth" },
+              { "@type": "City", "name": "Bedford" },
+              { "@type": "AdministrativeArea", "name": "Halifax Regional Municipality" }
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "newscotlandstrength@gmail.com",
+              "availableLanguage": "English"
+            }
+          })
+        }}
       />
 
       <Section
