@@ -85,18 +85,12 @@ export default function HomePage() {
             <div className="absolute -left-6 top-8 hidden h-36 w-36 rounded-full bg-[var(--color-accent)]/10 blur-3xl sm:block" />
             <div className="grid gap-4 sm:grid-cols-[0.9fr_1fr] sm:gap-5">
               <div className="hidden gap-4 sm:grid sm:translate-y-10">
-                <div className="panel flex flex-col items-center justify-center p-5 text-center">
+                <div className="panel flex items-center justify-center p-6">
                   <img
                     src={brandPhotos.brandLogo}
-                    alt="New Scotland Strength illustrated logo"
-                    className="mx-auto w-full max-w-[18rem] object-contain"
+                    alt="New Scotland Strength logo"
+                    className="w-full max-w-[16rem] object-contain"
                   />
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-                    New Scotland Strength
-                  </p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">
-                    Strength coaching built for Halifax — and everywhere online.
-                  </p>
                 </div>
                 <div className="panel overflow-hidden p-3">
                 <img

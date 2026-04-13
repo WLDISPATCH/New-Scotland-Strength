@@ -9,13 +9,11 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] lg:px-8">
         <div>
           <div className="flex items-center gap-4">
-            <div className="flex h-20 w-44 items-center justify-center overflow-hidden rounded-[1.75rem] border border-[var(--color-line)] bg-[rgba(255,250,242,0.88)] px-4 py-3 shadow-[0_14px_34px_rgba(78,51,25,0.08)]">
-              <img
-                src={brandPhotos.brandLogo}
-                alt="New Scotland Strength logo"
-                className="h-full w-full object-contain"
-              />
-            </div>
+            <img
+              src={brandPhotos.brandLogo}
+              alt="New Scotland Strength logo"
+              className="h-14 w-auto shrink-0"
+            />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent)]">
                 New Scotland Strength
