@@ -67,7 +67,9 @@ export default function Footer() {
             </div>
             <div className="flex items-start gap-3">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-              <span>{business.email}</span>
+              <a href={`mailto:${business.email}`} className="transition hover:text-[var(--color-ink)]">
+                {business.email}
+              </a>
             </div>
           </div>
         </div>

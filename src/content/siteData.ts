@@ -71,6 +71,7 @@ export const navigation: NavItem[] = [
   { label: "About", path: "/about" },
   { label: "Services", path: "/services" },
   { label: "Results", path: "/results" },
+  { label: "FAQ", path: "/faq" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -221,12 +222,6 @@ export const testimonials: TestimonialItem[] = [
   },
 ];
 
-export const resultHighlights = [
-  { value: "Client wins", label: "Need real case studies or before-and-after examples from the client." },
-  { value: "Reviews", label: "Need approved testimonials from real clients." },
-  { value: "Proof", label: "Need measurable results Josh is comfortable publishing." },
-];
-
 export const faqPreview = [
   {
     question: "Do you work with beginners?",
@@ -242,5 +237,63 @@ export const faqPreview = [
     question: "What kind of goals do you coach for?",
     answer:
       "Most people are looking to get stronger, be more consistent, improve body composition, or stop feeling lost when they train.",
+  },
+];
+
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export const faqItems: FaqItem[] = [
+  {
+    question: "Do you work with beginners?",
+    answer:
+      "Yes. Coaching is built around where you are right now, not where you think you should be. If you are brand new or returning after time away, the programming and pace will reflect that.",
+  },
+  {
+    question: "Is online coaching available outside Halifax?",
+    answer:
+      "Yes. Online coaching is not tied to location. Clients train remotely from anywhere with check-ins, custom programming, and consistent support.",
+  },
+  {
+    question: "What kind of goals do you coach for?",
+    answer:
+      "Most clients want to get stronger, build consistency, improve body composition, or stop feeling lost every time they walk into the gym. Coaching is built around the goal that actually matters to you.",
+  },
+  {
+    question: "What happens in the first session or check-in?",
+    answer:
+      "The first step is a conversation — about your training history, what has worked, what has not, your schedule, and what you want to get out of coaching. From there, a plan is built around that context.",
+  },
+  {
+    question: "How long does it take to see results?",
+    answer:
+      "It depends on the goal. Strength and technique improvements often show up within a few weeks of consistent training. Significant body composition or performance changes take longer. Honest coaching means setting realistic timelines.",
+  },
+  {
+    question: "What if I have an injury or physical limitation?",
+    answer:
+      "Training can be adapted for most limitations. If you have a current injury or a condition that affects how you move, mention it upfront and programming will be built around it rather than ignoring it.",
+  },
+  {
+    question: "Is there a contract or minimum commitment?",
+    answer:
+      "No long-term contract is required. Month-to-month online coaching gives you flexibility. Standalone programs and meal plans are one-time purchases. 1-on-1 sessions can be booked individually or as a higher-frequency arrangement.",
+  },
+  {
+    question: "Can I pause or change my plan?",
+    answer:
+      "Yes. Life changes and training should adapt with it. If your schedule, capacity, or goals shift, the plan changes too. That is part of the job.",
+  },
+  {
+    question: "What gym do you train clients at?",
+    answer:
+      "In-person sessions are available for Halifax-area clients. Reach out through the contact page and that detail will be covered during your consultation.",
+  },
+  {
+    question: "How do I know which service is right for me?",
+    answer:
+      "If you want hands-on coaching and live in the Halifax area, 1-on-1 sessions make the most sense. If you want full support but need flexibility, online training with a meal plan covers both. If you just want a solid plan to follow on your own, a custom program is the right starting point. If you are not sure, the contact form is the right first step.",
   },
 ];

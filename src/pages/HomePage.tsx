@@ -13,6 +13,7 @@ import {
   homeStats,
   processSteps,
   services,
+  testimonials,
 } from "../content/siteData";
 
 export default function HomePage() {
@@ -94,13 +95,14 @@ export default function HomePage() {
                     New Scotland Strength
                   </p>
                   <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">
-                    A cleaner wordmark-led identity that fits the lighter site style without losing the strength focus.
+                    Strength coaching built for Halifax — and everywhere online.
                   </p>
                 </div>
                 <div className="panel overflow-hidden p-3">
                 <img
                   src={brandPhotos.heroPortrait}
                   alt="Josh Dunbar competing in a strongman event"
+                  loading="lazy"
                   className="h-full min-h-[320px] w-full rounded-[1.5rem] object-cover"
                 />
                 </div>
@@ -109,6 +111,7 @@ export default function HomePage() {
                 <img
                   src={brandPhotos.showcaseCarry}
                   alt="Josh Dunbar carrying a yoke during competition"
+                  loading="lazy"
                   className="h-full min-h-[340px] w-full rounded-[1.5rem] object-cover sm:min-h-[420px]"
                 />
               </div>
@@ -201,6 +204,7 @@ export default function HomePage() {
             <img
               src={brandPhotos.servicesEnvironment}
               alt="New Scotland Strength gym environment and training setup"
+              loading="lazy"
               className="h-full min-h-[360px] w-full rounded-[1.75rem] object-cover"
             />
           </div>
@@ -224,36 +228,31 @@ export default function HomePage() {
       </Section>
 
       <Section
-        eyebrow="Results"
-        title="Client results and success stories"
-        description="This section is reserved for future client stories, progress photos, and measurable wins."
+        eyebrow="What Clients Say"
+        title="Coaching that fits real life, not just perfect conditions"
         className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
       >
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-1">
-            {[
-              "Client story coming soon",
-              "Progress photo set coming soon",
-              "Strength milestone coming soon",
-            ].map((item, index) => (
-              <Reveal key={item} delayMs={index * 90}>
-                <article className="panel placeholder-card p-7">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#8c1d1d]">Coming soon</p>
-                <p className="mt-3 text-lg leading-8 text-[#8c1d1d]">{item}</p>
-                <p className="mt-4 text-sm leading-6 text-[#8c1d1d]">
-                  Real client proof will be added here as it becomes available for the site.
-                </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-          <div className="panel overflow-hidden p-3">
-            <img
-              src={brandPhotos.resultsWide}
-              alt="Josh Dunbar competing in front of a crowd"
-              className="h-full min-h-[560px] w-full rounded-[1.75rem] object-cover"
-            />
-          </div>
+        <div className="grid gap-6 lg:grid-cols-3">
+          {testimonials.map((item, index) => (
+            <Reveal key={item.name} delayMs={index * 90} className="h-full">
+              <article className="panel flex h-full flex-col p-6 sm:p-7">
+                <div className="flex gap-1 text-[var(--color-accent)]" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg key={i} className="h-4 w-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <blockquote className="mt-4 flex-1 text-base leading-7 text-[var(--color-ink)]">
+                  "{item.quote}"
+                </blockquote>
+                <div className="mt-5 border-t border-[var(--color-line)] pt-5">
+                  <p className="font-semibold text-[var(--color-ink)]">{item.name}</p>
+                  <p className="mt-1 text-sm text-[var(--color-text-muted)]">{item.role}</p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </Section>
 
