@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#9f6734"/>
+  <!-- Stylised "N" for New Scotland Strength -->
+  <path d="M16 48V16h6l16 22V16h6v32h-6L22 26v22h-6z" fill="#fffaf2"/>
+</svg>

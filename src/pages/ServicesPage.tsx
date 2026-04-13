@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Minus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { brandPhotos } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
@@ -21,7 +21,7 @@ export default function ServicesPage() {
         title="Services laid out clearly"
         description="Here are the current offers, what they include, and who they suit best."
       >
-        <div className="grid gap-6 xl:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {services.map((service) => (
             <article key={service.title} className="panel flex h-full flex-col p-5 sm:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
@@ -84,6 +84,7 @@ export default function ServicesPage() {
             <img
               src={brandPhotos.servicesEnvironment}
               alt="New Scotland Strength training space and branded environment"
+              loading="lazy"
               className="h-full min-h-[260px] w-full rounded-[1.75rem] object-cover sm:min-h-[500px]"
             />
           </div>
@@ -112,6 +113,53 @@ export default function ServicesPage() {
               <p className="mt-4 text-sm leading-6 text-[var(--color-text-muted)]">{item.note}</p>
             </article>
           ))}
+        </div>
+      </Section>
+
+      <Section
+        eyebrow="Compare"
+        title="Which option fits your situation?"
+        description="A quick side-by-side to help you choose the right starting point."
+        className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
+      >
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-sm">
+            <thead>
+              <tr>
+                <th className="pb-4 pr-4 text-left text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-text-subtle)]">
+                  Feature
+                </th>
+                {["Online + Meal Plan", "Custom Program", "Meal Plan", "1-on-1 Sessions"].map((col) => (
+                  <th key={col} className="pb-4 px-3 text-center text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[var(--color-line)]">
+              {[
+                { feature: "Custom training plan", cols: [true, true, false, true] },
+                { feature: "Nutrition / meal plan", cols: [true, false, true, false] },
+                { feature: "Ongoing check-ins", cols: [true, false, false, true] },
+                { feature: "In-person coaching", cols: [false, false, false, true] },
+                { feature: "Train on your schedule", cols: [true, true, true, false] },
+                { feature: "One-time purchase", cols: [false, true, true, false] },
+              ].map(({ feature, cols }) => (
+                <tr key={feature}>
+                  <td className="py-3 pr-4 font-medium text-[var(--color-ink-soft)]">{feature}</td>
+                  {cols.map((yes, i) => (
+                    <td key={i} className="py-3 px-3 text-center">
+                      {yes ? (
+                        <CheckCircle2 className="mx-auto h-4 w-4 text-[var(--color-accent)]" aria-label="Included" />
+                      ) : (
+                        <Minus className="mx-auto h-4 w-4 text-[var(--color-text-subtle)]" aria-label="Not included" />
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </Section>
 

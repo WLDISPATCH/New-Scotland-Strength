@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import ScrollToTop from "./ScrollToTop";
+import StickyBar from "./StickyBar";
 
 export default function SiteLayout() {
   return (
@@ -12,6 +13,7 @@ export default function SiteLayout() {
         <Outlet />
       </main>
       <Footer />
+      <StickyBar />
     </div>
   );
 }

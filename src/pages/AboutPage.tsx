@@ -26,6 +26,7 @@ export default function AboutPage() {
             <img
               src={brandPhotos.aboutPortrait}
               alt="Josh Dunbar completing a clean during competition"
+              loading="lazy"
               className="h-full min-h-[320px] w-full rounded-[1.75rem] object-cover sm:min-h-[520px]"
             />
           </div>
@@ -82,6 +83,7 @@ export default function AboutPage() {
             <img
               src={brandPhotos.showcaseLift}
               alt="Josh Dunbar pulling a heavy deadlift during competition"
+              loading="lazy"
               className="h-full min-h-[320px] w-full rounded-[1.75rem] object-cover sm:min-h-[420px]"
             />
           </div>
