@@ -76,9 +76,8 @@ export const navigation: NavItem[] = [
 ];
 
 export const homeStats = [
-  { value: "In Person", label: "Hands-on training for people who want coaching, not guesswork." },
+  { value: "In-Person", label: "Hands-on training for people in the HRM who want coaching, not guesswork." },
   { value: "Online", label: "Remote programming and check-ins for clients who need flexibility." },
-  { value: "Halifax", label: "Local coaching for Halifax, Dartmouth, Bedford, and the wider HRM." },
 ];
 
 export const services: ServiceItem[] = [
@@ -171,7 +170,7 @@ export const processSteps = [
   "Start with a conversation about your goals, schedule, and training background.",
   "Choose the coaching option that makes the most sense for where you are now.",
   "Follow a plan that is built around steady progress, not random workouts.",
-  "Adjust as needed based on how training, recovery, and life are actually going.",
+  "Adjust as needed, based on the client's feedback, schedule, and results.",
 ];
 
 export const aboutStory = [

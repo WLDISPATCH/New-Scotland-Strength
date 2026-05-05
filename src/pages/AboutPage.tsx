@@ -67,8 +67,8 @@ export default function AboutPage() {
 
       <Section
         eyebrow="About"
-        title="About the coach and the kind of training this brand is built around"
-        description="New Scotland Strength is built around straightforward coaching, honest feedback, and plans that people can actually keep up with."
+        title="Built Through Strength. Driven by Results."
+        description="With multiple Nova Scotia's Strongest wins, an Atlantic title, and three top-five finishes at the national level, I bring proven experience to every client I coach. Whether your goal is to lose weight, get stronger, move better, or compete at a higher level, I am devoted to using the same principles that built my success to help you reach yours!"
       >
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="panel overflow-hidden p-3">

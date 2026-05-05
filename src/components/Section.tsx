@@ -4,7 +4,7 @@ import Reveal from "./Reveal";
 type SectionProps = {
   eyebrow?: string;
   title?: string;
-  description?: string;
+  description?: ReactNode;
   children: ReactNode;
   className?: string;
   containerClassName?: string;

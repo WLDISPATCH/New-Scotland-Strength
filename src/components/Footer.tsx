@@ -1,5 +1,5 @@
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
-import { Link, NavLink } from "react-router-dom";
+import { Mail, MapPin } from "lucide-react";
+import { NavLink } from "react-router-dom";
 import { brandPhotos } from "../assets/photoLibrary";
 import { business, navigation, socialLinks } from "../content/siteData";
 
@@ -7,32 +7,12 @@ export default function Footer() {
   return (
     <footer className="border-t border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(239,228,212,0.72),rgba(229,215,195,0.9))]">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] lg:px-8">
-        <div>
-          <div className="flex items-center gap-4">
-            <img
-              src={brandPhotos.brandLogo}
-              alt="New Scotland Strength logo"
-              className="h-14 w-auto shrink-0"
-            />
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent)]">
-                New Scotland Strength
-              </p>
-              <p className="mt-2 text-sm text-[var(--color-text-subtle)]">
-                Halifax, Nova Scotia
-              </p>
-            </div>
-          </div>
-          <h2 className="mt-4 text-2xl font-semibold text-[var(--color-ink)]">
-            Personal training and strength coaching for Halifax clients who want real structure.
-          </h2>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-[var(--color-text-muted)]">
-            Josh Dunbar helps busy adults in Halifax, Dartmouth, Bedford, and the wider HRM train with more clarity, better progression, and a plan that fits real life.
-          </p>
-          <Link to="/contact" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)]">
-            Start a consultation
-            <ArrowUpRight className="h-4 w-4 text-[var(--color-accent)]" />
-          </Link>
+        <div className="flex items-start">
+          <img
+            src={brandPhotos.brandLogo}
+            alt="New Scotland Strength logo"
+            className="h-20 w-auto shrink-0"
+          />
         </div>
 
         <div>
