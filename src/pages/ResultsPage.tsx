@@ -14,6 +14,21 @@ export default function ResultsPage() {
         path="/results"
       />
 
+      {/* BreadcrumbList schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Results", "item": "https://www.newscotlandstrength.com/results" }
+            ]
+          })
+        }}
+      />
+
       {/* AggregateRating + Review schemas */}
       <script
         type="application/ld+json"
@@ -59,7 +74,8 @@ export default function ResultsPage() {
 
       <Section
         eyebrow="Testimonials"
-        title="What clients say about working with Josh"
+        titleAs="h1"
+        title="Client Results — Personal Training in Halifax, NS"
         description="Coaching works when it fits real life. Here is what clients have experienced."
       >
         <div className="grid gap-6 xl:grid-cols-3">

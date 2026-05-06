@@ -54,6 +54,21 @@ export default function FaqPage() {
         path="/faq"
       />
 
+      {/* BreadcrumbList schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
+              { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.newscotlandstrength.com/faq" }
+            ]
+          })
+        }}
+      />
+
       {/* FAQ schema for rich search snippets */}
       <script
         type="application/ld+json"
@@ -62,7 +77,8 @@ export default function FaqPage() {
 
       <Section
         eyebrow="FAQ"
-        title="Common questions about coaching"
+        titleAs="h1"
+        title="Personal Training FAQ — Halifax, NS"
         description="If something is not covered here, use the contact page to ask directly."
       >
         <div className="mx-auto max-w-3xl space-y-3">

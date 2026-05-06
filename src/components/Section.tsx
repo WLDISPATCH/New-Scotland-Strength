@@ -8,6 +8,7 @@ type SectionProps = {
   children: ReactNode;
   className?: string;
   containerClassName?: string;
+  titleAs?: "h1" | "h2";
 };
 
 export default function Section({
@@ -17,7 +18,9 @@ export default function Section({
   children,
   className = "",
   containerClassName = "",
+  titleAs = "h2",
 }: SectionProps) {
+  const TitleTag = titleAs;
   return (
     <section className={`py-14 sm:py-20 lg:py-24 ${className}`.trim()}>
       <div className={`mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 ${containerClassName}`.trim()}>
@@ -29,9 +32,9 @@ export default function Section({
               </p>
             ) : null}
             {title ? (
-              <h2 className="text-2xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-5xl">
+              <TitleTag className="text-2xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-5xl">
                 {title}
-              </h2>
+              </TitleTag>
             ) : null}
             {description ? (
               <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)] sm:mt-4 sm:text-lg">

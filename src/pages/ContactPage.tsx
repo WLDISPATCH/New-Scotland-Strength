@@ -29,6 +29,21 @@ export default function ContactPage() {
         path="/contact"
       />
 
+      {/* BreadcrumbList schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.newscotlandstrength.com/contact" }
+            ]
+          })
+        }}
+      />
+
       {/* LocalBusiness NAP schema for contact page */}
       <script
         type="application/ld+json"
@@ -39,7 +54,6 @@ export default function ContactPage() {
             "name": "New Scotland Strength",
             "url": "https://www.newscotlandstrength.com/",
             "email": "newscotlandstrength@gmail.com",
-            "telephone": "(902) 000-0000",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Halifax",
@@ -64,7 +78,8 @@ export default function ContactPage() {
 
       <Section
         eyebrow="Contact"
-        title="Book a consultation and outline what you want from coaching"
+        titleAs="h1"
+        title="Book a Personal Trainer in Halifax, NS"
         description="Use this page to start the conversation and give Josh enough context to respond properly."
       >
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
