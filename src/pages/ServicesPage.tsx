@@ -97,7 +97,8 @@ export default function ServicesPage() {
 
       <Section
         eyebrow="Services"
-        title="Services laid out clearly"
+        titleAs="h1"
+        title="Personal Training Services in Halifax, NS"
         description="Here are the current offers, what they include, and who they suit best."
       >
         <div className="grid gap-6 md:grid-cols-2">
