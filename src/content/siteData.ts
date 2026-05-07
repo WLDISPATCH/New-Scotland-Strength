@@ -246,9 +246,74 @@ export type FaqItem = {
 
 export const faqItems: FaqItem[] = [
   {
+    question: "Where is New Scotland Strength located?",
+    answer:
+      "New Scotland Strength is based in Halifax, Nova Scotia. In-person sessions run out of a private studio in Herring Cove, with additional gym access in Burnside and Halifax's north end. The service area covers the Halifax Regional Municipality — Halifax, Dartmouth, Bedford, and Sackville — and online coaching is available province-wide and beyond.",
+  },
+  {
+    question: "What areas of Nova Scotia do you serve?",
+    answer:
+      "In-person coaching covers the Halifax Regional Municipality — Halifax, Dartmouth, Bedford, and Sackville. Online coaching is available province-wide and across Canada, so distance is not a barrier to working together.",
+  },
+  {
+    question: "Do you offer personal training in Dartmouth or Bedford?",
+    answer:
+      "Yes. Clients from Dartmouth, Bedford, and the rest of the HRM train in-person at the Herring Cove studio or at gyms in Burnside and Halifax's north end. If the location does not work, online coaching is available with the same custom programming and check-ins.",
+  },
+  {
+    question: "How much does personal training in Halifax cost?",
+    answer:
+      "Coaching at New Scotland Strength ranges from $60 to $150 depending on the service. Standalone programs and meal plans sit at the lower end. Online coaching with monthly check-ins and 1-on-1 in-person sessions sit at the higher end. Full pricing is laid out on the services page.",
+  },
+  {
+    question: "Is online coaching cheaper than in-person training?",
+    answer:
+      "Yes. Online coaching costs less per month than booking 1-on-1 in-person sessions, because the time commitment is different. Online coaching covers a custom training plan, meal plan support, and ongoing check-ins. In-person sessions add hands-on coaching, real-time form correction, and direct accountability.",
+  },
+  {
+    question: "Do you offer free consultations?",
+    answer:
+      "Yes. The first conversation is free. It covers your goals, training history, schedule, and what kind of support actually fits your life. From there, the right service gets recommended — no pressure to commit on the spot.",
+  },
+  {
+    question: "What experience does Josh Dunbar have as a coach?",
+    answer:
+      "Josh has over 20 years of strength training experience and is an ACE Certified Personal Trainer, a Level 1 Nutrition Coach, and Size Inclusive Training certified. On top of that, he is an active competitive strongman with multiple Nova Scotia's Strongest wins, an Atlantic title, and three top-five finishes at the national level — proof that the methods used with clients are the same ones that produced real results under pressure.",
+  },
+  {
+    question: "Are you a certified personal trainer?",
+    answer:
+      "Yes. Josh holds an ACE Certified Personal Trainer credential, a Level 1 Nutrition Coach certification, and Size Inclusive Training certification. Combined with over 20 years of hands-on strength training experience, the credentials back up the practical knowledge.",
+  },
+  {
+    question: "Have you competed in strongman or powerlifting?",
+    answer:
+      "Yes. Josh competes in strongman at a national level, with multiple Nova Scotia's Strongest titles, an Atlantic Championship, and three top-five finishes nationally. Powerlifting and strongman are both areas of deep, hands-on experience — not just things read about in a textbook.",
+  },
+  {
     question: "Do you work with beginners?",
     answer:
       "Yes. Coaching is built around where you are right now, not where you think you should be. If you are brand new or returning after time away, the programming and pace will reflect that.",
+  },
+  {
+    question: "Do you train women?",
+    answer:
+      "Absolutely. Coaching is built around the individual, not assumptions. Women train at New Scotland Strength for strength, body composition, athletic performance, and general fitness, with programming tailored to the goal — not a watered-down version of it.",
+  },
+  {
+    question: "Do you coach older adults or people over 40?",
+    answer:
+      "Absolutely. Strength training is one of the most effective tools for staying strong, mobile, and capable as you get older. Programming is adjusted for training history, recovery, and any limitations, so the work is hard enough to produce results without creating new problems.",
+  },
+  {
+    question: "Can you help with weight loss, not just strength training?",
+    answer:
+      "Yes. Weight loss is a regular focus for clients, and Josh has extensive experience helping people drop body fat sustainably without losing the strength they have built. Coaching combines smart programming with practical nutrition support, so the result holds up after the initial drop.",
+  },
+  {
+    question: "Do you train athletes preparing for competition?",
+    answer:
+      "Yes — this is a specialty. Whether the goal is a first strongman show, a powerlifting meet, or a higher-level competition, programming is built around peaking on the right day. Josh competes himself at a national level, so the prep is informed by direct experience under the bar.",
   },
   {
     question: "Is online coaching available outside Halifax?",
@@ -276,6 +341,31 @@ export const faqItems: FaqItem[] = [
       "Training can be adapted for most limitations. If you have a current injury or a condition that affects how you move, mention it upfront and programming will be built around it rather than ignoring it.",
   },
   {
+    question: "How often should I train per week with a coach?",
+    answer:
+      "It depends on the individual, the goal, and what the rest of life looks like. Most clients see strong results training 2 to 3 sessions per week with a coach. The schedule is matched to recovery, work, and the actual goal — not a rigid template.",
+  },
+  {
+    question: "Do I need my own gym membership for in-person sessions?",
+    answer:
+      "No. In-person sessions run out of a private studio in Herring Cove, with additional access to gyms in Burnside and Halifax's north end. There is no separate membership required to train with Josh.",
+  },
+  {
+    question: "What equipment do I need for online coaching?",
+    answer:
+      "Very little. Programming can be built around minimal or no equipment, full home gyms, or a commercial gym setup. The amount of equipment available expands the options but is not a requirement to start training and making real progress.",
+  },
+  {
+    question: "How do online check-ins work?",
+    answer:
+      "Clients update a shared Google Sheet that Josh monitors and adjusts week to week. Form checks are handled by sending video over WhatsApp, and there is 24/7 support through WhatsApp for questions, adjustments, and accountability between sessions.",
+  },
+  {
+    question: "How do I pay for coaching?",
+    answer:
+      "Online coaching, programs, and meal plans are paid by e-transfer. In-person sessions can be paid by e-transfer or by Stripe (credit or debit card). Payment details are confirmed when the service is booked.",
+  },
+  {
     question: "Is there a contract or minimum commitment?",
     answer:
       "No long-term contract is required. Month-to-month online coaching gives you flexibility. Standalone programs and meal plans are one-time purchases. 1-on-1 sessions can be booked individually or as a higher-frequency arrangement.",
@@ -288,7 +378,17 @@ export const faqItems: FaqItem[] = [
   {
     question: "What gym do you train clients at?",
     answer:
-      "In-person sessions are available for clients in Halifax, NS and the surrounding HRM. Reach out through the contact page and that detail will be covered during your consultation.",
+      "In-person sessions run out of a private studio in Herring Cove, with additional gym access in Burnside and Halifax's north end. The right location is matched to the client and the session.",
+  },
+  {
+    question: "What makes New Scotland Strength different from a regular gym trainer?",
+    answer:
+      "Two things: a quiet, focused training environment without the chaos of a busy commercial floor, and over 20 years of hands-on strength experience behind every program. Coaching here is not a script — it is built around the actual person training, with adjustments made as the work moves forward.",
+  },
+  {
+    question: "Should I hire a personal trainer or follow a free program online?",
+    answer:
+      "Hire a professional. A free program is fine until it stops working — usually right when life changes, an injury shows up, or the easy progress runs out. A coach builds the plan around your actual goals, schedule, and history, then adjusts in real time. Having someone in your corner who is invested in your progress makes the difference between guessing and getting somewhere.",
   },
   {
     question: "How do I know which service is right for me?",
