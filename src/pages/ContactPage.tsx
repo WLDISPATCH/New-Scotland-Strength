@@ -14,11 +14,31 @@ export default function ContactPage() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSending(true);
-    // Simulate a short send delay; swap for a real fetch() when a backend is wired up
-    setTimeout(() => {
-      setIsSending(false);
-      setIsSent(true);
-    }, 800);
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const value = (name: string) => (data.get(name) ?? "").toString().trim();
+
+    const fullName = [value("firstName"), value("lastName")].filter(Boolean).join(" ");
+    const subject = `New training inquiry${fullName ? ` from ${fullName}` : ""}`;
+    const body = [
+      `Name: ${fullName}`,
+      `Email: ${value("email")}`,
+      `Phone: ${value("phone")}`,
+      `Coaching interest: ${value("service")}`,
+      `Training experience: ${value("experience")}`,
+      `Primary goal: ${value("goal")}`,
+      "",
+      "Current situation:",
+      value("message"),
+    ].join("\n");
+
+    const mailto = `mailto:${business.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // No backend: open the visitor's email client pre-addressed to the business
+    window.location.href = mailto;
+
+    setIsSending(false);
+    setIsSent(true);
   };
 
   return (
