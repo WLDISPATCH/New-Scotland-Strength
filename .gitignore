@@ -1,5 +1,6 @@
 node_modules/
 dist/
+dist-server/
 .netlify/
 vite-dev.log
 .DS_Store

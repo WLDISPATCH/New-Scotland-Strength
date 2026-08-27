@@ -5,11 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Personal Trainer Halifax, NS | New Scotland Strength</title>
-    <meta
-      name="description"
-      content="New Scotland Strength offers personal training and strength coaching in Halifax, Nova Scotia. Work with Josh Dunbar to build strength, improve fitness, and get a personalized coaching plan that fits your life."
-    />
+    <!--
+      Per-page title, description, canonical, and OG/Twitter title+description
+      are managed by react-helmet-async (see src/components/PageMeta.tsx) and
+      injected here at build time by the prerender step. The tags below are the
+      same for every page.
+    -->
+    <!--app-head-->
+
     <meta name="author" content="New Scotland Strength" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#9f6734" />
@@ -20,17 +23,8 @@
     <meta name="geo.position" content="44.6488;-63.5752" />
     <meta name="ICBM" content="44.6488, -63.5752" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://www.newscotlandstrength.com/" />
-
-    <!-- Open Graph -->
+    <!-- Open Graph (static across pages) -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Personal Trainer Halifax, NS | New Scotland Strength" />
-    <meta
-      property="og:description"
-      content="Strength-focused personal training and coaching in Halifax, Nova Scotia. Train with Josh Dunbar at New Scotland Strength."
-    />
-    <meta property="og:url" content="https://www.newscotlandstrength.com/" />
     <meta property="og:site_name" content="New Scotland Strength" />
     <meta property="og:locale" content="en_CA" />
     <meta property="og:image" content="https://www.newscotlandstrength.com/og-image.jpg" />
@@ -38,13 +32,8 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Josh Dunbar competing at a strongman event" />
 
-    <!-- Twitter -->
+    <!-- Twitter (static across pages) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Personal Trainer Halifax, NS | New Scotland Strength" />
-    <meta
-      name="twitter:description"
-      content="Strength-focused personal training and coaching in Halifax, Nova Scotia. Train with Josh Dunbar at New Scotland Strength."
-    />
     <meta name="twitter:image" content="https://www.newscotlandstrength.com/og-image.jpg" />
 
     <!-- Local Business / Personal Trainer Schema -->

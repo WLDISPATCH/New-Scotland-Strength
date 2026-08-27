@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 type PageMetaProps = {
   title: string;
@@ -6,35 +6,26 @@ type PageMetaProps = {
   path: string;
 };
 
+// Emits per-page head tags. Helmet applies them client-side on navigation and,
+// during the build-time prerender, serializes them into each route's static
+// HTML so crawlers and social share cards see the correct title/description.
 export default function PageMeta({ title, description, path }: PageMetaProps) {
-  useEffect(() => {
-    const url = `https://www.newscotlandstrength.com${path}`;
+  const url = `https://www.newscotlandstrength.com${path}`;
 
-    document.title = title;
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={url} />
 
-    const descriptionMeta = document.querySelector('meta[name="description"]');
-    if (descriptionMeta) descriptionMeta.setAttribute("content", description);
+      {/* Open Graph */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={url} />
 
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.setAttribute("href", url);
-
-    // Keep Open Graph tags in sync so social shares reflect the current page
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute("content", title);
-
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute("content", description);
-
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute("content", url);
-
-    // Twitter card tags
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute("content", title);
-
-    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDesc) twitterDesc.setAttribute("content", description);
-  }, [description, path, title]);
-
-  return null;
+      {/* Twitter */}
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+    </Helmet>
+  );
 }
