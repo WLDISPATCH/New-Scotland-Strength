@@ -30,6 +30,13 @@ export type PricingItem = {
   note: string;
 };
 
+// Web3Forms access key for the contact form. This value is public by design
+// (Web3Forms keys are meant to be used in client-side code). Generate one for
+// newscotlandstrength@gmail.com at https://web3forms.com and paste it below,
+// or provide it at build time via the VITE_WEB3FORMS_KEY environment variable.
+export const web3formsKey =
+  import.meta.env.VITE_WEB3FORMS_KEY ?? "YOUR_WEB3FORMS_ACCESS_KEY";
+
 export const business = {
   name: "New Scotland Strength",
   owner: "Josh Dunbar",
