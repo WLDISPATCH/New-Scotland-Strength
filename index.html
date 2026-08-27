@@ -161,24 +161,6 @@
     </script>
   </head>
   <body>
-    <!--
-      Hidden static form for Netlify Forms detection. The visible form is
-      rendered by React, which Netlify's build-time crawler cannot see, so this
-      copy registers the "contact" form and its fields at deploy time. Field
-      names must stay in sync with src/pages/ContactPage.tsx.
-    -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="firstName" />
-      <input type="text" name="lastName" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <input type="text" name="service" />
-      <input type="text" name="experience" />
-      <input type="text" name="goal" />
-      <textarea name="message"></textarea>
-      <input type="text" name="bot-field" />
-    </form>
-
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
