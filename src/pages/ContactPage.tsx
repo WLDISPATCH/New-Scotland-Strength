@@ -5,40 +5,52 @@ import { brandPhotos } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
-import { business, socialLinks } from "../content/siteData";
+import { business, socialLinks, web3formsKey } from "../content/siteData";
 
 export default function ContactPage() {
   const [isSent, setIsSent] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setErrorMsg("");
     setIsSending(true);
 
     const form = event.currentTarget;
     const data = new FormData(form);
-    const value = (name: string) => (data.get(name) ?? "").toString().trim();
 
-    const fullName = [value("firstName"), value("lastName")].filter(Boolean).join(" ");
-    const subject = `New training inquiry${fullName ? ` from ${fullName}` : ""}`;
-    const body = [
-      `Name: ${fullName}`,
-      `Email: ${value("email")}`,
-      `Phone: ${value("phone")}`,
-      `Coaching interest: ${value("service")}`,
-      `Training experience: ${value("experience")}`,
-      `Primary goal: ${value("goal")}`,
-      "",
-      "Current situation:",
-      value("message"),
-    ].join("\n");
+    const fullName = [data.get("firstName"), data.get("lastName")]
+      .map((v) => (v ?? "").toString().trim())
+      .filter(Boolean)
+      .join(" ");
 
-    const mailto = `mailto:${business.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    // No backend: open the visitor's email client pre-addressed to the business
-    window.location.href = mailto;
+    // Web3Forms fields: access_key plus the form data. subject/from_name/replyto
+    // control how the notification email looks in the business inbox.
+    data.append("access_key", web3formsKey);
+    data.append("subject", `New training inquiry${fullName ? ` from ${fullName}` : ""}`);
+    data.append("from_name", "New Scotland Strength Website");
+    const replyTo = (data.get("email") ?? "").toString().trim();
+    if (replyTo) data.append("replyto", replyTo);
 
-    setIsSending(false);
-    setIsSent(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || `Request failed (${response.status})`);
+      }
+      setIsSent(true);
+    } catch {
+      setErrorMsg(
+        `Something went wrong sending your message. Please email us directly at ${business.email}.`,
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -164,6 +176,15 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="order-1 panel p-5 sm:p-8 lg:order-2">
+              {/* Honeypot: hidden from real users, traps spam bots */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                className="hidden"
+                style={{ display: "none" }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="field-label">
                   First name <span className="text-[var(--color-accent)]">*</span>
@@ -268,6 +289,11 @@ export default function ContactPage() {
                   {isSending ? "Sending…" : "Send Inquiry"}
                 </button>
               </div>
+              {errorMsg && (
+                <p role="alert" className="mt-4 text-sm leading-6 text-red-600">
+                  {errorMsg}
+                </p>
+              )}
             </form>
           )}
         </div>
