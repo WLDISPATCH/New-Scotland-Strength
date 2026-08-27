@@ -35,7 +35,7 @@ export type PricingItem = {
 // newscotlandstrength@gmail.com at https://web3forms.com and paste it below,
 // or provide it at build time via the VITE_WEB3FORMS_KEY environment variable.
 export const web3formsKey =
-  import.meta.env.VITE_WEB3FORMS_KEY ?? "3ec15577-f9bb-4755-b748-a84ab4e244e6";
+  import.meta.env.VITE_WEB3FORMS_KEY ?? "9a93aaab-8aa7-4eaa-9792-5649384d92c1";
 
 export const business = {
   name: "New Scotland Strength",
