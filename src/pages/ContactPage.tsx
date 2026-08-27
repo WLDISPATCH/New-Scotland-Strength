@@ -10,35 +10,33 @@ import { business, socialLinks } from "../content/siteData";
 export default function ContactPage() {
   const [isSent, setIsSent] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setErrorMsg("");
     setIsSending(true);
 
     const form = event.currentTarget;
     const data = new FormData(form);
-    const value = (name: string) => (data.get(name) ?? "").toString().trim();
+    // Netlify Forms expects a URL-encoded POST including the form name.
+    const body = new URLSearchParams(data as unknown as Record<string, string>).toString();
 
-    const fullName = [value("firstName"), value("lastName")].filter(Boolean).join(" ");
-    const subject = `New training inquiry${fullName ? ` from ${fullName}` : ""}`;
-    const body = [
-      `Name: ${fullName}`,
-      `Email: ${value("email")}`,
-      `Phone: ${value("phone")}`,
-      `Coaching interest: ${value("service")}`,
-      `Training experience: ${value("experience")}`,
-      `Primary goal: ${value("goal")}`,
-      "",
-      "Current situation:",
-      value("message"),
-    ].join("\n");
-
-    const mailto = `mailto:${business.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    // No backend: open the visitor's email client pre-addressed to the business
-    window.location.href = mailto;
-
-    setIsSending(false);
-    setIsSent(true);
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      if (!response.ok) throw new Error(`Request failed (${response.status})`);
+      setIsSent(true);
+    } catch {
+      setErrorMsg(
+        `Something went wrong sending your message. Please email us directly at ${business.email}.`,
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -163,7 +161,22 @@ export default function ContactPage() {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate className="order-1 panel p-5 sm:p-8 lg:order-2">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+              noValidate
+              className="order-1 panel p-5 sm:p-8 lg:order-2"
+            >
+              {/* Netlify Forms plumbing: identifies the form and traps bots */}
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>
+                  Don’t fill this out if you’re human: <input name="bot-field" />
+                </label>
+              </p>
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="field-label">
                   First name <span className="text-[var(--color-accent)]">*</span>
@@ -268,6 +281,11 @@ export default function ContactPage() {
                   {isSending ? "Sending…" : "Send Inquiry"}
                 </button>
               </div>
+              {errorMsg && (
+                <p role="alert" className="mt-4 text-sm leading-6 text-red-600">
+                  {errorMsg}
+                </p>
+              )}
             </form>
           )}
         </div>
