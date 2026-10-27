@@ -365,11 +365,6 @@ export const faqItems: FaqItem[] = [
       "Online coaching, programs, and meal plans are paid by e-transfer. In-person sessions can be paid by e-transfer or by Stripe (credit or debit card). Payment details are confirmed when the service is booked.",
   },
   {
-    question: "Is there a contract or minimum commitment?",
-    answer:
-      "No long-term contract is required. Month-to-month online coaching gives you flexibility. Standalone programs and meal plans are one-time purchases. 1-on-1 sessions can be booked individually or as a higher-frequency arrangement.",
-  },
-  {
     question: "Can I pause or change my plan?",
     answer:
       "Yes. Life changes and training should adapt with it. If your schedule, capacity, or goals shift, the plan changes too. That is part of the job.",
