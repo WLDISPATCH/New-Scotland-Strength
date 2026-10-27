@@ -1,4 +1,5 @@
 import { ArrowRight, CheckCircle2, Compass, MapPin, MoveRight, ShieldCheck } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import CTASection from "../components/CTASection";
 import ExpandableCopy from "../components/ExpandableCopy";
@@ -6,7 +7,7 @@ import GoogleReviews from "../components/GoogleReviews";
 import PageMeta from "../components/PageMeta";
 import Reveal from "../components/Reveal";
 import Section from "../components/Section";
-import { brandPhotos } from "../assets/photoLibrary";
+import { brandPhotos, joshPhotos, shuffled } from "../assets/photoLibrary";
 import {
   homeStats,
   processSteps,
@@ -14,6 +15,7 @@ import {
 } from "../content/siteData";
 
 export default function HomePage() {
+  const [[heroSmall, heroLarge]] = useState(() => shuffled(joshPhotos));
   const trustPoints = [
     {
       icon: MapPin,
@@ -91,8 +93,8 @@ export default function HomePage() {
                 </div>
                 <div className="panel overflow-hidden p-3">
                 <img
-                  src={brandPhotos.heroPortrait}
-                  alt="Josh Dunbar competing in a strongman event"
+                  src={heroSmall.src}
+                  alt={heroSmall.alt}
                   loading="lazy"
                   className="h-full min-h-[320px] w-full rounded-[1.5rem] object-cover"
                 />
@@ -100,8 +102,8 @@ export default function HomePage() {
               </div>
               <div className="panel overflow-hidden p-3">
                 <img
-                  src={brandPhotos.showcaseCarry}
-                  alt="Josh Dunbar carrying a yoke during competition"
+                  src={heroLarge.src}
+                  alt={heroLarge.alt}
                   loading="lazy"
                   className="h-full min-h-[340px] w-full rounded-[1.5rem] object-cover sm:min-h-[420px]"
                 />

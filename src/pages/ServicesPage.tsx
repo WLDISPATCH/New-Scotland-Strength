@@ -1,11 +1,15 @@
 import { ArrowRight, CheckCircle2, Minus } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { shuffled, widePhotos } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
 import { pricing, processSteps, services } from "../content/siteData";
 
 export default function ServicesPage() {
+  const [[banner]] = useState(() => shuffled(widePhotos));
+
   return (
     <>
       <PageMeta
@@ -116,6 +120,14 @@ export default function ServicesPage() {
               </ul>
             </article>
           ))}
+        </div>
+        <div className="panel mt-6 overflow-hidden p-3">
+          <img
+            src={banner.src}
+            alt={banner.alt}
+            loading="lazy"
+            className="h-[240px] w-full rounded-[1.75rem] object-cover sm:h-[420px]"
+          />
         </div>
       </Section>
 

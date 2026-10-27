@@ -1,4 +1,5 @@
-import { brandPhotos } from "../assets/photoLibrary";
+import { useState } from "react";
+import { galleryPhotos, shuffled } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
 import GoogleReviews, { averageRating, reviewCount, writtenReviews } from "../components/GoogleReviews";
 import PageMeta from "../components/PageMeta";
@@ -26,6 +27,8 @@ const reviewSchema = {
 };
 
 export default function ResultsPage() {
+  const [gallery] = useState(() => shuffled(galleryPhotos));
+
   return (
     <>
       <PageMeta
@@ -69,33 +72,17 @@ export default function ResultsPage() {
         title="Training and competition"
         className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
       >
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="panel overflow-hidden p-3">
-            <img
-              src={brandPhotos.showcaseLift}
-              alt="Josh Dunbar deadlifting on competition floor"
-              loading="lazy"
-              className="h-full min-h-[280px] w-full rounded-[1.75rem] object-cover sm:min-h-[420px]"
-            />
-          </div>
-          <div className="grid gap-6">
-            <div className="panel overflow-hidden p-3">
+        <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+          {gallery.map((photo) => (
+            <figure key={photo.src} className="panel mb-5 break-inside-avoid overflow-hidden p-2.5">
               <img
-                src={brandPhotos.resultsWide}
-                alt="Josh Dunbar pulling a sled in front of a crowd"
+                src={photo.src}
+                alt={photo.alt}
                 loading="lazy"
-                className="h-full min-h-[200px] w-full rounded-[1.75rem] object-cover"
+                className="block w-full rounded-[1.4rem]"
               />
-            </div>
-            <div className="panel overflow-hidden p-3">
-              <img
-                src={brandPhotos.showcaseCarry}
-                alt="Josh Dunbar carrying a yoke during competition"
-                loading="lazy"
-                className="h-full min-h-[200px] w-full rounded-[1.75rem] object-cover"
-              />
-            </div>
-          </div>
+            </figure>
+          ))}
         </div>
       </Section>
 

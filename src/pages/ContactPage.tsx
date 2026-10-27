@@ -1,7 +1,7 @@
 import { CheckCircle2, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { brandPhotos } from "../assets/photoLibrary";
+import { joshPhotos, shuffled } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
@@ -11,6 +11,7 @@ export default function ContactPage() {
   const [isSent, setIsSent] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [[photo]] = useState(() => shuffled(joshPhotos));
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -154,8 +155,8 @@ export default function ContactPage() {
 
             <div className="hidden panel overflow-hidden p-3 lg:block">
               <img
-                src={brandPhotos.contactPortrait}
-                alt="Josh Dunbar carrying a yoke during competition"
+                src={photo.src}
+                alt={photo.alt}
                 loading="lazy"
                 className="h-full min-h-[360px] w-full rounded-[1.75rem] object-cover"
               />

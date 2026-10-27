@@ -1,6 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { brandPhotos } from "../assets/photoLibrary";
+import { joshPhotos, shuffled } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
 import ExpandableCopy from "../components/ExpandableCopy";
 import PageMeta from "../components/PageMeta";
@@ -8,6 +9,8 @@ import Section from "../components/Section";
 import { aboutStory, business, coachingValues } from "../content/siteData";
 
 export default function AboutPage() {
+  const [[portrait, secondary]] = useState(() => shuffled(joshPhotos));
+
   return (
     <>
       <PageMeta
@@ -74,8 +77,8 @@ export default function AboutPage() {
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="panel overflow-hidden p-3">
             <img
-              src={brandPhotos.aboutPortrait}
-              alt="Josh Dunbar completing a clean during competition"
+              src={portrait.src}
+              alt={portrait.alt}
               loading="lazy"
               className="h-full min-h-[320px] w-full rounded-[1.75rem] object-cover sm:min-h-[520px]"
             />
@@ -131,8 +134,8 @@ export default function AboutPage() {
           </div>
           <div className="panel overflow-hidden p-3">
             <img
-              src={brandPhotos.showcaseLift}
-              alt="Josh Dunbar pulling a heavy deadlift during competition"
+              src={secondary.src}
+              alt={secondary.alt}
               loading="lazy"
               className="h-full min-h-[320px] w-full rounded-[1.75rem] object-cover sm:min-h-[420px]"
             />
