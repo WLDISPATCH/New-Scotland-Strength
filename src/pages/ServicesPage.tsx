@@ -5,7 +5,7 @@ import { shuffled, widePhotos } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
-import { pricing, processSteps, services } from "../content/siteData";
+import { processSteps, services } from "../content/siteData";
 
 export default function ServicesPage() {
   const [[banner]] = useState(() => shuffled(widePhotos));
@@ -14,7 +14,7 @@ export default function ServicesPage() {
     <>
       <PageMeta
         title="Personal Training Services Halifax, NS | New Scotland Strength"
-        description="In-person and online personal training, strength coaching, custom programs, and meal plans in Halifax, Nova Scotia. View services and pricing from New Scotland Strength."
+        description="In-person and online personal training, strength coaching, custom programs, and meal plans in Halifax, Nova Scotia. Book a consultation with New Scotland Strength."
         path="/services"
       />
 
@@ -131,28 +131,21 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      <Section
-        eyebrow="Pricing"
-        title="Current rates"
-        description="Current rates for in-person training, online coaching, and standalone programming."
-      >
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-          {pricing.map((item) => (
-            <article key={item.title} className="panel flex h-full flex-col p-5 sm:p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">
-                {item.title}
-              </p>
-              <p className="mt-4 text-3xl font-semibold text-[var(--color-ink)]">
-                {item.price}
-                {item.cadence ? (
-                  <span className="text-lg font-medium text-[var(--color-text-subtle)]">
-                    {item.cadence}
-                  </span>
-                ) : null}
-              </p>
-              <p className="mt-4 text-sm leading-6 text-[var(--color-text-muted)]">{item.note}</p>
-            </article>
-          ))}
+      <Section eyebrow="Pricing">
+        <div className="panel flex flex-col gap-6 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-3xl">
+              Pricing built around you
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] sm:text-base">
+              Rates depend on the type of coaching and how often you train. Book a consultation and Josh will walk
+              you through the options that fit your goals and schedule.
+            </p>
+          </div>
+          <Link to="/contact" className="btn-primary shrink-0 justify-center">
+            Book a Consultation
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </Section>
 
