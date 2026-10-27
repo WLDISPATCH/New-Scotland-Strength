@@ -1,0 +1,54 @@
+# New Scotland Strength
+
+> New Scotland Strength is a personal training and strength coaching business in Halifax, Nova Scotia, Canada, run by coach Josh Dunbar. It offers in-person 1-on-1 personal training across the Halifax Regional Municipality (Halifax, Dartmouth, Bedford, Sackville), online coaching anywhere, custom training programs, meal plans, and strongman and powerlifting competition preparation.
+
+## Coach
+
+- Name: Josh Dunbar, personal trainer and strength coach
+- Certifications: ACE Certified Personal Trainer, Level 1 Nutrition Coach, Senior Fitness Specialist, Size Inclusive Training
+- Experience: over 20 years of strength training
+- Competition record: competitive strongman with multiple Nova Scotia and Atlantic titles and multiple top-five finishes at the national level; highly experienced in both strongman and powerlifting
+
+## Who it is for
+
+- Beginners and people returning to training after time away
+- Women and men of all ages, including older adults
+- People focused on weight loss and body composition, not only strength
+- Athletes preparing for strongman or powerlifting competition (a specialty)
+- Clients with injuries or physical limitations (programming is adapted)
+
+## Services
+
+- 1-on-1 personal training: in-person, hands-on coaching with form correction and progression. Sessions run out of a private studio in Herring Cove, with additional gym access in Burnside and Halifax's north end. No separate gym membership is needed.
+- Online training + meal plan: monthly online coaching with a custom training plan, meal plan support, and regular check-ins. Clients log training in a shared Google Sheet; form checks and 24/7 support are handled over WhatsApp. Programs can be built for little or no equipment.
+- Custom training program: a personalized strength program built around the client's goals, schedule, and training history.
+- Meal plan: a custom nutrition plan for clients who want dietary structure.
+
+Pricing depends on the service and training frequency and is discussed in a consultation. Payment is by e-transfer (online services) or e-transfer and Stripe (in-person).
+
+## Service area
+
+- In person: Halifax, Dartmouth, Bedford, Sackville, and the wider Halifax Regional Municipality (HRM), Nova Scotia
+- Online: anywhere in Nova Scotia, across Canada, and beyond
+
+## Reviews
+
+- Rated 5.0 on Google: https://share.google/cfzvPC917do13ClwO
+
+## Contact
+
+- Book a consultation: https://www.newscotlandstrength.com/contact/
+- Email: newscotlandstrength@gmail.com
+- Instagram: https://www.instagram.com/newscotlandstrength
+- Facebook: https://www.facebook.com/share/1ChXD9ThrZ/
+- TikTok: https://www.tiktok.com/@newscotlandstrength
+- YouTube: https://youtube.com/@newscotlandstrength8672
+
+## Pages
+
+- [Home](https://www.newscotlandstrength.com/): overview of coaching options and how it works
+- [About Josh Dunbar](https://www.newscotlandstrength.com/about/): background, credentials, and coaching philosophy
+- [Services](https://www.newscotlandstrength.com/services/): coaching options and a side-by-side comparison
+- [Results](https://www.newscotlandstrength.com/results/): Google reviews, a client testimonial, and training and competition photos
+- [FAQ](https://www.newscotlandstrength.com/faq/): answers about location, training frequency, equipment, online check-ins, and more
+- [Contact](https://www.newscotlandstrength.com/contact/): consultation request form
