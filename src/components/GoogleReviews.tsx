@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "./Reveal";
+import SwipeRow from "./SwipeRow";
 import { googleProfileUrl, googleReviews } from "../content/siteData";
 import type { GoogleReview } from "../content/siteData";
 
@@ -80,10 +81,20 @@ function ReviewCard({ review }: { review: GoogleReview }) {
 type GoogleReviewsProps = {
   limit?: number;
   gridClassName?: string;
+  swipeOnMobile?: boolean;
 };
 
-export default function GoogleReviews({ limit, gridClassName = "md:grid-cols-2" }: GoogleReviewsProps) {
+export default function GoogleReviews({
+  limit,
+  gridClassName = "md:grid-cols-2",
+  swipeOnMobile = false,
+}: GoogleReviewsProps) {
   const shown = limit ? writtenReviews.slice(0, limit) : writtenReviews;
+  const cards = shown.map((review, index) => (
+    <Reveal key={review.author} delayMs={index * 90} className="h-full">
+      <ReviewCard review={review} />
+    </Reveal>
+  ));
 
   return (
     <div>
@@ -113,13 +124,11 @@ export default function GoogleReviews({ limit, gridClassName = "md:grid-cols-2" 
         </a>
       </div>
 
-      <div className={`grid gap-5 ${gridClassName}`}>
-        {shown.map((review, index) => (
-          <Reveal key={review.author} delayMs={index * 90} className="h-full">
-            <ReviewCard review={review} />
-          </Reveal>
-        ))}
-      </div>
+      {swipeOnMobile ? (
+        <SwipeRow desktopClassName={`${gridClassName} lg:gap-5`}>{cards}</SwipeRow>
+      ) : (
+        <div className={`grid gap-5 ${gridClassName}`}>{cards}</div>
+      )}
     </div>
   );
 }
