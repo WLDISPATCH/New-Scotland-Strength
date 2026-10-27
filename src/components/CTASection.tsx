@@ -15,9 +15,9 @@ export default function CTASection({
   title,
   description,
   primaryLabel = "Book a Consultation",
-  primaryTo = "/contact",
+  primaryTo = "/contact/",
   secondaryLabel,
-  secondaryTo = "/services",
+  secondaryTo = "/services/",
 }: CTASectionProps) {
   return (
     <section className="py-14 sm:py-20 lg:py-24">

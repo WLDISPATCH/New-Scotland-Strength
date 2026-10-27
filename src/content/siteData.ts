@@ -47,7 +47,7 @@ export const business = {
     "Bedford",
     "Halifax Regional Municipality",
   ],
-  consultationPath: "/contact",
+  consultationPath: "/contact/",
 };
 
 export const socialLinks: SocialLink[] = [
@@ -71,11 +71,11 @@ export const socialLinks: SocialLink[] = [
 
 export const navigation: NavItem[] = [
   { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Services", path: "/services" },
-  { label: "Results", path: "/results" },
-  { label: "FAQ", path: "/faq" },
-  { label: "Contact", path: "/contact" },
+  { label: "About", path: "/about/" },
+  { label: "Services", path: "/services/" },
+  { label: "Results", path: "/results/" },
+  { label: "FAQ", path: "/faq/" },
+  { label: "Contact", path: "/contact/" },
 ];
 
 export const homeStats = [

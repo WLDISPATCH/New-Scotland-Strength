@@ -1,40 +1,28 @@
 import { useEffect } from "react";
+import pageMeta from "../content/pageMeta.json";
 
-type PageMetaProps = {
-  title: string;
-  description: string;
-  path: string;
-};
+export type PagePath = keyof typeof pageMeta;
 
-export default function PageMeta({ title, description, path }: PageMetaProps) {
+// Head tags are also baked into each page's HTML at build time (scripts/prerender.mjs);
+// this keeps them in sync during client-side navigation.
+export default function PageMeta({ path }: { path: PagePath }) {
   useEffect(() => {
+    const { title, description } = pageMeta[path];
     const url = `https://www.newscotlandstrength.com${path}`;
 
     document.title = title;
 
-    const descriptionMeta = document.querySelector('meta[name="description"]');
-    if (descriptionMeta) descriptionMeta.setAttribute("content", description);
+    const set = (selector: string, attr: string, value: string) =>
+      document.querySelector(selector)?.setAttribute(attr, value);
 
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink) canonicalLink.setAttribute("href", url);
-
-    // Keep Open Graph tags in sync so social shares reflect the current page
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute("content", title);
-
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute("content", description);
-
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute("content", url);
-
-    // Twitter card tags
-    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute("content", title);
-
-    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
-    if (twitterDesc) twitterDesc.setAttribute("content", description);
-  }, [description, path, title]);
+    set('meta[name="description"]', "content", description);
+    set('link[rel="canonical"]', "href", url);
+    set('meta[property="og:title"]', "content", title);
+    set('meta[property="og:description"]', "content", description);
+    set('meta[property="og:url"]', "content", url);
+    set('meta[name="twitter:title"]', "content", title);
+    set('meta[name="twitter:description"]', "content", description);
+  }, [path]);
 
   return null;
 }

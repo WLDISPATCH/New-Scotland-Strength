@@ -13,11 +13,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageMeta
-        title="About Josh Dunbar | Personal Trainer Halifax, NS | New Scotland Strength"
-        description="Josh Dunbar is a Halifax-based personal trainer and strength coach. Learn about New Scotland Strength's coaching approach, philosophy, and in-person and online services for Halifax, Dartmouth, and Bedford."
-        path="/about"
-      />
+      <PageMeta path="/about/" />
 
       {/* BreadcrumbList schema */}
       <script
@@ -28,7 +24,7 @@ export default function AboutPage() {
             "@type": "BreadcrumbList",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
-              { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.newscotlandstrength.com/about" }
+              { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.newscotlandstrength.com/about/" }
             ]
           })
         }}
@@ -44,7 +40,7 @@ export default function AboutPage() {
             "name": "Josh Dunbar",
             "jobTitle": "Personal Trainer and Strength Coach",
             "description": "Josh Dunbar is a personal trainer and strength coach based in Halifax, Nova Scotia. He works with clients in-person in the HRM and online, providing strength training, custom programming, and nutrition planning through New Scotland Strength.",
-            "url": "https://www.newscotlandstrength.com/about",
+            "url": "https://www.newscotlandstrength.com/about/",
             "image": "https://www.newscotlandstrength.com/og-image.jpg",
             "worksFor": {
               "@type": "LocalBusiness",
@@ -128,7 +124,7 @@ export default function AboutPage() {
               full="A good coach does more than count reps. The real job is making sound decisions over time: when to push, when to back off, what to change, and how to keep someone training when life gets busy. That is the difference between a plan that looks good for a week and one that actually holds up."
               buttonLabel="Read why clients stay"
             />
-            <Link to="/contact" className="btn-primary justify-center sm:justify-start">
+            <Link to="/contact/" className="btn-primary justify-center sm:justify-start">
               Start the Conversation
             </Link>
           </div>
@@ -147,7 +143,7 @@ export default function AboutPage() {
         title="Looking for a coach who keeps things straightforward?"
         description="Use the contact page to talk through your goals, training background, and what kind of support makes the most sense."
         secondaryLabel="View Services"
-        secondaryTo="/services"
+        secondaryTo="/services/"
       />
     </>
   );

@@ -12,11 +12,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <PageMeta
-        title="Personal Training Services Halifax, NS | New Scotland Strength"
-        description="In-person and online personal training, strength coaching, custom programs, and meal plans in Halifax, Nova Scotia. Book a consultation with New Scotland Strength."
-        path="/services"
-      />
+      <PageMeta path="/services/" />
 
       {/* BreadcrumbList schema */}
       <script
@@ -27,7 +23,7 @@ export default function ServicesPage() {
             "@type": "BreadcrumbList",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.newscotlandstrength.com/services" }
+              { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.newscotlandstrength.com/services/" }
             ]
           })
         }}
@@ -42,7 +38,7 @@ export default function ServicesPage() {
             "@type": "ItemList",
             "name": "Personal Training Services — New Scotland Strength",
             "description": "Personal training and strength coaching services available in Halifax, NS and online.",
-            "url": "https://www.newscotlandstrength.com/services",
+            "url": "https://www.newscotlandstrength.com/services/",
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -53,7 +49,7 @@ export default function ServicesPage() {
                   "description": "Monthly online coaching with a custom training plan, meal plan support, and regular check-ins. Available for clients in Halifax and anywhere online.",
                   "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
                   "areaServed": "Worldwide",
-                  "url": "https://www.newscotlandstrength.com/services"
+                  "url": "https://www.newscotlandstrength.com/services/"
                 }
               },
               {
@@ -65,7 +61,7 @@ export default function ServicesPage() {
                   "description": "In-person personal training sessions in Halifax, NS. Hands-on coaching, form correction, and session-by-session progression.",
                   "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
                   "areaServed": "Halifax, Nova Scotia",
-                  "url": "https://www.newscotlandstrength.com/services"
+                  "url": "https://www.newscotlandstrength.com/services/"
                 }
               },
               {
@@ -77,7 +73,7 @@ export default function ServicesPage() {
                   "description": "Standalone personalized strength training program. Built around your goals, schedule, and training history.",
                   "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
                   "areaServed": "Worldwide",
-                  "url": "https://www.newscotlandstrength.com/services"
+                  "url": "https://www.newscotlandstrength.com/services/"
                 }
               },
               {
@@ -89,7 +85,7 @@ export default function ServicesPage() {
                   "description": "Standalone custom nutrition and meal plan for clients who want dietary structure without a full coaching package.",
                   "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
                   "areaServed": "Worldwide",
-                  "url": "https://www.newscotlandstrength.com/services"
+                  "url": "https://www.newscotlandstrength.com/services/"
                 }
               }
             ]
@@ -142,7 +138,7 @@ export default function ServicesPage() {
               you through the options that fit your goals and schedule.
             </p>
           </div>
-          <Link to="/contact" className="btn-primary shrink-0 justify-center">
+          <Link to="/contact/" className="btn-primary shrink-0 justify-center">
             Book a Consultation
             <ArrowRight className="h-4 w-4" />
           </Link>
@@ -207,7 +203,7 @@ export default function ServicesPage() {
             </article>
           ))}
         </div>
-        <Link to="/contact" className="btn-primary mt-8 justify-center sm:justify-start">
+        <Link to="/contact/" className="btn-primary mt-8 justify-center sm:justify-start">
           Request a Consultation
           <ArrowRight className="h-4 w-4" />
         </Link>
@@ -217,7 +213,7 @@ export default function ServicesPage() {
         title="Not sure which option fits?"
         description="Send a message with your goals, schedule, and training background, and Josh can point you in the right direction."
         secondaryLabel="Read About Josh"
-        secondaryTo="/about"
+        secondaryTo="/about/"
       />
     </>
   );
