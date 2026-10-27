@@ -56,11 +56,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageMeta
-        title="Book a Personal Trainer in Halifax | New Scotland Strength"
-        description="Book a consultation with New Scotland Strength. In-person personal training and strength coaching in Halifax, Nova Scotia. Online coaching available everywhere."
-        path="/contact"
-      />
+      <PageMeta path="/contact/" />
 
       {/* BreadcrumbList schema */}
       <script
@@ -71,7 +67,7 @@ export default function ContactPage() {
             "@type": "BreadcrumbList",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.newscotlandstrength.com/contact" }
+              { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.newscotlandstrength.com/contact/" }
             ]
           })
         }}
@@ -304,9 +300,9 @@ export default function ContactPage() {
         title="Prefer to review services before reaching out?"
         description="You can also review the services first, then come back once you know what kind of support you want."
         primaryLabel="View Services"
-        primaryTo="/services"
+        primaryTo="/services/"
         secondaryLabel="See Results"
-        secondaryTo="/results"
+        secondaryTo="/results/"
       />
     </>
   );

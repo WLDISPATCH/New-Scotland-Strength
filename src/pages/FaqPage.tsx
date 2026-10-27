@@ -48,11 +48,7 @@ export default function FaqPage() {
 
   return (
     <>
-      <PageMeta
-        title="FAQ | Halifax Personal Trainer | New Scotland Strength"
-        description="Answers to common questions about personal training, strength coaching, and online coaching with Josh Dunbar at New Scotland Strength in Halifax, Nova Scotia."
-        path="/faq"
-      />
+      <PageMeta path="/faq/" />
 
       {/* BreadcrumbList schema */}
       <script
@@ -63,7 +59,7 @@ export default function FaqPage() {
             "@type": "BreadcrumbList",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
-              { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.newscotlandstrength.com/faq" }
+              { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.newscotlandstrength.com/faq/" }
             ]
           })
         }}
@@ -92,7 +88,7 @@ export default function FaqPage() {
         title="Still have a question?"
         description="If your question is not here, reach out directly and Josh will get back to you within 48 hours."
         secondaryLabel="Contact Josh"
-        secondaryTo="/contact"
+        secondaryTo="/contact/"
       />
     </>
   );

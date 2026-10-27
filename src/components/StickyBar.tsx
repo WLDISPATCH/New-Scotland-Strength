@@ -7,7 +7,7 @@ export default function StickyBar() {
   const location = useLocation();
 
   // Don't show on the contact page — the form is already right there
-  const isContactPage = location.pathname === "/contact";
+  const isContactPage = location.pathname === "/contact/";
 
   useEffect(() => {
     if (isContactPage) {
@@ -36,7 +36,7 @@ export default function StickyBar() {
         <p className="truncate text-sm font-medium text-[var(--color-ink)]">
           Ready to train with a clearer plan?
         </p>
-        <Link to="/contact" className="btn-primary shrink-0">
+        <Link to="/contact/" className="btn-primary shrink-0">
           Book a Consultation
           <ArrowRight className="h-4 w-4" />
         </Link>

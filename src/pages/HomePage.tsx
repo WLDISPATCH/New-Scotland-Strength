@@ -37,11 +37,7 @@ export default function HomePage() {
 
   return (
     <>
-      <PageMeta
-        title="Personal Trainer Halifax, NS | New Scotland Strength"
-        description="Work with Josh Dunbar at New Scotland Strength for personal training and strength coaching in Halifax, Nova Scotia. Straightforward coaching, clear programming, and practical support."
-        path="/"
-      />
+      <PageMeta path="/" />
 
       <section className="relative overflow-hidden border-b border-[var(--color-line)]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(159,103,52,0.14),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(110,85,48,0.1),transparent_30%)]" />
@@ -61,11 +57,11 @@ export default function HomePage() {
               buttonLabel="See full intro"
             />
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact" className="btn-primary justify-center sm:justify-start">
+              <Link to="/contact/" className="btn-primary justify-center sm:justify-start">
                 Book a Consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/services" className="btn-secondary justify-center sm:justify-start">
+              <Link to="/services/" className="btn-secondary justify-center sm:justify-start">
                 Explore Services
               </Link>
             </div>
@@ -152,7 +148,7 @@ export default function HomePage() {
         description={
           <>
             Decide which option is best for you or{" "}
-            <Link to="/contact" className="font-semibold text-[var(--color-ink)] underline decoration-[var(--color-accent)] underline-offset-4">
+            <Link to="/contact/" className="font-semibold text-[var(--color-ink)] underline decoration-[var(--color-accent)] underline-offset-4">
               reach out
             </Link>{" "}
             if you need help!
@@ -176,7 +172,7 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <Link to="/services" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)]">
+              <Link to="/services/" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)]">
                 View service details
                 <MoveRight className="h-4 w-4 text-[var(--color-accent)]" />
               </Link>
@@ -214,7 +210,7 @@ export default function HomePage() {
         title="Don't Just Start Strong — Stay Strong."
         description="Reach your health and fitness goals with a sustainable plan that is tailored for you!"
         secondaryLabel="See Results"
-        secondaryTo="/results"
+        secondaryTo="/results/"
       />
     </>
   );

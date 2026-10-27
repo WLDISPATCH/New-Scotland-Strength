@@ -25,12 +25,6 @@ export type SocialLink = {
   href: string;
 };
 
-export type PricingItem = {
-  title: string;
-  price: string;
-  cadence?: string;
-  note: string;
-};
 
 // Web3Forms access key for the contact form. This value is public by design
 // (Web3Forms keys are meant to be used in client-side code). Generate one for
@@ -53,7 +47,7 @@ export const business = {
     "Bedford",
     "Halifax Regional Municipality",
   ],
-  consultationPath: "/contact",
+  consultationPath: "/contact/",
 };
 
 export const socialLinks: SocialLink[] = [
@@ -77,11 +71,11 @@ export const socialLinks: SocialLink[] = [
 
 export const navigation: NavItem[] = [
   { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Services", path: "/services" },
-  { label: "Results", path: "/results" },
-  { label: "FAQ", path: "/faq" },
-  { label: "Contact", path: "/contact" },
+  { label: "About", path: "/about/" },
+  { label: "Services", path: "/services/" },
+  { label: "Results", path: "/results/" },
+  { label: "FAQ", path: "/faq/" },
+  { label: "Contact", path: "/contact/" },
 ];
 
 export const homeStats = [
@@ -137,37 +131,6 @@ export const services: ServiceItem[] = [
       "Form correction and progression",
       "Clear session structure",
     ],
-  },
-];
-
-export const pricing: PricingItem[] = [
-  {
-    title: "Online Training + Meal Plan",
-    price: "$150",
-    cadence: "/month",
-    note: "Includes meal plan support.",
-  },
-  {
-    title: "1-on-1 Sessions",
-    price: "$70",
-    cadence: "/session",
-    note: "Standard one-on-one session rate.",
-  },
-  {
-    title: "3+ Sessions Per Week",
-    price: "$60",
-    cadence: "/session",
-    note: "Reduced per-session rate for higher weekly frequency.",
-  },
-  {
-    title: "Custom Program",
-    price: "$100",
-    note: "Standalone personalized training program.",
-  },
-  {
-    title: "Meal Plan",
-    price: "$100",
-    note: "Standalone nutrition planning add-on.",
   },
 ];
 
