@@ -36,36 +36,30 @@ export const web3formsKey =
 export const business = {
   name: "New Scotland Strength",
   owner: "Josh Dunbar",
-  phone: "(902) 000-0000",
   email: "newscotlandstrength@gmail.com",
   city: "Halifax",
   region: "Nova Scotia",
   country: "Canada",
-  areasServed: [
-    "Halifax",
-    "Dartmouth",
-    "Bedford",
-    "Halifax Regional Municipality",
-  ],
   consultationPath: "/contact/",
 };
 
 export const socialLinks: SocialLink[] = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/newscotlandstrength?igsh=dTQ0N2VvcmlhaDh6",
+    href: "https://www.instagram.com/newscotlandstrength",
   },
   {
     label: "TikTok",
-    href: "https://www.tiktok.com/@newscotlandstrength?is_from_webapp=1&sender_device=pc",
+    href: "https://www.tiktok.com/@newscotlandstrength",
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/share/1ChXD9ThrZ/?mibextid=wwXIfr",
+    // Share link; swap for the page's permanent URL once the owner provides it.
+    href: "https://www.facebook.com/share/1ChXD9ThrZ/",
   },
   {
     label: "YouTube",
-    href: "https://youtube.com/@newscotlandstrength8672?si=IAYesrOyCvtl0cRD",
+    href: "https://www.youtube.com/@newscotlandstrength8672",
   },
 ];
 

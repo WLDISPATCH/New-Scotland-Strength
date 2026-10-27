@@ -21,7 +21,7 @@ export default function HomePage() {
     {
       icon: MapPin,
       title: "Halifax-based",
-      text: "Local coaching for Halifax, Dartmouth, Bedford, and wider HRM.",
+      text: "Local coaching for Halifax, Dartmouth, Bedford, Sackville, and wider HRM.",
     },
     {
       icon: ShieldCheck,

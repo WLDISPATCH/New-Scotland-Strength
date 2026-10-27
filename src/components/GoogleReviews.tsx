@@ -10,10 +10,9 @@ const STAR_PATH =
 
 const googleFont = { fontFamily: "Roboto, Arial, sans-serif" };
 
-export const reviewCount = googleReviews.length;
-export const averageRating =
-  googleReviews.reduce((sum, r) => sum + r.rating, 0) / googleReviews.length;
-export const writtenReviews = googleReviews.filter((r) => r.text);
+const reviewCount = googleReviews.length;
+const averageRating = googleReviews.reduce((sum, r) => sum + r.rating, 0) / googleReviews.length;
+const writtenReviews = googleReviews.filter((r) => r.text);
 
 const ratingLabel = averageRating >= 4.5 ? "Excellent" : averageRating >= 4 ? "Very good" : "Good";
 

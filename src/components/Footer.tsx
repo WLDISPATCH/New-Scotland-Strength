@@ -74,7 +74,7 @@ export default function Footer() {
       <div className="border-t border-[var(--color-line)]">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[var(--color-text-subtle)] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <p>© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
-          <p>Serving Halifax, Dartmouth, Bedford, and Halifax Regional Municipality.</p>
+          <p>Serving Halifax, Dartmouth, Bedford, Sackville, and the wider Halifax Regional Municipality (HRM).</p>
         </div>
       </div>
     </footer>
