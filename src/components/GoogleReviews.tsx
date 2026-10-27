@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
 import SwipeRow from "./SwipeRow";
 import { googleProfileUrl, googleReviews } from "../content/siteData";
@@ -13,6 +14,8 @@ export const reviewCount = googleReviews.length;
 export const averageRating =
   googleReviews.reduce((sum, r) => sum + r.rating, 0) / googleReviews.length;
 export const writtenReviews = googleReviews.filter((r) => r.text);
+
+const ratingLabel = averageRating >= 4.5 ? "Excellent" : averageRating >= 4 ? "Very good" : "Good";
 
 function GoogleLogo({ className }: { className?: string }) {
   return (
@@ -47,10 +50,46 @@ function timeAgo(year: number) {
   return years <= 1 ? "a year ago" : `${years} years ago`;
 }
 
+// Clamped to four lines below lg with a "Read more" toggle; full text on desktop.
+function ReviewText({ text }: { text: string }) {
+  const ref = useRef<HTMLParagraphElement | null>(null);
+  const [expanded, setExpanded] = useState(false);
+  const [overflowing, setOverflowing] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const check = () => setOverflowing(el.scrollHeight > el.clientHeight + 1);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  return (
+    <>
+      <p
+        ref={ref}
+        className={`mt-3 whitespace-pre-line text-[15px] leading-6 text-[#3c4043] ${expanded ? "" : "line-clamp-4 lg:line-clamp-none"}`}
+      >
+        {text}
+      </p>
+      {overflowing && !expanded ? (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="mt-3 self-start text-[14px] text-[#70757a] hover:underline lg:hidden"
+        >
+          Read more
+        </button>
+      ) : null}
+    </>
+  );
+}
+
 function ReviewCard({ review }: { review: GoogleReview }) {
   return (
     <article
-      className="flex h-full flex-col rounded-3xl border border-[#e8eaed] bg-white p-5 shadow-[0_1px_2px_rgba(60,64,67,0.08)] sm:p-6"
+      className="flex h-full flex-col rounded-3xl border border-[#e8eaed] bg-white p-5 shadow-[0_1px_3px_rgba(60,64,67,0.12)] sm:p-6"
       style={googleFont}
     >
       <div className="flex items-center gap-3">
@@ -71,35 +110,43 @@ function ReviewCard({ review }: { review: GoogleReview }) {
         <Stars rating={review.rating} />
         <span className="text-[13px] text-[#70757a]">{timeAgo(review.year)}</span>
       </div>
-      {review.text ? (
-        <p className="mt-3 whitespace-pre-line text-[15px] leading-6 text-[#3c4043]">{review.text}</p>
-      ) : null}
+      {review.text ? <ReviewText text={review.text} /> : null}
     </article>
   );
 }
 
 type GoogleReviewsProps = {
   limit?: number;
+  // Grid classes for lg and up; below lg the reviews are a one-at-a-time swipe row.
   gridClassName?: string;
-  swipeOnMobile?: boolean;
 };
 
-export default function GoogleReviews({
-  limit,
-  gridClassName = "md:grid-cols-2",
-  swipeOnMobile = false,
-}: GoogleReviewsProps) {
+export default function GoogleReviews({ limit, gridClassName = "lg:grid-cols-2" }: GoogleReviewsProps) {
   const shown = limit ? writtenReviews.slice(0, limit) : writtenReviews;
-  const cards = shown.map((review, index) => (
-    <Reveal key={review.author} delayMs={index * 90} className="h-full">
-      <ReviewCard review={review} />
-    </Reveal>
-  ));
 
   return (
     <div>
+      <div className="mb-6 flex flex-col items-center text-center lg:hidden" style={googleFont}>
+        <p className="text-2xl font-medium uppercase tracking-wide text-[#202124]">{ratingLabel}</p>
+        <div className="mt-2">
+          <Stars rating={averageRating} size="h-8 w-8" />
+        </div>
+        <a
+          href={googleProfileUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 text-[15px] text-[#3c4043] underline decoration-[#dadce0] underline-offset-4"
+        >
+          Based on <span className="font-semibold">{reviewCount} reviews</span>
+        </a>
+        <div className="mt-3 flex items-center gap-2">
+          <GoogleLogo className="h-6 w-6" />
+          <span className="text-lg font-medium text-[#5f6368]">Google</span>
+        </div>
+      </div>
+
       <div
-        className="mb-6 flex flex-col gap-4 rounded-3xl border border-[#e8eaed] bg-white p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+        className="mb-6 hidden items-center justify-between gap-4 rounded-3xl border border-[#e8eaed] bg-white p-6 lg:flex"
         style={googleFont}
       >
         <div className="flex items-center gap-4">
@@ -124,11 +171,13 @@ export default function GoogleReviews({
         </a>
       </div>
 
-      {swipeOnMobile ? (
-        <SwipeRow desktopClassName={`${gridClassName} lg:gap-5`}>{cards}</SwipeRow>
-      ) : (
-        <div className={`grid gap-5 ${gridClassName}`}>{cards}</div>
-      )}
+      <SwipeRow desktopClassName={`${gridClassName} lg:gap-5`} itemClassName="w-full snap-center" progress>
+        {shown.map((review, index) => (
+          <Reveal key={review.author} delayMs={index * 90} className="h-full">
+            <ReviewCard review={review} />
+          </Reveal>
+        ))}
+      </SwipeRow>
     </div>
   );
 }

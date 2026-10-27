@@ -207,7 +207,7 @@ export default function HomePage() {
         title="Coaching that fits real life, not just perfect conditions"
         className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
       >
-        <GoogleReviews limit={3} gridClassName="lg:grid-cols-3" swipeOnMobile />
+        <GoogleReviews limit={3} gridClassName="lg:grid-cols-3" />
       </Section>
 
       <CTASection
