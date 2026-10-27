@@ -10,11 +10,14 @@ export type ServiceItem = {
   features: string[];
 };
 
-export type TestimonialItem = {
-  name: string;
-  role: string;
-  quote: string;
-  outcome: string;
+export type GoogleReview = {
+  author: string;
+  meta?: string;
+  avatarColor: string;
+  rating: number;
+  // Approximate year posted; Google only shows "x years ago".
+  year: number;
+  text?: string;
 };
 
 export type SocialLink = {
@@ -199,27 +202,54 @@ export const coachingValues = [
   },
 ];
 
-export const testimonials: TestimonialItem[] = [
+export const googleProfileUrl = "https://share.google/cfzvPC917do13ClwO";
+
+// Copied verbatim from the Google Business Profile. Keep wording exactly as posted.
+export const googleReviews: GoogleReview[] = [
   {
-    name: "Daniel M.",
-    role: "Halifax professional, age 37",
-    quote:
-      "Josh gave me a clear plan, coached the details, and kept me focused on what mattered. I got stronger without feeling beat up all the time.",
-    outcome: "Added consistency, improved technique, and rebuilt confidence in the gym.",
+    author: "Ashley Josephson",
+    meta: "Local Guide · 22 reviews",
+    avatarColor: "#795548",
+    rating: 5,
+    year: 2023,
+    text: "The folks at New Scotland Strength have amazing experience and provide safe and proper technique for all styles of training offered. I have been working with them for several years now and I have never felt more confident in my fitness and strength! They are always knowledgeable, focused on your goals, and most importantly create such a fun environment!",
   },
   {
-    name: "Sarah T.",
-    role: "Dartmouth client, age 31",
-    quote:
-      "The programming felt personal from the start. I always knew what I was doing, why I was doing it, and how to keep progressing.",
-    outcome: "Built strength steadily while balancing work and family demands.",
+    author: "Andrew Foley",
+    meta: "1 review",
+    avatarColor: "#EF6C00",
+    rating: 5,
+    year: 2023,
+    text: "Great facility with knowledge training and training plans made to fit you and whatever you want to work on. After only a few months they got me to my fittest, strongest and most muscle mass. Couldn't recommend enough.",
   },
   {
-    name: "Mark R.",
-    role: "Online coaching client, age 42",
-    quote:
-      "Remote coaching was far more detailed than I expected. The structure and feedback kept me moving forward instead of guessing every week.",
-    outcome: "Dropped inconsistency, trained with purpose, and made measurable progress again.",
+    author: "Nicholas Peters",
+    meta: "Local Guide · 20 reviews",
+    avatarColor: "#1E88E5",
+    rating: 5,
+    year: 2022,
+    text: "Awesome set up and great personnel. Haven't hit the gym in years and as a 30yo had my reservations. Josh made me feel comfortable going at my own pace and offered tons of expertise and encouragement. Highly recommend NSS!",
+  },
+  {
+    author: "Steve Gaudon",
+    meta: "3 reviews",
+    avatarColor: "#689F38",
+    rating: 5,
+    year: 2025,
+    text: "Amazing training,\nResults make you both mentally and physically stronger!",
+  },
+  {
+    author: "Samantha MacFarlane",
+    avatarColor: "#5E35B1",
+    rating: 5,
+    year: 2025,
+  },
+  {
+    author: "Kyle MacInnis",
+    meta: "1 review",
+    avatarColor: "#00897B",
+    rating: 5,
+    year: 2025,
   },
 ];
 
