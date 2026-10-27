@@ -112,6 +112,13 @@ h6 {
   }
 }
 
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @layer components {
   .panel {
     @apply rounded-[2rem] border backdrop-blur-sm;

@@ -7,6 +7,7 @@ import GoogleReviews from "../components/GoogleReviews";
 import PageMeta from "../components/PageMeta";
 import Reveal from "../components/Reveal";
 import Section from "../components/Section";
+import SwipeRow from "../components/SwipeRow";
 import { brandPhotos, joshPhotos, shuffled } from "../assets/photoLibrary";
 import {
   homeStats,
@@ -105,11 +106,11 @@ export default function HomePage() {
                   src={heroLarge.src}
                   alt={heroLarge.alt}
                   loading="lazy"
-                  className="h-full min-h-[340px] w-full rounded-[1.5rem] object-cover sm:min-h-[420px]"
+                  className="h-full max-h-[260px] min-h-[240px] w-full rounded-[1.5rem] object-cover sm:max-h-none sm:min-h-[420px]"
                 />
               </div>
             </div>
-            <div className="panel mt-4 p-5 sm:absolute sm:-bottom-6 sm:right-6 sm:mt-0 sm:max-w-sm">
+            <div className="panel mt-4 hidden p-5 sm:absolute sm:-bottom-6 sm:right-6 sm:mt-0 sm:block sm:max-w-sm">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
                 How It Works
               </p>
@@ -158,15 +159,15 @@ export default function HomePage() {
           </>
         }
       >
-        <div className="grid gap-6 lg:grid-cols-3">
+        <SwipeRow desktopClassName="lg:grid-cols-3 lg:gap-6">
           {services.map((service, index) => (
             <Reveal key={service.title} delayMs={index * 90} className="h-full">
-              <article className="panel flex h-full flex-col p-7">
+              <article className="panel flex h-full flex-col p-6 lg:p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
                 {service.title}
               </p>
-              <p className="mt-4 text-xl font-semibold text-[var(--color-ink)]">{service.summary}</p>
-              <p className="mt-4 text-sm leading-7 text-[var(--color-text-muted)]">{service.details}</p>
+              <p className="mt-4 text-lg font-semibold text-[var(--color-ink)] lg:text-xl">{service.summary}</p>
+              <p className="mt-4 hidden text-sm leading-7 text-[var(--color-text-muted)] lg:block">{service.details}</p>
               <ul className="mt-6 space-y-3 text-sm text-[var(--color-text-muted)]">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
@@ -182,19 +183,19 @@ export default function HomePage() {
               </article>
             </Reveal>
           ))}
-        </div>
+        </SwipeRow>
       </Section>
 
       <Section
         eyebrow="How It Works"
         title="A simple step-by-step process, from consultation to results."
       >
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-3 md:grid-cols-2 md:gap-5 xl:grid-cols-4">
           {processSteps.map((step, index) => (
             <Reveal key={step} delayMs={index * 80}>
-              <article className="panel p-6">
-              <p className="text-sm font-semibold text-[var(--color-accent)]">0{index + 1}</p>
-              <p className="mt-4 text-lg font-semibold text-[var(--color-ink)]">{step}</p>
+              <article className="panel flex items-baseline gap-4 rounded-2xl p-4 md:block md:rounded-[2rem] md:p-6">
+              <p className="w-6 shrink-0 text-sm font-semibold text-[var(--color-accent)]">0{index + 1}</p>
+              <p className="text-base font-semibold text-[var(--color-ink)] md:mt-4 md:text-lg">{step}</p>
               </article>
             </Reveal>
           ))}

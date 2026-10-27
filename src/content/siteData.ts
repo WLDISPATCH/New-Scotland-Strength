@@ -202,6 +202,13 @@ export const coachingValues = [
   },
 ];
 
+// A client testimonial sent to Josh directly (not a Google review). Wording verbatim.
+export const clientTestimonial = {
+  author: "Kyle M.",
+  quote:
+    "After years of floundering with self-guided training and big-box gym trainers, NSS finally delivered real results for me. Josh built a program around both my goals and my constraints. I didn't just hit my targets, I’ve surpassed them and have been able to train in a sustainable way, which has resulted in long-term benefits.",
+};
+
 export const googleProfileUrl = "https://share.google/cfzvPC917do13ClwO";
 
 // Copied verbatim from the Google Business Profile. Keep wording exactly as posted.
@@ -356,11 +363,6 @@ export const faqItems: FaqItem[] = [
     question: "How do I pay for coaching?",
     answer:
       "Online coaching, programs, and meal plans are paid by e-transfer. In-person sessions can be paid by e-transfer or by Stripe (credit or debit card). Payment details are confirmed when the service is booked.",
-  },
-  {
-    question: "Is there a contract or minimum commitment?",
-    answer:
-      "No long-term contract is required. Month-to-month online coaching gives you flexibility. Standalone programs and meal plans are one-time purchases. 1-on-1 sessions can be booked individually or as a higher-frequency arrangement.",
   },
   {
     question: "Can I pause or change my plan?",

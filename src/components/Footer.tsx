@@ -6,16 +6,16 @@ import { business, navigation, socialLinks } from "../content/siteData";
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(239,228,212,0.72),rgba(229,215,195,0.9))]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-7 px-5 py-9 sm:px-6 lg:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] lg:gap-10 lg:px-8 lg:py-12">
         <div className="flex items-start">
           <img
             src={brandPhotos.brandLogo}
             alt="New Scotland Strength logo"
-            className="h-20 w-auto shrink-0"
+            className="h-14 w-auto shrink-0 lg:h-20"
           />
         </div>
 
-        <div>
+        <div className="hidden lg:block">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
             Navigation
           </p>
@@ -56,7 +56,7 @@ export default function Footer() {
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
             Social
           </p>
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 lg:flex-col lg:gap-x-0">
             {socialLinks.map((item) => (
               <a
                 key={item.label}

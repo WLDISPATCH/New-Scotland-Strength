@@ -4,6 +4,7 @@ import CTASection from "../components/CTASection";
 import GoogleReviews, { averageRating, reviewCount, writtenReviews } from "../components/GoogleReviews";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
+import { clientTestimonial } from "../content/siteData";
 
 const reviewSchema = {
   "@context": "https://schema.org",
@@ -65,6 +66,17 @@ export default function ResultsPage() {
         description="Coaching works when it fits real life. Here is what clients have said on Google."
       >
         <GoogleReviews />
+        <figure className="panel mt-10 p-6 sm:p-10">
+          <p className="font-[family-name:var(--font-heading)] text-5xl leading-none text-[var(--color-accent)]" aria-hidden="true">
+            “
+          </p>
+          <blockquote className="mt-2 text-lg leading-8 text-[var(--color-ink)] sm:text-xl sm:leading-9">
+            {clientTestimonial.quote}
+          </blockquote>
+          <figcaption className="mt-5 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
+            {clientTestimonial.author} · Client
+          </figcaption>
+        </figure>
       </Section>
 
       <Section
