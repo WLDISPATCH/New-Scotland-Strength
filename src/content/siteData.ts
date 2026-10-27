@@ -202,6 +202,13 @@ export const coachingValues = [
   },
 ];
 
+// A client testimonial sent to Josh directly (not a Google review). Wording verbatim.
+export const clientTestimonial = {
+  author: "Kyle M.",
+  quote:
+    "After years of floundering with self-guided training and big-box gym trainers, NSS finally delivered real results for me. Josh built a program around both my goals and my constraints. I didn't just hit my targets, I’ve surpassed them and have been able to train in a sustainable way, which has resulted in long-term benefits.",
+};
+
 export const googleProfileUrl = "https://share.google/cfzvPC917do13ClwO";
 
 // Copied verbatim from the Google Business Profile. Keep wording exactly as posted.
