@@ -8,7 +8,7 @@ export type PagePath = keyof typeof pageMeta;
 export default function PageMeta({ path }: { path: PagePath }) {
   useEffect(() => {
     const { title, description } = pageMeta[path];
-    const url = `https://www.newscotlandstrength.com${path}`;
+    const url = `https://newscotlandstrength.ca${path}`;
 
     document.title = title;
 

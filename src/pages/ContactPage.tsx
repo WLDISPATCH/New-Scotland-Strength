@@ -66,8 +66,8 @@ export default function ContactPage() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.newscotlandstrength.com/contact/" }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://newscotlandstrength.ca/" },
+              { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://newscotlandstrength.ca/contact/" }
             ]
           })
         }}
@@ -80,9 +80,9 @@ export default function ContactPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "@id": "https://www.newscotlandstrength.com/#business",
+            "@id": "https://newscotlandstrength.ca/#business",
             "name": "New Scotland Strength",
-            "url": "https://www.newscotlandstrength.com/",
+            "url": "https://newscotlandstrength.ca/",
             "email": "newscotlandstrength@gmail.com",
             "address": {
               "@type": "PostalAddress",

@@ -9,9 +9,9 @@ import { clientTestimonial } from "../content/siteData";
 const reviewSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.newscotlandstrength.com/#business",
+  "@id": "https://newscotlandstrength.ca/#business",
   name: "New Scotland Strength",
-  url: "https://www.newscotlandstrength.com/",
+  url: "https://newscotlandstrength.ca/",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: averageRating.toFixed(1),
@@ -43,8 +43,8 @@ export default function ResultsPage() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Results", "item": "https://www.newscotlandstrength.com/results/" }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://newscotlandstrength.ca/" },
+              { "@type": "ListItem", "position": 2, "name": "Results", "item": "https://newscotlandstrength.ca/results/" }
             ]
           })
         }}

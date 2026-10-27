@@ -10,7 +10,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
 const ssrDir = join(root, "dist-ssr");
 const { render } = await import(pathToFileURL(join(ssrDir, "entry-server.js")).href);
-const siteUrl = "https://www.newscotlandstrength.com";
+const siteUrl = "https://newscotlandstrength.ca";
 const pages = JSON.parse(readFileSync(join(root, "src/content/pageMeta.json"), "utf8"));
 const template = readFileSync(join(dist, "index.html"), "utf8");
 

@@ -57,8 +57,8 @@ export default function FaqPage() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
-              { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.newscotlandstrength.com/faq/" }
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://newscotlandstrength.ca/" },
+              { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://newscotlandstrength.ca/faq/" }
             ]
           })
         }}
