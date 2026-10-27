@@ -1,5 +1,5 @@
 import aboutPortrait from "./photos/optimized/about-oh.jpg";
-import brandLogo from "./photos/New NSS logo.png";
+import brandLogo from "./photos/nss-logo.png";
 import contactPortrait from "./photos/optimized/contact-yk.jpg";
 import heroPortrait from "./photos/optimized/hero-bts.jpg";
 import resultsWide from "./photos/optimized/results-wide.jpg";
