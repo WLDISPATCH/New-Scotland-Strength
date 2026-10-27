@@ -8,14 +8,16 @@ export type ServiceItem = {
   summary: string;
   details: string;
   features: string[];
-  audience: string;
 };
 
-export type TestimonialItem = {
-  name: string;
-  role: string;
-  quote: string;
-  outcome: string;
+export type GoogleReview = {
+  author: string;
+  meta?: string;
+  avatarColor: string;
+  rating: number;
+  // Approximate year posted; Google only shows "x years ago".
+  year: number;
+  text?: string;
 };
 
 export type SocialLink = {
@@ -35,7 +37,7 @@ export type PricingItem = {
 // newscotlandstrength@gmail.com at https://web3forms.com and paste it below,
 // or provide it at build time via the VITE_WEB3FORMS_KEY environment variable.
 export const web3formsKey =
-  import.meta.env.VITE_WEB3FORMS_KEY ?? "3ec15577-f9bb-4755-b748-a84ab4e244e6";
+  import.meta.env.VITE_WEB3FORMS_KEY ?? "9a93aaab-8aa7-4eaa-9792-5649384d92c1";
 
 export const business = {
   name: "New Scotland Strength",
@@ -99,7 +101,6 @@ export const services: ServiceItem[] = [
       "Meal plan included",
       "Check-ins and feedback",
     ],
-    audience: "Best for clients who want complete support and the flexibility to train from anywhere.",
   },
   {
     title: "Custom Program",
@@ -112,7 +113,6 @@ export const services: ServiceItem[] = [
       "Progression built in",
       "Programming matched to your goal",
     ],
-    audience: "Best for people who want clear programming and are comfortable training on their own.",
   },
   {
     title: "Meal Plan",
@@ -125,7 +125,6 @@ export const services: ServiceItem[] = [
       "Built around your current goal",
       "Simple structure you can follow",
     ],
-    audience: "Best for people who want help with nutrition as a separate service.",
   },
   {
     title: "1-on-1 Sessions",
@@ -138,7 +137,6 @@ export const services: ServiceItem[] = [
       "Form correction and progression",
       "Clear session structure",
     ],
-    audience: "Best for clients in Halifax, NS and the surrounding HRM who want in-person coaching and accountability.",
   },
 ];
 
@@ -204,27 +202,54 @@ export const coachingValues = [
   },
 ];
 
-export const testimonials: TestimonialItem[] = [
+export const googleProfileUrl = "https://share.google/cfzvPC917do13ClwO";
+
+// Copied verbatim from the Google Business Profile. Keep wording exactly as posted.
+export const googleReviews: GoogleReview[] = [
   {
-    name: "Daniel M.",
-    role: "Halifax professional, age 37",
-    quote:
-      "Josh gave me a clear plan, coached the details, and kept me focused on what mattered. I got stronger without feeling beat up all the time.",
-    outcome: "Added consistency, improved technique, and rebuilt confidence in the gym.",
+    author: "Ashley Josephson",
+    meta: "Local Guide · 22 reviews",
+    avatarColor: "#795548",
+    rating: 5,
+    year: 2023,
+    text: "The folks at New Scotland Strength have amazing experience and provide safe and proper technique for all styles of training offered. I have been working with them for several years now and I have never felt more confident in my fitness and strength! They are always knowledgeable, focused on your goals, and most importantly create such a fun environment!",
   },
   {
-    name: "Sarah T.",
-    role: "Dartmouth client, age 31",
-    quote:
-      "The programming felt personal from the start. I always knew what I was doing, why I was doing it, and how to keep progressing.",
-    outcome: "Built strength steadily while balancing work and family demands.",
+    author: "Andrew Foley",
+    meta: "1 review",
+    avatarColor: "#EF6C00",
+    rating: 5,
+    year: 2023,
+    text: "Great facility with knowledge training and training plans made to fit you and whatever you want to work on. After only a few months they got me to my fittest, strongest and most muscle mass. Couldn't recommend enough.",
   },
   {
-    name: "Mark R.",
-    role: "Online coaching client, age 42",
-    quote:
-      "Remote coaching was far more detailed than I expected. The structure and feedback kept me moving forward instead of guessing every week.",
-    outcome: "Dropped inconsistency, trained with purpose, and made measurable progress again.",
+    author: "Nicholas Peters",
+    meta: "Local Guide · 20 reviews",
+    avatarColor: "#1E88E5",
+    rating: 5,
+    year: 2022,
+    text: "Awesome set up and great personnel. Haven't hit the gym in years and as a 30yo had my reservations. Josh made me feel comfortable going at my own pace and offered tons of expertise and encouragement. Highly recommend NSS!",
+  },
+  {
+    author: "Steve Gaudon",
+    meta: "3 reviews",
+    avatarColor: "#689F38",
+    rating: 5,
+    year: 2025,
+    text: "Amazing training,\nResults make you both mentally and physically stronger!",
+  },
+  {
+    author: "Samantha MacFarlane",
+    avatarColor: "#5E35B1",
+    rating: 5,
+    year: 2025,
+  },
+  {
+    author: "Kyle MacInnis",
+    meta: "1 review",
+    avatarColor: "#00897B",
+    rating: 5,
+    year: 2025,
   },
 ];
 
@@ -258,44 +283,14 @@ export const faqItems: FaqItem[] = [
       "New Scotland Strength is based in Halifax, Nova Scotia. In-person sessions run out of a private studio in Herring Cove, with additional gym access in Burnside and Halifax's north end. The service area covers the Halifax Regional Municipality — Halifax, Dartmouth, Bedford, and Sackville — and online coaching is available province-wide and beyond.",
   },
   {
-    question: "What areas of Nova Scotia do you serve?",
-    answer:
-      "In-person coaching covers the Halifax Regional Municipality — Halifax, Dartmouth, Bedford, and Sackville. Online coaching is available province-wide and across Canada, so distance is not a barrier to working together.",
-  },
-  {
     question: "Do you offer personal training in Dartmouth or Bedford?",
     answer:
       "Yes. Clients from Dartmouth, Bedford, and the rest of the HRM train in-person at the Herring Cove studio or at gyms in Burnside and Halifax's north end. If the location does not work, online coaching is available with the same custom programming and check-ins.",
   },
   {
-    question: "How much does personal training in Halifax cost?",
-    answer:
-      "Coaching at New Scotland Strength ranges from $60 to $150 depending on the service. Standalone programs and meal plans sit at the lower end. Online coaching with monthly check-ins and 1-on-1 in-person sessions sit at the higher end. Full pricing is laid out on the services page.",
-  },
-  {
-    question: "Is online coaching cheaper than in-person training?",
-    answer:
-      "Yes. Online coaching costs less per month than booking 1-on-1 in-person sessions, because the time commitment is different. Online coaching covers a custom training plan, meal plan support, and ongoing check-ins. In-person sessions add hands-on coaching, real-time form correction, and direct accountability.",
-  },
-  {
-    question: "Do you offer free consultations?",
-    answer:
-      "Yes. The first conversation is free. It covers your goals, training history, schedule, and what kind of support actually fits your life. From there, the right service gets recommended — no pressure to commit on the spot.",
-  },
-  {
     question: "What experience does Josh Dunbar have as a coach?",
     answer:
-      "Josh has over 20 years of strength training experience and is an ACE Certified Personal Trainer, a Level 1 Nutrition Coach, and Size Inclusive Training certified. On top of that, he is an active competitive strongman with multiple Nova Scotia's Strongest wins, an Atlantic title, and three top-five finishes at the national level — proof that the methods used with clients are the same ones that produced real results under pressure.",
-  },
-  {
-    question: "Are you a certified personal trainer?",
-    answer:
-      "Yes. Josh holds an ACE Certified Personal Trainer credential, a Level 1 Nutrition Coach certification, and Size Inclusive Training certification. Combined with over 20 years of hands-on strength training experience, the credentials back up the practical knowledge.",
-  },
-  {
-    question: "Have you competed in strongman or powerlifting?",
-    answer:
-      "Yes. Josh competes in strongman at a national level, with multiple Nova Scotia's Strongest titles, an Atlantic Championship, and three top-five finishes nationally. Powerlifting and strongman are both areas of deep, hands-on experience — not just things read about in a textbook.",
+      "Josh has over 20 years of strength training experience and is an ACE Certified Personal Trainer, a Level 1 Nutrition Coach, a Senior Fitness Specialist, and Size Inclusive Training certified. On top of that, he is an active competitive strongman with multiple Nova Scotia and Atlantic titles, as well as multiple top-five finishes at the national level — proof that the methods used with clients are the same ones that produced real results under pressure.",
   },
   {
     question: "Do you work with beginners?",
@@ -303,14 +298,9 @@ export const faqItems: FaqItem[] = [
       "Yes. Coaching is built around where you are right now, not where you think you should be. If you are brand new or returning after time away, the programming and pace will reflect that.",
   },
   {
-    question: "Do you train women?",
+    question: "Do you train older adults?",
     answer:
-      "Absolutely. Coaching is built around the individual, not assumptions. Women train at New Scotland Strength for strength, body composition, athletic performance, and general fitness, with programming tailored to the goal — not a watered-down version of it.",
-  },
-  {
-    question: "Do you coach older adults or people over 40?",
-    answer:
-      "Absolutely. Strength training is one of the most effective tools for staying strong, mobile, and capable as you get older. Programming is adjusted for training history, recovery, and any limitations, so the work is hard enough to produce results without creating new problems.",
+      "Absolutely. Strength training is one of the most effective tools for staying strong, mobile, and capable as you get older. Programming is adjusted for training history, recovery, and any limitations, so the work is hard enough to produce results without creating new problems. Josh holds a Senior Fitness Specialist certification.",
   },
   {
     question: "Can you help with weight loss, not just strength training?",
@@ -326,11 +316,6 @@ export const faqItems: FaqItem[] = [
     question: "Is online coaching available outside Halifax?",
     answer:
       "Yes. Online coaching is not tied to location. Clients train remotely from Halifax, across Nova Scotia and Canada, and anywhere else with check-ins, custom programming, and consistent support.",
-  },
-  {
-    question: "What kind of goals do you coach for?",
-    answer:
-      "Most clients want to get stronger, build consistency, improve body composition, or stop feeling lost every time they walk into the gym. Coaching is built around the goal that actually matters to you.",
   },
   {
     question: "What happens in the first session or check-in?",
@@ -383,11 +368,6 @@ export const faqItems: FaqItem[] = [
       "Yes. Life changes and training should adapt with it. If your schedule, capacity, or goals shift, the plan changes too. That is part of the job.",
   },
   {
-    question: "What gym do you train clients at?",
-    answer:
-      "In-person sessions run out of a private studio in Herring Cove, with additional gym access in Burnside and Halifax's north end. The right location is matched to the client and the session.",
-  },
-  {
     question: "What makes New Scotland Strength different from a regular gym trainer?",
     answer:
       "Two things: a quiet, focused training environment without the chaos of a busy commercial floor, and over 20 years of hands-on strength experience behind every program. Coaching here is not a script — it is built around the actual person training, with adjustments made as the work moves forward.",
@@ -396,10 +376,5 @@ export const faqItems: FaqItem[] = [
     question: "Should I hire a personal trainer or follow a free program online?",
     answer:
       "Hire a professional. A free program is fine until it stops working — usually right when life changes, an injury shows up, or the easy progress runs out. A coach builds the plan around your actual goals, schedule, and history, then adjusts in real time. Having someone in your corner who is invested in your progress makes the difference between guessing and getting somewhere.",
-  },
-  {
-    question: "How do I know which service is right for me?",
-    answer:
-      "If you want hands-on coaching and live in the Halifax area, 1-on-1 sessions make the most sense. If you want full support but need flexibility, online training with a meal plan covers both. If you just want a solid plan to follow on your own, a custom program is the right starting point. If you are not sure, the contact form is the right first step.",
   },
 ];

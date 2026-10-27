@@ -1,7 +1,7 @@
 import { CheckCircle2, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { brandPhotos } from "../assets/photoLibrary";
+import { joshPhotos, shuffled } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
@@ -11,6 +11,7 @@ export default function ContactPage() {
   const [isSent, setIsSent] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [[photo]] = useState(() => shuffled(joshPhotos));
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -112,7 +113,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         titleAs="h1"
         title="Book a Personal Trainer in Halifax, NS"
-        description="Use this page to start the conversation and give Josh enough context to respond properly."
+        description="Use this page to start the conversation and give me enough context to respond properly."
       >
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="order-2 space-y-6 lg:order-1">
@@ -154,8 +155,8 @@ export default function ContactPage() {
 
             <div className="hidden panel overflow-hidden p-3 lg:block">
               <img
-                src={brandPhotos.contactPortrait}
-                alt="Josh Dunbar carrying a yoke during competition"
+                src={photo.src}
+                alt={photo.alt}
                 loading="lazy"
                 className="h-full min-h-[360px] w-full rounded-[1.75rem] object-cover"
               />
@@ -170,7 +171,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-2xl font-semibold text-[var(--color-ink)]">Inquiry sent</h2>
                 <p className="mt-3 max-w-sm text-sm leading-7 text-[var(--color-text-muted)]">
-                  Thanks for reaching out. Josh will review your message and follow up within 24 hours.
+                  Thanks for reaching out. I will review your message and follow up within 48 hours.
                 </p>
               </div>
             </div>
@@ -192,7 +193,7 @@ export default function ContactPage() {
                     className="field-input"
                     type="text"
                     name="firstName"
-                    placeholder="Josh"
+                    placeholder="John"
                     autoComplete="given-name"
                     required
                     aria-required="true"
@@ -204,7 +205,7 @@ export default function ContactPage() {
                     className="field-input"
                     type="text"
                     name="lastName"
-                    placeholder="Dunbar"
+                    placeholder="Smith"
                     autoComplete="family-name"
                     required
                     aria-required="true"
@@ -271,7 +272,7 @@ export default function ContactPage() {
               </div>
               <div className="mt-5">
                 <label className="field-label">
-                  Tell Josh about your current situation <span className="text-[var(--color-accent)]">*</span>
+                  Tell me about your current situation <span className="text-[var(--color-accent)]">*</span>
                   <textarea
                     className="field-input min-h-36 resize-y"
                     name="message"
@@ -283,7 +284,7 @@ export default function ContactPage() {
               </div>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm leading-6 text-[var(--color-text-subtle)]">
-                  Fields marked <span className="text-[var(--color-accent)]">*</span> are required. Josh will follow up within 24 hours.
+                  Fields marked <span className="text-[var(--color-accent)]">*</span> are required. I will follow up within 48 hours.
                 </p>
                 <button type="submit" className="btn-primary justify-center" disabled={isSending}>
                   {isSending ? "Sending…" : "Send Inquiry"}

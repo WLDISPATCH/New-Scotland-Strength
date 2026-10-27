@@ -1,13 +1,15 @@
 import { ArrowRight, CheckCircle2, Minus } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { brandPhotos } from "../assets/photoLibrary";
+import { shuffled, widePhotos } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
-import MobileReveal from "../components/MobileReveal";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
 import { pricing, processSteps, services } from "../content/siteData";
 
 export default function ServicesPage() {
+  const [[banner]] = useState(() => shuffled(widePhotos));
+
   return (
     <>
       <PageMeta
@@ -108,66 +110,24 @@ export default function ServicesPage() {
                 {service.title}
               </p>
               <p className="mt-3 text-xl font-semibold text-[var(--color-ink)] sm:mt-4 sm:text-2xl">{service.summary}</p>
-              <MobileReveal buttonLabel="See service details">
-                <p className="mt-4 text-sm leading-7 text-[var(--color-text-muted)]">{service.details}</p>
-                <div className="mt-6 h-px bg-[var(--color-line)]" />
-                <ul className="mt-6 space-y-3">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-[var(--color-text-muted)]">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 rounded-2xl border border-[var(--color-line)] bg-[rgba(255,250,242,0.72)] px-4 py-4 text-sm leading-6 text-[var(--color-text-muted)]">
-                  {service.audience}
-                </p>
-              </MobileReveal>
+              <ul className="mt-6 space-y-3">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-[var(--color-text-muted)]">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
-      </Section>
-
-      <Section
-        eyebrow="Service Fit"
-        title="Which option makes the most sense?"
-        className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
-      >
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-          <div className="space-y-4">
-            <div className="panel p-5 sm:p-6">
-              <h2 className="text-xl font-semibold text-[var(--color-ink)]">Choose 1-on-1 sessions if:</h2>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)]">
-                You want someone in the room coaching the session, correcting form, and keeping you on track.
-              </p>
-            </div>
-            <div className="panel p-5 sm:p-6">
-              <h2 className="text-xl font-semibold text-[var(--color-ink)]">Choose a custom program if:</h2>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)]">
-                You want a training plan to follow on your own without booking ongoing coaching.
-              </p>
-            </div>
-            <div className="panel p-5 sm:p-6">
-              <h2 className="text-xl font-semibold text-[var(--color-ink)]">Choose online training if:</h2>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)]">
-                You want training and meal plan support together, but need the flexibility to train on your own schedule.
-              </p>
-            </div>
-            <div className="panel p-5 sm:p-6">
-              <h2 className="text-xl font-semibold text-[var(--color-ink)]">Choose a meal plan if:</h2>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)]">
-                You mainly want help getting your nutrition organized without committing to a full coaching package.
-              </p>
-            </div>
-          </div>
-          <div className="panel overflow-hidden p-3">
-            <img
-              src={brandPhotos.servicesEnvironment}
-              alt="New Scotland Strength training space and branded environment"
-              loading="lazy"
-              className="h-full min-h-[260px] w-full rounded-[1.75rem] object-cover sm:min-h-[500px]"
-            />
-          </div>
+        <div className="panel mt-6 overflow-hidden p-3">
+          <img
+            src={banner.src}
+            alt={banner.alt}
+            loading="lazy"
+            className="h-[240px] w-full rounded-[1.75rem] object-cover sm:h-[420px]"
+          />
         </div>
       </Section>
 
@@ -222,8 +182,7 @@ export default function ServicesPage() {
                 { feature: "Nutrition / meal plan", cols: [true, false, true, false] },
                 { feature: "Ongoing check-ins", cols: [true, false, false, true] },
                 { feature: "In-person coaching", cols: [false, false, false, true] },
-                { feature: "Train on your schedule", cols: [true, true, true, false] },
-                { feature: "One-time purchase", cols: [false, true, true, false] },
+                { feature: "Train on your schedule", cols: [true, true, false, false] },
               ].map(({ feature, cols }) => (
                 <tr key={feature}>
                   <td className="py-3 pr-4 font-medium text-[var(--color-ink-soft)]">{feature}</td>
