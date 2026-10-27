@@ -141,6 +141,15 @@ export const processSteps = [
   "Adjust as needed, based on the client's feedback, schedule, and results.",
 ];
 
+export const credentials = [
+  "ACE Certified Personal Trainer",
+  "Level 1 Nutrition Coach",
+  "Senior Fitness Specialist",
+  "Size Inclusive Training certified",
+  "20+ years of strength training experience",
+  "Competitive strongman: multiple Nova Scotia and Atlantic titles, multiple top-five national finishes",
+];
+
 export const aboutStory = [
   "New Scotland Strength is built around straightforward coaching for people in Halifax, Nova Scotia who want to get stronger without getting buried in gym culture nonsense.",
   "The idea is simple: train hard, train with a reason, and build a plan you can actually keep up with alongside work, family, and everything else.",

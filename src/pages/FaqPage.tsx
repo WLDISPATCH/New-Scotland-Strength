@@ -22,11 +22,10 @@ function FaqItem({ question, answer, index }: { question: string; answer: string
           aria-hidden="true"
         />
       </button>
-      {isOpen && (
-        <div className="border-t border-[var(--color-line)] px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-          <p className="text-sm leading-7 text-[var(--color-text-muted)]">{answer}</p>
-        </div>
-      )}
+      {/* Always in the HTML (just hidden when collapsed) so crawlers can read every answer. */}
+      <div hidden={!isOpen} className="border-t border-[var(--color-line)] px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+        <p className="text-sm leading-7 text-[var(--color-text-muted)]">{answer}</p>
+      </div>
     </div>
   );
 }

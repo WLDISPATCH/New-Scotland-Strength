@@ -38,7 +38,7 @@
     <meta property="og:image" content="https://www.newscotlandstrength.com/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Josh Dunbar competing at a strongman event" />
+    <meta property="og:image:alt" content="Josh Dunbar pressing a barbell overhead at a strongman competition" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -54,17 +54,36 @@
       {
         "@context": "https://schema.org",
         "@type": ["LocalBusiness", "HealthClub"],
+        "@id": "https://www.newscotlandstrength.com/#business",
         "name": "New Scotland Strength",
         "url": "https://www.newscotlandstrength.com/",
         "email": "newscotlandstrength@gmail.com",
         "image": "https://www.newscotlandstrength.com/og-image.jpg",
-        "description": "Personal training and strength coaching in Halifax, Nova Scotia by Josh Dunbar. In-person 1-on-1 sessions, online coaching, custom programs, and meal plans for clients in Halifax, Dartmouth, Bedford, and the wider HRM.",
+        "logo": "https://www.newscotlandstrength.com/icon-192.png",
+        "description": "Personal training and strength coaching in Halifax, Nova Scotia by Josh Dunbar, a certified personal trainer and competitive strongman. In-person 1-on-1 sessions at a private studio in Herring Cove, online coaching, custom programs, meal plans, and strongman and powerlifting competition prep for clients in Halifax, Dartmouth, Bedford, Sackville, and the wider HRM.",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Halifax",
           "addressRegion": "NS",
           "addressCountry": "CA"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 44.6488,
+          "longitude": -63.5752
+        },
+        "hasMap": "https://share.google/cfzvPC917do13ClwO",
+        "knowsAbout": [
+          "Personal Training",
+          "Strength Training",
+          "Strongman",
+          "Powerlifting",
+          "Competition Preparation",
+          "Weight Loss",
+          "Senior Fitness",
+          "Nutrition Coaching",
+          "Online Coaching"
+        ],
         "areaServed": [
           { "@type": "City", "name": "Halifax" },
           { "@type": "City", "name": "Dartmouth" },
@@ -110,10 +129,7 @@
             }
           ]
         },
-        "founder": {
-          "@type": "Person",
-          "name": "Josh Dunbar"
-        },
+        "founder": { "@id": "https://www.newscotlandstrength.com/#josh" },
         "sameAs": [
           "https://www.instagram.com/newscotlandstrength",
           "https://www.tiktok.com/@newscotlandstrength",
@@ -128,22 +144,33 @@
       {
         "@context": "https://schema.org",
         "@type": "Person",
+        "@id": "https://www.newscotlandstrength.com/#josh",
         "name": "Josh Dunbar",
         "jobTitle": "Personal Trainer and Strength Coach",
-        "description": "Josh Dunbar is a personal trainer and strength coach based in Halifax, Nova Scotia. He works with clients in-person in the HRM and online, providing strength training, custom programming, and nutrition planning through New Scotland Strength.",
+        "description": "Josh Dunbar is a personal trainer and strength coach based in Halifax, Nova Scotia, with over 20 years of strength training experience. He is an ACE Certified Personal Trainer, Level 1 Nutrition Coach, Senior Fitness Specialist, and Size Inclusive Training certified, and a competitive strongman with multiple Nova Scotia and Atlantic titles and multiple top-five national finishes. He coaches clients in-person in the HRM and online through New Scotland Strength.",
         "url": "https://www.newscotlandstrength.com/about/",
         "image": "https://www.newscotlandstrength.com/og-image.jpg",
-        "worksFor": {
-          "@type": "LocalBusiness",
-          "name": "New Scotland Strength",
-          "url": "https://www.newscotlandstrength.com/"
-        },
+        "worksFor": { "@id": "https://www.newscotlandstrength.com/#business" },
+        "hasCredential": [
+          { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "ACE Certified Personal Trainer", "recognizedBy": { "@type": "Organization", "name": "American Council on Exercise" } },
+          { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Level 1 Nutrition Coach" },
+          { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Senior Fitness Specialist" },
+          { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Size Inclusive Training" }
+        ],
+        "award": [
+          "Multiple Nova Scotia strongman titles",
+          "Multiple Atlantic strongman titles",
+          "Multiple top-five finishes at the national strongman level"
+        ],
         "knowsAbout": [
-          "Strength Training",
-          "Powerlifting",
-          "Strongman",
           "Personal Training",
-          "Nutrition Planning",
+          "Strength Training",
+          "Strongman",
+          "Powerlifting",
+          "Competition Preparation",
+          "Weight Loss",
+          "Senior Fitness",
+          "Nutrition Coaching",
           "Online Coaching"
         ],
         "address": {

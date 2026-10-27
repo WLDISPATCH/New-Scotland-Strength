@@ -6,7 +6,7 @@ import CTASection from "../components/CTASection";
 import ExpandableCopy from "../components/ExpandableCopy";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
-import { aboutStory, business, coachingValues } from "../content/siteData";
+import { aboutStory, business, coachingValues, credentials } from "../content/siteData";
 
 export default function AboutPage() {
   const [[portrait, secondary]] = useState(() => shuffled(joshPhotos));
@@ -25,40 +25,6 @@ export default function AboutPage() {
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.newscotlandstrength.com/" },
               { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.newscotlandstrength.com/about/" }
-            ]
-          })
-        }}
-      />
-
-      {/* Person schema for Josh Dunbar */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Josh Dunbar",
-            "jobTitle": "Personal Trainer and Strength Coach",
-            "description": "Josh Dunbar is a personal trainer and strength coach based in Halifax, Nova Scotia. He works with clients in-person in the HRM and online, providing strength training, custom programming, and nutrition planning through New Scotland Strength.",
-            "url": "https://www.newscotlandstrength.com/about/",
-            "image": "https://www.newscotlandstrength.com/og-image.jpg",
-            "worksFor": {
-              "@type": "LocalBusiness",
-              "name": "New Scotland Strength",
-              "url": "https://www.newscotlandstrength.com/"
-            },
-            "knowsAbout": ["Strength Training", "Powerlifting", "Strongman", "Personal Training", "Nutrition Planning", "Online Coaching"],
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Halifax",
-              "addressRegion": "NS",
-              "addressCountry": "CA"
-            },
-            "sameAs": [
-              "https://www.instagram.com/newscotlandstrength",
-              "https://www.tiktok.com/@newscotlandstrength",
-              "https://www.facebook.com/share/1ChXD9ThrZ/",
-              "https://youtube.com/@newscotlandstrength8672"
             ]
           })
         }}
@@ -92,6 +58,19 @@ export default function AboutPage() {
               <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] sm:text-base">
                 Based in {business.city}, {business.region}, New Scotland Strength works with clients locally in Halifax and nearby communities like Dartmouth and Bedford.
               </p>
+            </div>
+            <div className="panel p-5 sm:p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
+                Credentials
+              </p>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--color-text-muted)] sm:text-base">
+                {credentials.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

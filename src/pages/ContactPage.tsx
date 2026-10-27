@@ -80,6 +80,7 @@ export default function ContactPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
+            "@id": "https://www.newscotlandstrength.com/#business",
             "name": "New Scotland Strength",
             "url": "https://www.newscotlandstrength.com/",
             "email": "newscotlandstrength@gmail.com",
@@ -93,6 +94,7 @@ export default function ContactPage() {
               { "@type": "City", "name": "Halifax" },
               { "@type": "City", "name": "Dartmouth" },
               { "@type": "City", "name": "Bedford" },
+              { "@type": "City", "name": "Sackville" },
               { "@type": "AdministrativeArea", "name": "Halifax Regional Municipality" }
             ],
             "contactPoint": {
