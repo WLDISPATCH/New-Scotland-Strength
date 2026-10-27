@@ -90,7 +90,7 @@ export default function FaqPage() {
 
       <CTASection
         title="Still have a question?"
-        description="If your question is not here, reach out directly and Josh will get back to you within 24 hours."
+        description="If your question is not here, reach out directly and Josh will get back to you within 48 hours."
         secondaryLabel="Contact Josh"
         secondaryTo="/contact"
       />
