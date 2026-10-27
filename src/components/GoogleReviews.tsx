@@ -135,14 +135,12 @@ export default function GoogleReviews({ limit, gridClassName = "lg:grid-cols-2" 
           href={googleProfileUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-2 text-[15px] text-[#3c4043] underline decoration-[#dadce0] underline-offset-4"
+          aria-label="See all reviews on Google"
+          className="mt-3 flex items-center gap-2"
         >
-          Based on <span className="font-semibold">{reviewCount} reviews</span>
-        </a>
-        <div className="mt-3 flex items-center gap-2">
           <GoogleLogo className="h-6 w-6" />
           <span className="text-lg font-medium text-[#5f6368]">Google</span>
-        </div>
+        </a>
       </div>
 
       <div
