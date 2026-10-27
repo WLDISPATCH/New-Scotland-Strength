@@ -1,32 +1,10 @@
 import { useState } from "react";
 import { galleryPhotos, shuffled } from "../assets/photoLibrary";
 import CTASection from "../components/CTASection";
-import GoogleReviews, { averageRating, reviewCount, writtenReviews } from "../components/GoogleReviews";
+import GoogleReviews from "../components/GoogleReviews";
 import PageMeta from "../components/PageMeta";
 import Section from "../components/Section";
 import { clientTestimonial } from "../content/siteData";
-
-const reviewSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://newscotlandstrength.ca/#business",
-  name: "New Scotland Strength",
-  url: "https://newscotlandstrength.ca/",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: averageRating.toFixed(1),
-    reviewCount,
-    bestRating: 5,
-    worstRating: 1,
-  },
-  review: writtenReviews.map((r) => ({
-    "@type": "Review",
-    author: { "@type": "Person", name: r.author },
-    reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-    reviewBody: r.text,
-    publisher: { "@type": "Organization", name: "Google" },
-  })),
-};
 
 export default function ResultsPage() {
   const [gallery] = useState(() => shuffled(galleryPhotos));
@@ -48,12 +26,6 @@ export default function ResultsPage() {
             ]
           })
         }}
-      />
-
-      {/* AggregateRating + Review schema built from the Google reviews shown on this page */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
       />
 
       <Section
