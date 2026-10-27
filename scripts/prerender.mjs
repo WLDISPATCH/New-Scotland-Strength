@@ -1,12 +1,15 @@
 // Writes one HTML file per route into dist/ (dist/about/index.html, ...) with that page's
-// own title, description, canonical, and social tags, so crawlers see distinct pages
-// before any JavaScript runs. Run after `vite build`.
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+// own title, description, canonical, social tags, and fully rendered page content, so
+// crawlers that don't run JavaScript (e.g. ChatGPT's and Perplexity's) still see each page.
+// Run after `vite build` and `vite build --ssr src/entry-server.tsx --outDir dist-ssr`.
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
+const ssrDir = join(root, "dist-ssr");
+const { render } = await import(pathToFileURL(join(ssrDir, "entry-server.js")).href);
 const siteUrl = "https://www.newscotlandstrength.com";
 const pages = JSON.parse(readFileSync(join(root, "src/content/pageMeta.json"), "utf8"));
 const template = readFileSync(join(dist, "index.html"), "utf8");
@@ -34,9 +37,13 @@ for (const [path, { title, description }] of Object.entries(pages)) {
   html = replaceOnce(html, metaContent("property", "og:url"), `$1${url}$2`, "og:url");
   html = replaceOnce(html, metaContent("name", "twitter:title"), `$1${t}$2`, "twitter:title");
   html = replaceOnce(html, metaContent("name", "twitter:description"), `$1${d}$2`, "twitter:description");
+  const body = render(path);
+  html = replaceOnce(html, /<div id="root"><\/div>/, () => `<div id="root">${body}</div>`, "root element");
 
   const outDir = path === "/" ? dist : join(dist, path);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "index.html"), html);
   console.log(`prerendered ${path}`);
 }
+
+rmSync(ssrDir, { recursive: true, force: true });
