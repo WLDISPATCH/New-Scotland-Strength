@@ -9,6 +9,7 @@ import { clientTestimonial } from "../content/siteData";
 const reviewSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://www.newscotlandstrength.com/#business",
   name: "New Scotland Strength",
   url: "https://www.newscotlandstrength.com/",
   aggregateRating: {

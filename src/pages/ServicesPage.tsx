@@ -47,7 +47,7 @@ export default function ServicesPage() {
                   "@type": "Service",
                   "name": "Online Training + Meal Plan",
                   "description": "Monthly online coaching with a custom training plan, meal plan support, and regular check-ins. Available for clients in Halifax and anywhere online.",
-                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "provider": { "@id": "https://www.newscotlandstrength.com/#business" },
                   "areaServed": "Worldwide",
                   "url": "https://www.newscotlandstrength.com/services/"
                 }
@@ -59,7 +59,7 @@ export default function ServicesPage() {
                   "@type": "Service",
                   "name": "1-on-1 Personal Training Sessions",
                   "description": "In-person personal training sessions in Halifax, NS. Hands-on coaching, form correction, and session-by-session progression.",
-                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "provider": { "@id": "https://www.newscotlandstrength.com/#business" },
                   "areaServed": "Halifax, Nova Scotia",
                   "url": "https://www.newscotlandstrength.com/services/"
                 }
@@ -71,7 +71,7 @@ export default function ServicesPage() {
                   "@type": "Service",
                   "name": "Custom Training Program",
                   "description": "Standalone personalized strength training program. Built around your goals, schedule, and training history.",
-                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "provider": { "@id": "https://www.newscotlandstrength.com/#business" },
                   "areaServed": "Worldwide",
                   "url": "https://www.newscotlandstrength.com/services/"
                 }
@@ -83,7 +83,7 @@ export default function ServicesPage() {
                   "@type": "Service",
                   "name": "Meal Plan",
                   "description": "Standalone custom nutrition and meal plan for clients who want dietary structure without a full coaching package.",
-                  "provider": { "@type": "LocalBusiness", "name": "New Scotland Strength" },
+                  "provider": { "@id": "https://www.newscotlandstrength.com/#business" },
                   "areaServed": "Worldwide",
                   "url": "https://www.newscotlandstrength.com/services/"
                 }
