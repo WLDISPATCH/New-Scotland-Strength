@@ -1,4 +1,4 @@
-import { CheckCircle2, Mail, MapPin } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { joshPhotos, shuffled } from "../assets/photoLibrary";
@@ -112,69 +112,71 @@ export default function ContactPage() {
         titleAs="h1"
         title="Book a Personal Trainer in Halifax, NS"
         description="Use this page to start the conversation and give me enough context to respond properly."
+        spacing="page"
       >
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="order-2 space-y-6 lg:order-1">
-            <div className="panel p-5 sm:p-7">
-              <h2 className="text-2xl font-semibold text-[var(--color-ink)]">Contact details</h2>
-              <div className="mt-5 space-y-4 text-sm text-[var(--color-text-muted)] sm:mt-6 sm:space-y-5">
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-                  <span>
-                    {business.city}, {business.region}, {business.country}
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-                  <a href={`mailto:${business.email}`} className="transition hover:text-[var(--color-ink)]">
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div className="order-2 lg:order-1">
+            <h2 className="font-[family-name:var(--font-display)] text-[1.75rem] font-bold">Contact details</h2>
+            <dl className="mt-5 border-t border-[var(--color-line-strong)]">
+              <div className="flex flex-col gap-1 border-b border-[var(--color-line-strong)] py-4 sm:flex-row sm:gap-6">
+                <dt className="w-24 shrink-0 text-[0.9375rem] text-[var(--color-text-subtle)]">Location</dt>
+                <dd className="font-medium">
+                  {business.city}, {business.region}, {business.country}
+                </dd>
+              </div>
+              <div className="flex flex-col gap-1 border-b border-[var(--color-line-strong)] py-4 sm:flex-row sm:gap-6">
+                <dt className="w-24 shrink-0 text-[0.9375rem] text-[var(--color-text-subtle)]">Email</dt>
+                <dd>
+                  <a href={`mailto:${business.email}`} className="text-link break-all font-medium">
                     {business.email}
                   </a>
-                </div>
+                </dd>
               </div>
-              <div className="mt-6 border-t border-[var(--color-line)] pt-5">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-                  Social
-                </p>
-                <div className="mt-4 flex flex-wrap gap-3">
+              <div className="flex flex-col gap-1 border-b border-[var(--color-line-strong)] py-4 sm:flex-row sm:gap-6">
+                <dt className="w-24 shrink-0 text-[0.9375rem] text-[var(--color-text-subtle)]">Social</dt>
+                <dd className="flex flex-wrap gap-x-5 gap-y-2">
                   {socialLinks.map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-full border border-[var(--color-line)] bg-[rgba(255,250,242,0.74)] px-4 py-2 text-sm text-[var(--color-text-muted)] transition hover:border-[rgba(123,69,25,0.24)] hover:text-[var(--color-ink)]"
+                      className="font-medium text-[var(--color-ink)] underline decoration-[var(--color-line-strong)] underline-offset-4 transition-colors hover:text-[var(--color-accent-strong)] hover:decoration-[var(--color-accent)]"
                     >
                       {item.label}
                     </a>
                   ))}
-                </div>
+                </dd>
               </div>
-            </div>
+            </dl>
 
-            <div className="hidden panel overflow-hidden p-3 lg:block">
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                loading="lazy"
-                className="h-full min-h-[360px] w-full rounded-[1.75rem] object-cover"
-              />
-            </div>
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              className="photo mt-10 hidden aspect-[4/5] object-[center_30%] lg:block"
+            />
           </div>
 
           {isSent ? (
-            <div className="order-1 panel flex flex-col items-center justify-center gap-5 p-8 text-center lg:order-2">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-accent)]/10">
-                <CheckCircle2 className="h-8 w-8 text-[var(--color-accent)]" />
-              </div>
+            <div
+              role="status"
+              className="order-1 flex flex-col items-start justify-center gap-5 self-start rounded-md border border-[var(--color-line-strong)] bg-[var(--color-surface)] p-8 sm:p-10 lg:order-2"
+            >
+              <CheckCircle2 className="h-9 w-9 text-[var(--color-accent-strong)]" aria-hidden="true" />
               <div>
-                <h2 className="text-2xl font-semibold text-[var(--color-ink)]">Inquiry sent</h2>
-                <p className="mt-3 max-w-sm text-sm leading-7 text-[var(--color-text-muted)]">
+                <h2 className="font-[family-name:var(--font-display)] text-[2rem] font-bold">Inquiry sent</h2>
+                <p className="mt-2 max-w-sm leading-relaxed text-[var(--color-text-muted)]">
                   Thanks for reaching out. I will review your message and follow up within 48 hours.
                 </p>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate className="order-1 panel p-5 sm:p-8 lg:order-2">
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              className="order-1 self-start rounded-md border border-[var(--color-line-strong)] bg-[var(--color-surface)] p-5 sm:p-8 lg:order-2"
+            >
               {/* Honeypot: hidden from real users, traps spam bots */}
               <input
                 type="checkbox"
@@ -186,7 +188,9 @@ export default function ContactPage() {
               />
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="field-label">
-                  First name <span className="text-[var(--color-accent)]">*</span>
+                  <span>
+                    First name <span className="text-[var(--color-accent-strong)]" aria-hidden="true">*</span>
+                  </span>
                   <input
                     className="field-input"
                     type="text"
@@ -198,7 +202,9 @@ export default function ContactPage() {
                   />
                 </label>
                 <label className="field-label">
-                  Last name <span className="text-[var(--color-accent)]">*</span>
+                  <span>
+                    Last name <span className="text-[var(--color-accent-strong)]" aria-hidden="true">*</span>
+                  </span>
                   <input
                     className="field-input"
                     type="text"
@@ -212,7 +218,9 @@ export default function ContactPage() {
               </div>
               <div className="mt-5 grid gap-5 sm:grid-cols-2">
                 <label className="field-label">
-                  Email <span className="text-[var(--color-accent)]">*</span>
+                  <span>
+                    Email <span className="text-[var(--color-accent-strong)]" aria-hidden="true">*</span>
+                  </span>
                   <input
                     className="field-input"
                     type="email"
@@ -257,7 +265,9 @@ export default function ContactPage() {
               </div>
               <div className="mt-5">
                 <label className="field-label">
-                  Primary goal <span className="text-[var(--color-accent)]">*</span>
+                  <span>
+                    Primary goal <span className="text-[var(--color-accent-strong)]" aria-hidden="true">*</span>
+                  </span>
                   <input
                     className="field-input"
                     type="text"
@@ -270,7 +280,9 @@ export default function ContactPage() {
               </div>
               <div className="mt-5">
                 <label className="field-label">
-                  Tell me about your current situation <span className="text-[var(--color-accent)]">*</span>
+                  <span>
+                    Tell me about your current situation <span className="text-[var(--color-accent-strong)]" aria-hidden="true">*</span>
+                  </span>
                   <textarea
                     className="field-input min-h-36 resize-y"
                     name="message"
@@ -280,16 +292,16 @@ export default function ContactPage() {
                   />
                 </label>
               </div>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm leading-6 text-[var(--color-text-subtle)]">
-                  Fields marked <span className="text-[var(--color-accent)]">*</span> are required. I will follow up within 48 hours.
+              <div className="mt-7 flex flex-col gap-4 border-t border-[var(--color-line)] pt-6 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-muted)]">
+                  Fields marked <span className="text-[var(--color-accent-strong)]">*</span> are required. I will follow up within 48 hours.
                 </p>
                 <button type="submit" className="btn-primary justify-center" disabled={isSending}>
                   {isSending ? "Sending…" : "Send Inquiry"}
                 </button>
               </div>
               {errorMsg && (
-                <p role="alert" className="mt-4 text-sm leading-6 text-red-600">
+                <p role="alert" className="mt-4 leading-relaxed text-[#a32020]">
                   {errorMsg}
                 </p>
               )}

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Reveal from "./Reveal";
+import { keepDash } from "./keepDash";
 
 type SectionProps = {
   eyebrow?: string;
@@ -9,6 +9,22 @@ type SectionProps = {
   className?: string;
   containerClassName?: string;
   titleAs?: "h1" | "h2";
+  // Background band: page paper, a slightly deeper paper, or dark ink.
+  tone?: "default" | "alt" | "dark";
+  // Vertical padding. "page" is the opening section of an inner page.
+  spacing?: "default" | "tight" | "page";
+};
+
+const toneClass = {
+  default: "",
+  alt: "bg-[var(--color-bg-alt)]",
+  dark: "on-dark bg-[var(--color-dark)] text-[var(--color-on-dark)]",
+};
+
+const spacingClass = {
+  default: "py-16 sm:py-20 lg:py-28",
+  tight: "py-12 sm:py-16",
+  page: "pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24",
 };
 
 export default function Section({
@@ -19,29 +35,37 @@ export default function Section({
   className = "",
   containerClassName = "",
   titleAs = "h2",
+  tone = "default",
+  spacing = "default",
 }: SectionProps) {
   const TitleTag = titleAs;
+  const isDark = tone === "dark";
+  const titleClass =
+    titleAs === "h1"
+      ? "max-w-4xl font-[family-name:var(--font-display)] text-[2.5rem] font-bold leading-[0.98] tracking-[-0.01em] sm:text-[3.25rem] lg:text-[4rem]"
+      : "heading max-w-3xl";
+
   return (
-    <section className={`py-14 sm:py-20 lg:py-24 ${className}`.trim()}>
-      <div className={`mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 ${containerClassName}`.trim()}>
+    <section className={`${spacingClass[spacing]} ${toneClass[tone]} ${className}`.trim()}>
+      <div className={`wrap ${containerClassName}`.trim()}>
         {(eyebrow || title || description) && (
-          <Reveal className="mb-8 max-w-3xl sm:mb-12 lg:mb-14">
+          <header className="mb-10 sm:mb-12 lg:mb-14">
             {eyebrow ? (
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent)]/90">
-                {eyebrow}
-              </p>
+              <p className={`eyebrow mb-3 ${isDark ? "!text-[var(--color-accent-light)]" : ""}`}>{eyebrow}</p>
             ) : null}
             {title ? (
-              <TitleTag className="text-2xl font-semibold tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-5xl">
-                {title}
-              </TitleTag>
+              <TitleTag className={`${titleClass} ${isDark ? "!text-[var(--color-on-dark)]" : ""}`}>{keepDash(title)}</TitleTag>
             ) : null}
             {description ? (
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)] sm:mt-4 sm:text-lg">
+              <p
+                className={`mt-4 max-w-2xl text-lg leading-relaxed sm:mt-5 ${
+                  isDark ? "text-[var(--color-on-dark-muted)]" : "text-[var(--color-text-muted)]"
+                }`}
+              >
                 {description}
               </p>
             ) : null}
-          </Reveal>
+          </header>
         )}
         {children}
       </div>

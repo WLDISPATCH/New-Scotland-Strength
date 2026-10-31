@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import Reveal from "./Reveal";
 import SwipeRow from "./SwipeRow";
 import { googleProfileUrl, googleReviews } from "../content/siteData";
 import type { GoogleReview } from "../content/siteData";
@@ -88,7 +87,7 @@ function ReviewText({ text }: { text: string }) {
 function ReviewCard({ review }: { review: GoogleReview }) {
   return (
     <article
-      className="flex h-full flex-col rounded-3xl border border-[#e8eaed] bg-white p-5 shadow-[0_1px_3px_rgba(60,64,67,0.12)] sm:p-6"
+      className="flex h-full flex-col rounded-md border border-[#e3dfd8] bg-white p-5 sm:p-6"
       style={googleFont}
     >
       <div className="flex items-center gap-3">
@@ -143,7 +142,7 @@ export default function GoogleReviews({ limit, gridClassName = "lg:grid-cols-2" 
       </div>
 
       <div
-        className="mb-6 hidden items-center justify-between gap-4 rounded-3xl border border-[#e8eaed] bg-white p-6 lg:flex"
+        className="mb-5 hidden items-center justify-between gap-4 rounded-md border border-[#e3dfd8] bg-white px-6 py-5 lg:flex"
         style={googleFont}
       >
         <div className="flex items-center gap-4">
@@ -169,10 +168,8 @@ export default function GoogleReviews({ limit, gridClassName = "lg:grid-cols-2" 
       </div>
 
       <SwipeRow desktopClassName={`${gridClassName} lg:gap-5`} itemClassName="w-full snap-center" progress>
-        {shown.map((review, index) => (
-          <Reveal key={review.author} delayMs={index * 90} className="h-full">
-            <ReviewCard review={review} />
-          </Reveal>
+        {shown.map((review) => (
+          <ReviewCard key={review.author} review={review} />
         ))}
       </SwipeRow>
     </div>

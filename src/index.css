@@ -1,114 +1,119 @@
 @import "tailwindcss";
 
+/*
+  New Scotland Strength — design tokens.
+  Warm paper and ink taken from the existing palette, one bronze accent,
+  and Barlow / Barlow Condensed to echo the condensed lettering in the logo.
+*/
+@theme {
+  --font-sans: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Segoe UI", sans-serif;
+}
+
 :root {
-  font-family: "Aptos", "Trebuchet MS", "Segoe UI", sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #1f1a15;
-  background:
-    radial-gradient(circle at top, rgba(164, 110, 52, 0.1), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(110, 85, 48, 0.08), transparent 32%),
-    linear-gradient(180deg, #f7f1e7 0%, #efe4d4 100%);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  --font-heading: "Rockwell", "Georgia", serif;
-  --color-bg: #f7f1e7;
-  --color-bg-alt: #ecdfcc;
-  --color-surface: rgba(255, 250, 242, 0.86);
-  --color-surface-strong: #fffaf2;
+  --font-heading: var(--font-display);
+
+  --color-bg: #f6f1e9;
+  --color-bg-alt: #ece3d5;
+  --color-surface: #fffcf7;
+  --color-dark: #1c1814;
+
+  --color-ink: #1c1814;
+  --color-ink-soft: #3d342b;
+  --color-text-muted: #5a4e43;
+  --color-text-subtle: #76685b;
+
+  /* Mid bronze is for rules, icons and large type; small text uses the strong shade. */
   --color-accent: #9f6734;
   --color-accent-strong: #7b4519;
-  --color-ink: #1f1a15;
-  --color-ink-soft: #40352a;
-  --color-text-muted: rgba(48, 39, 30, 0.78);
-  --color-text-subtle: rgba(48, 39, 30, 0.58);
-  --color-line: rgba(71, 51, 28, 0.14);
-  --shadow-soft: 0 22px 60px rgba(78, 51, 25, 0.12);
+  --color-accent-light: #d6a26e;
+
+  --color-on-dark: #f6f1e9;
+  --color-on-dark-muted: #b9ada0;
+
+  --color-line: rgba(28, 24, 20, 0.14);
+  --color-line-strong: rgba(28, 24, 20, 0.28);
+  --color-line-on-dark: rgba(246, 241, 233, 0.16);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-html,
-body,
-#root {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100%;
-  background: var(--color-bg);
-}
-
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(164, 110, 52, 0.1), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(110, 85, 48, 0.08), transparent 32%),
-    linear-gradient(180deg, #f7f1e7 0%, #efe4d4 100%);
-  color: var(--color-ink);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  color: var(--color-ink);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-  transition:
-    opacity 560ms ease,
-    transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: opacity, transform;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    font-size: 100%;
+    line-height: 1.55;
+    color: var(--color-ink);
+    background: var(--color-bg);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .reveal,
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #root {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--color-bg);
+  }
+
+  body {
+    min-height: 100vh;
+    color: var(--color-ink);
+    font-size: 1.0625rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -120,50 +125,119 @@ h6 {
 }
 
 @layer components {
-  .panel {
-    @apply rounded-[2rem] border backdrop-blur-sm;
-    border-color: var(--color-line);
-    background: linear-gradient(180deg, rgba(255, 251, 245, 0.94), rgba(251, 243, 231, 0.88));
-    box-shadow: var(--shadow-soft);
+  /* Container used by every section, so all left edges line up. */
+  .wrap {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Small uppercase label above headings. */
+  .eyebrow {
+    font-family: var(--font-display);
+    @apply text-[0.8125rem] font-semibold uppercase tracking-[0.14em];
+    color: var(--color-accent-strong);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    @apply font-bold uppercase leading-[0.95] tracking-[-0.005em];
+  }
+
+  .heading {
+    font-family: var(--font-display);
+    @apply text-[2rem] font-bold leading-[1.02] tracking-[-0.005em] sm:text-[2.5rem] lg:text-[2.875rem];
+  }
+
+  .lede {
+    @apply text-lg leading-relaxed sm:text-xl;
+    color: var(--color-text-muted);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-family: var(--font-display);
+    @apply inline-flex min-h-12 items-center gap-2 px-6 text-base font-semibold uppercase tracking-[0.06em] transition-colors duration-200;
+    border-radius: var(--radius-md);
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-semibold text-[#fff9f1] transition duration-200 hover:-translate-y-0.5;
-    background: linear-gradient(135deg, var(--color-accent-strong), var(--color-accent));
-    box-shadow: 0 16px 34px rgba(123, 69, 25, 0.2);
+    background: var(--color-accent-strong);
+    color: #fffaf3;
+  }
+
+  .btn-primary:hover {
+    background: #5f330f;
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: progress;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-2xl border px-6 py-3.5 text-sm font-semibold transition duration-200 hover:-translate-y-0.5;
-    border-color: rgba(123, 69, 25, 0.24);
-    background: rgba(255, 249, 239, 0.76);
+    border: 1.5px solid var(--color-ink);
     color: var(--color-ink);
   }
 
+  .btn-secondary:hover {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  /* Button variants for dark sections. */
+  .on-dark .btn-primary {
+    background: var(--color-accent-light);
+    color: var(--color-dark);
+  }
+
+  .on-dark .btn-primary:hover {
+    background: #e6b887;
+  }
+
+  .on-dark .btn-secondary {
+    border-color: var(--color-on-dark);
+    color: var(--color-on-dark);
+  }
+
+  .on-dark .btn-secondary:hover {
+    background: var(--color-on-dark);
+    color: var(--color-dark);
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-2 font-semibold underline decoration-[1.5px] underline-offset-[6px] transition-colors;
+    text-decoration-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  .text-link:hover {
+    color: var(--color-accent-strong);
+  }
+
+  .photo {
+    @apply w-full object-cover;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-alt);
+  }
+
   .field-label {
-    @apply flex flex-col gap-2 text-sm font-medium;
+    @apply flex flex-col gap-2 text-[0.9375rem] font-medium;
     color: var(--color-ink-soft);
   }
 
   .field-input {
-    @apply w-full rounded-2xl border px-4 py-3.5 outline-none transition;
-    border-color: var(--color-line);
-    background: rgba(255, 252, 247, 0.92);
+    @apply w-full border px-4 py-3 outline-none transition-colors;
+    border-radius: var(--radius-md);
+    border-color: var(--color-line-strong);
+    background: var(--color-surface);
     color: var(--color-ink);
   }
 
   .field-input::placeholder {
-    color: rgba(48, 39, 30, 0.38);
+    color: rgba(61, 52, 43, 0.45);
   }
 
   .field-input:focus {
-    border-color: rgba(159, 103, 52, 0.6);
-    background: rgba(255, 255, 255, 0.98);
-  }
-
-  .placeholder-card {
-    border-color: rgba(177, 45, 45, 0.28);
-    background: linear-gradient(180deg, rgba(255, 244, 244, 0.96), rgba(255, 235, 235, 0.92));
-    box-shadow: 0 18px 44px rgba(140, 29, 29, 0.08);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(159, 103, 52, 0.18);
   }
 }

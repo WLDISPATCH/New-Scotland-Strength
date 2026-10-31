@@ -33,36 +33,36 @@ export default function ResultsPage() {
         titleAs="h1"
         title="Client Results — Personal Training in Halifax, NS"
         description="Coaching works when it fits real life. Here is what clients have said on Google."
+        spacing="page"
       >
         <GoogleReviews />
-        <figure className="panel mt-10 p-6 sm:p-10">
-          <p className="font-[family-name:var(--font-heading)] text-5xl leading-none text-[var(--color-accent)]" aria-hidden="true">
-            “
-          </p>
-          <blockquote className="mt-2 text-lg leading-8 text-[var(--color-ink)] sm:text-xl sm:leading-9">
-            {clientTestimonial.quote}
-          </blockquote>
-          <figcaption className="mt-5 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
-            {clientTestimonial.author} · Client
+        <figure className="mt-16 grid gap-6 border-t-2 border-[var(--color-ink)] pt-10 sm:mt-20 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+          <figcaption className="order-last lg:order-none">
+            <p className="font-[family-name:var(--font-display)] text-2xl font-bold">{clientTestimonial.author}</p>
+            <p className="mt-1 text-[var(--color-text-muted)]">New Scotland Strength client</p>
           </figcaption>
+          <blockquote className="text-xl font-medium leading-relaxed text-[var(--color-ink)] sm:text-2xl sm:leading-relaxed">
+            <span className="mr-1 font-[family-name:var(--font-display)] text-[var(--color-accent)]" aria-hidden="true">
+              “
+            </span>
+            {clientTestimonial.quote}
+            <span className="ml-0.5 font-[family-name:var(--font-display)] text-[var(--color-accent)]" aria-hidden="true">
+              ”
+            </span>
+          </blockquote>
         </figure>
       </Section>
 
-      <Section
-        eyebrow="Photos"
-        title="Training and competition"
-        className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
-      >
-        <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+      <Section eyebrow="Photos" title="Training and competition" tone="alt">
+        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
           {gallery.map((photo) => (
-            <figure key={photo.src} className="panel mb-5 break-inside-avoid overflow-hidden p-2.5">
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                loading="lazy"
-                className="block w-full rounded-[1.4rem]"
-              />
-            </figure>
+            <img
+              key={photo.src}
+              src={photo.src}
+              alt={photo.alt}
+              loading="lazy"
+              className="photo mb-4 break-inside-avoid"
+            />
           ))}
         </div>
       </Section>

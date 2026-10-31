@@ -1,78 +1,63 @@
-import { Mail, MapPin } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { brandPhotos } from "../assets/photoLibrary";
 import { business, navigation, socialLinks } from "../content/siteData";
 
+const headingClass = "eyebrow !text-[var(--color-text-subtle)]";
+const linkClass = "text-[0.9375rem] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-ink)]";
+
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(239,228,212,0.72),rgba(229,215,195,0.9))]">
-      <div className="mx-auto grid max-w-7xl gap-7 px-5 py-9 sm:px-6 lg:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] lg:gap-10 lg:px-8 lg:py-12">
-        <div className="flex items-start">
-          <img
-            src={brandPhotos.brandLogo}
-            alt="New Scotland Strength logo"
-            className="h-14 w-auto shrink-0 lg:h-20"
-          />
+    <footer className="bg-[var(--color-bg-alt)]">
+      <div className="wrap grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_1fr_0.7fr] lg:gap-12 lg:py-16">
+        <div className="sm:col-span-2 lg:col-span-1">
+          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-14 w-auto lg:h-16" />
+          <p className="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-[var(--color-text-muted)]">
+            Personal training and strength coaching with {business.owner} in {business.city}, {business.region}.
+          </p>
         </div>
 
         <div className="hidden lg:block">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-            Navigation
-          </p>
-          <div className="mt-4 flex flex-col gap-3">
+          <p className={headingClass}>Pages</p>
+          <ul className="mt-4 space-y-2.5">
             {navigation.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className="text-sm text-[var(--color-text-muted)] transition hover:text-[var(--color-ink)]"
-              >
-                {item.label}
-              </NavLink>
+              <li key={item.path}>
+                <NavLink to={item.path} className={linkClass}>
+                  {item.label}
+                </NavLink>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-            Contact
-          </p>
-          <div className="mt-4 space-y-4 text-sm text-[var(--color-text-muted)]">
-            <div className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-              <span>
-                {business.city}, {business.region}, {business.country}
-              </span>
-            </div>
-            <div className="flex items-start gap-3">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-              <a href={`mailto:${business.email}`} className="transition hover:text-[var(--color-ink)]">
+          <p className={headingClass}>Contact</p>
+          <ul className="mt-4 space-y-2.5">
+            <li className="text-[0.9375rem] text-[var(--color-text-muted)]">
+              {business.city}, {business.region}, {business.country}
+            </li>
+            <li>
+              <a href={`mailto:${business.email}`} className={`${linkClass} break-all`}>
                 {business.email}
               </a>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-            Social
-          </p>
-          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 lg:flex-col lg:gap-x-0">
+          <p className={headingClass}>Follow</p>
+          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2.5 lg:flex-col">
             {socialLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm text-[var(--color-text-muted)] transition hover:text-[var(--color-ink)]"
-              >
-                {item.label}
-              </a>
+              <li key={item.label}>
+                <a href={item.href} target="_blank" rel="noreferrer" className={linkClass}>
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
       <div className="border-t border-[var(--color-line)]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[var(--color-text-subtle)] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+        <div className="wrap flex flex-col gap-1.5 py-5 pb-24 text-[0.8125rem] text-[var(--color-text-subtle)] md:flex-row md:justify-between md:gap-6 lg:pb-5">
           <p>© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
           <p>Serving Halifax, Dartmouth, Bedford, Sackville, and the wider Halifax Regional Municipality (HRM).</p>
         </div>

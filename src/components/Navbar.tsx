@@ -13,30 +13,22 @@ export default function Navbar() {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[rgba(247,241,231,0.88)] backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-3">
-          <img
-            src={brandPhotos.brandLogo}
-            alt="New Scotland Strength logo"
-            className="h-10 w-auto shrink-0 sm:h-12"
-          />
-          <div className="min-w-0">
-            <p className="hidden text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-[var(--color-text-subtle)] sm:block">
-              {business.city}, {business.region}
-            </p>
-            <p className="truncate text-sm font-semibold text-[var(--color-ink)] sm:text-base">{business.name}</p>
-          </div>
+    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[var(--color-bg)]/95 backdrop-blur-sm">
+      <div className="wrap flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
+        <Link to="/" className="shrink-0" aria-label={`${business.name} home`}>
+          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-10 w-auto lg:h-11" />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
           {navigation.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${
-                  isActive ? "text-[var(--color-accent-strong)]" : "text-[var(--color-text-subtle)] hover:text-[var(--color-ink)]"
+                `relative py-1 text-[0.9375rem] font-medium transition-colors ${
+                  isActive
+                    ? "text-[var(--color-ink)] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-[var(--color-accent)]"
+                    : "text-[var(--color-text-muted)] hover:text-[var(--color-ink)]"
                 }`
               }
             >
@@ -45,42 +37,38 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Link to={business.consultationPath} className="btn-primary">
-            Book Consultation
-          </Link>
-        </div>
+        <Link to={business.consultationPath} className="btn-primary hidden !min-h-10 !px-5 !text-[0.9375rem] lg:inline-flex">
+          Book Consultation
+        </Link>
 
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-line)] bg-[rgba(255,250,242,0.84)] text-[var(--color-ink)] md:hidden"
+          className="-mr-2 inline-flex h-11 w-11 shrink-0 items-center justify-center text-[var(--color-ink)] lg:hidden"
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
         >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {isOpen ? (
-        <div className="border-t border-[var(--color-line)] bg-[rgba(247,241,231,0.98)] md:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6">
+        <div className="border-t border-[var(--color-line)] bg-[var(--color-bg)] lg:hidden">
+          <nav className="wrap flex flex-col py-3" aria-label="Main">
             {navigation.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `rounded-2xl px-4 py-3 text-sm font-medium transition ${
-                    isActive
-                      ? "bg-[rgba(159,103,52,0.12)] text-[var(--color-accent-strong)]"
-                      : "text-[var(--color-text-subtle)] hover:bg-[rgba(159,103,52,0.08)] hover:text-[var(--color-ink)]"
+                  `border-b border-[var(--color-line)] py-3.5 font-[family-name:var(--font-display)] text-xl font-semibold transition-colors ${
+                    isActive ? "text-[var(--color-accent-strong)]" : "text-[var(--color-ink)]"
                   }`
                 }
               >
                 {item.label}
               </NavLink>
             ))}
-            <Link to={business.consultationPath} className="btn-primary mt-4 justify-center">
+            <Link to={business.consultationPath} className="btn-primary mb-2 mt-5 justify-center">
               Book Consultation
             </Link>
           </nav>
