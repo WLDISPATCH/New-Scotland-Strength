@@ -1,0 +1,240 @@
+/*
+  DRAFT CONCEPT — "The Meet Program"
+  Dev-only design proposal for New Scotland Strength. Everything is scoped under .d-root
+  so it cannot affect the live pages.
+*/
+
+/* In the components layer so Tailwind utilities on draft elements can still override it. */
+@layer components {
+  .d-root {
+    --chalk: #f2f0eb;
+    --chalk-2: #e6e3db;
+    --iron: #111214;
+    --iron-2: #1d1f22;
+    --steel: #55595f;
+    --steel-on-iron: #a9adb3;
+    --blue: #1d4fa0;
+    --blue-deep: #163d7d;
+    --sky: #8fb3ef;
+    --line: rgba(17, 18, 20, 0.18);
+    --line-on-iron: rgba(242, 240, 235, 0.18);
+
+    font-family: "Archivo Variable", "Segoe UI", system-ui, sans-serif;
+    font-stretch: 100%;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--iron);
+    background: var(--chalk);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Undo the live site's global heading font and colour inside the draft. */
+  .d-root h1,
+  .d-root h2,
+  .d-root h3 {
+    font-family: inherit;
+    color: inherit;
+    margin: 0;
+  }
+
+  .d-root ::selection {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .d-root :focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  .d-root .d-on-iron :focus-visible,
+  .d-root .d-on-blue :focus-visible {
+    outline-color: var(--sky);
+  }
+
+  /* Wide, heavy banner type: Archivo at full width and black weight. */
+  .d-display {
+    font-family: "Archivo Variable", system-ui, sans-serif;
+    font-stretch: 125%;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.012em;
+  }
+
+  .d-heading {
+    font-family: "Archivo Variable", system-ui, sans-serif;
+    font-stretch: 112%;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  /* Scoresheet labels. */
+  .d-mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .d-wrap {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .d-wrap {
+      padding-inline: 2rem;
+    }
+  }
+
+  .d-btn {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-inline: 1.5rem;
+    white-space: nowrap;
+    font-stretch: 112%;
+    font-weight: 800;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 2px solid var(--iron);
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .d-btn-blue {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  .d-btn-blue:hover {
+    background: var(--blue-deep);
+    border-color: var(--blue-deep);
+  }
+
+  .d-btn-line {
+    color: var(--iron);
+  }
+
+  .d-btn-line:hover {
+    background: var(--iron);
+    color: var(--chalk);
+  }
+
+  .d-btn-chalk {
+    background: var(--chalk);
+    border-color: var(--chalk);
+    color: var(--blue-deep);
+  }
+
+  .d-btn-chalk:hover {
+    background: #fff;
+    border-color: #fff;
+  }
+
+  .d-btn .d-arrow {
+    transition: transform 160ms ease;
+  }
+
+  .d-btn:hover .d-arrow {
+    transform: translateX(3px);
+  }
+
+  /*
+    The saltire: Nova Scotia's flag is a blue diagonal cross on white ("New Scotland").
+    Two corner-to-corner gradients draw it at any aspect ratio.
+  */
+  .d-saltire {
+    --saltire-color: var(--blue);
+    --saltire-band: 9%;
+    background-image:
+      linear-gradient(
+        to top right,
+        transparent calc(50% - var(--saltire-band)),
+        var(--saltire-color) calc(50% - var(--saltire-band)),
+        var(--saltire-color) calc(50% + var(--saltire-band)),
+        transparent calc(50% + var(--saltire-band))
+      ),
+      linear-gradient(
+        to bottom right,
+        transparent calc(50% - var(--saltire-band)),
+        var(--saltire-color) calc(50% - var(--saltire-band)),
+        var(--saltire-color) calc(50% + var(--saltire-band)),
+        transparent calc(50% + var(--saltire-band))
+      );
+  }
+
+  /* Credential ticker. Static and wrapped for people who prefer reduced motion. */
+  .d-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: d-ticker 48s linear infinite;
+  }
+
+  .d-ticker:hover .d-ticker-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes d-ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .d-ticker-track {
+      animation: none;
+      width: auto;
+      flex-wrap: wrap;
+    }
+
+    .d-ticker-copy {
+      display: none;
+    }
+
+    .d-btn,
+    .d-btn .d-arrow,
+    .d-swap {
+      transition: none;
+    }
+  }
+
+  /* Photo swap in the "Built for" section. */
+  .d-swap {
+    transition: opacity 260ms ease;
+  }
+
+  .d-root details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .d-root details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .d-root details[open] .d-faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .d-faq-icon {
+    transition: transform 180ms ease;
+  }
+
+  .d-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--iron) transparent;
+  }
+}
