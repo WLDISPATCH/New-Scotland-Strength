@@ -1,52 +1,35 @@
 @import "tailwindcss";
 
 /*
-  New Scotland Strength — design tokens.
-  Warm paper and ink taken from the existing palette, one bronze accent,
-  and Barlow / Barlow Condensed to echo the condensed lettering in the logo.
+  New Scotland Strength — "The Meet Program" theme.
+  Chalk, iron and one blue accent. Archivo (variable width) for everything,
+  stretched wide and heavy for banner headlines; IBM Plex Mono for
+  scoresheet-style labels.
 */
 @theme {
-  --font-sans: "Barlow", "Segoe UI", system-ui, sans-serif;
-  --font-display: "Barlow Condensed", "Arial Narrow", "Segoe UI", sans-serif;
-}
+  --font-sans: "Archivo Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-:root {
-  --font-heading: var(--font-display);
-
-  --color-bg: #f6f1e9;
-  --color-bg-alt: #ece3d5;
-  --color-surface: #fffcf7;
-  --color-dark: #1c1814;
-
-  --color-ink: #1c1814;
-  --color-ink-soft: #3d342b;
-  --color-text-muted: #5a4e43;
-  --color-text-subtle: #76685b;
-
-  /* Mid bronze is for rules, icons and large type; small text uses the strong shade. */
-  --color-accent: #9f6734;
-  --color-accent-strong: #7b4519;
-  --color-accent-light: #d6a26e;
-
-  --color-on-dark: #f6f1e9;
-  --color-on-dark-muted: #b9ada0;
-
-  --color-line: rgba(28, 24, 20, 0.14);
-  --color-line-strong: rgba(28, 24, 20, 0.28);
-  --color-line-on-dark: rgba(246, 241, 233, 0.16);
-
-  --radius-sm: 4px;
-  --radius-md: 6px;
+  --color-chalk: #f2f0eb;
+  --color-chalk-2: #e6e3db;
+  --color-iron: #111214;
+  --color-iron-2: #1d1f22;
+  --color-steel: #55595f;
+  --color-steel-light: #a9adb3;
+  --color-brand: #1d4fa0;
+  --color-brand-deep: #163d7d;
+  --color-brand-light: #8fb3ef;
+  --color-line: rgba(17, 18, 20, 0.18);
+  --color-line-dark: rgba(242, 240, 235, 0.18);
 }
 
 @layer base {
   :root {
     font-family: var(--font-sans);
-    font-size: 100%;
+    font-stretch: 100%;
     line-height: 1.55;
-    color: var(--color-ink);
-    background: var(--color-bg);
-    font-synthesis: none;
+    color: var(--color-iron);
+    background: var(--color-chalk);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -62,12 +45,11 @@
     margin: 0;
     min-width: 320px;
     min-height: 100%;
-    background: var(--color-bg);
+    background: var(--color-chalk);
   }
 
   body {
     min-height: 100vh;
-    color: var(--color-ink);
     font-size: 1.0625rem;
   }
 
@@ -96,8 +78,9 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-heading);
-    color: var(--color-ink);
+    margin: 0;
+    font: inherit;
+    color: inherit;
     text-wrap: balance;
   }
 
@@ -105,14 +88,40 @@
     text-wrap: pretty;
   }
 
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 3px solid var(--color-brand);
     outline-offset: 3px;
+  }
+
+  .on-dark :focus-visible,
+  .on-brand :focus-visible {
+    outline-color: var(--color-brand-light);
+  }
+
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation: none !important;
     }
   }
 }
@@ -125,119 +134,226 @@
 }
 
 @layer components {
-  /* Container used by every section, so all left edges line up. */
   .wrap {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
   }
 
-  /* Small uppercase label above headings. */
-  .eyebrow {
-    font-family: var(--font-display);
-    @apply text-[0.8125rem] font-semibold uppercase tracking-[0.14em];
-    color: var(--color-accent-strong);
+  @media (min-width: 640px) {
+    .wrap {
+      padding-inline: 2rem;
+    }
   }
 
+  /* Wide, heavy banner type. */
   .display {
-    font-family: var(--font-display);
-    @apply font-bold uppercase leading-[0.95] tracking-[-0.005em];
+    font-stretch: 125%;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.012em;
+    /* Last-resort wrap so one long word can never push the page sideways on tiny screens. */
+    overflow-wrap: anywhere;
+  }
+
+  /* Section display size, shared so every section title matches. */
+  .display-section {
+    font-size: clamp(1.75rem, 9vw, 3rem);
+  }
+
+  @media (min-width: 640px) {
+    .display-section {
+      font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+    }
   }
 
   .heading {
-    font-family: var(--font-display);
-    @apply text-[2rem] font-bold leading-[1.02] tracking-[-0.005em] sm:text-[2.5rem] lg:text-[2.875rem];
+    font-stretch: 112%;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
   }
 
-  .lede {
-    @apply text-lg leading-relaxed sm:text-xl;
-    color: var(--color-text-muted);
+  /* Scoresheet labels. */
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .btn-primary,
-  .btn-secondary {
-    font-family: var(--font-display);
-    @apply inline-flex min-h-12 items-center gap-2 px-6 text-base font-semibold uppercase tracking-[0.06em] transition-colors duration-200;
-    border-radius: var(--radius-md);
+  .btn {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-inline: 1.5rem;
+    border: 2px solid var(--color-iron);
+    font-stretch: 112%;
+    font-weight: 800;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease;
   }
 
-  .btn-primary {
-    background: var(--color-accent-strong);
-    color: #fffaf3;
+  /* Labels may wrap on small phones; keep them on one line from sm up. */
+  @media (min-width: 640px) {
+    .btn {
+      white-space: nowrap;
+    }
   }
 
-  .btn-primary:hover {
-    background: #5f330f;
+  .btn .arrow {
+    flex-shrink: 0;
+    transition: transform 160ms ease;
   }
 
-  .btn-primary:disabled {
+  .btn:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .btn:disabled {
     opacity: 0.6;
     cursor: progress;
   }
 
-  .btn-secondary {
-    border: 1.5px solid var(--color-ink);
-    color: var(--color-ink);
+  .btn-brand {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: #fff;
   }
 
-  .btn-secondary:hover {
-    background: var(--color-ink);
-    color: var(--color-bg);
+  .btn-brand:hover {
+    background: var(--color-brand-deep);
+    border-color: var(--color-brand-deep);
   }
 
-  /* Button variants for dark sections. */
-  .on-dark .btn-primary {
-    background: var(--color-accent-light);
-    color: var(--color-dark);
+  .btn-line {
+    color: var(--color-iron);
   }
 
-  .on-dark .btn-primary:hover {
-    background: #e6b887;
+  .btn-line:hover {
+    background: var(--color-iron);
+    color: var(--color-chalk);
   }
 
-  .on-dark .btn-secondary {
-    border-color: var(--color-on-dark);
-    color: var(--color-on-dark);
+  /* On iron or blue backgrounds. */
+  .btn-chalk {
+    background: var(--color-chalk);
+    border-color: var(--color-chalk);
+    color: var(--color-brand-deep);
   }
 
-  .on-dark .btn-secondary:hover {
-    background: var(--color-on-dark);
-    color: var(--color-dark);
+  .btn-chalk:hover {
+    background: #fff;
+    border-color: #fff;
+  }
+
+  .btn-chalk-line {
+    border-color: var(--color-chalk);
+    color: var(--color-chalk);
+  }
+
+  .btn-chalk-line:hover {
+    background: var(--color-chalk);
+    color: var(--color-iron);
   }
 
   .text-link {
-    @apply inline-flex items-center gap-2 font-semibold underline decoration-[1.5px] underline-offset-[6px] transition-colors;
-    text-decoration-color: var(--color-accent);
-    color: var(--color-ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    text-decoration-color: var(--color-brand);
   }
 
   .text-link:hover {
-    color: var(--color-accent-strong);
-  }
-
-  .photo {
-    @apply w-full object-cover;
-    border-radius: var(--radius-sm);
-    background: var(--color-bg-alt);
+    color: var(--color-brand);
   }
 
   .field-label {
-    @apply flex flex-col gap-2 text-[0.9375rem] font-medium;
-    color: var(--color-ink-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .field-input {
-    @apply w-full border px-4 py-3 outline-none transition-colors;
-    border-radius: var(--radius-md);
-    border-color: var(--color-line-strong);
-    background: var(--color-surface);
-    color: var(--color-ink);
+    width: 100%;
+    min-height: 3.25rem;
+    border: 2px solid var(--color-iron);
+    border-radius: 0;
+    background: #fff;
+    padding: 0.75rem 1rem;
+    color: var(--color-iron);
+    outline: none;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
   }
 
   .field-input::placeholder {
-    color: rgba(61, 52, 43, 0.45);
+    color: rgba(85, 89, 95, 0.7);
   }
 
   .field-input:focus {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(159, 103, 52, 0.18);
+    border-color: var(--color-brand);
+    box-shadow: 4px 4px 0 var(--color-brand);
+  }
+
+  /* Credential ticker; static and wrapped when motion is reduced. */
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 48s linear infinite;
+  }
+
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      width: auto;
+      flex-wrap: wrap;
+    }
+
+    .ticker-copy {
+      display: none;
+    }
+  }
+
+  .photo-swap {
+    transition: opacity 260ms ease;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-icon {
+    transition: transform 180ms ease;
+  }
+
+  .scroll-strip {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-iron) transparent;
   }
 }

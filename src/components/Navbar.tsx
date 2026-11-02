@@ -13,10 +13,10 @@ export default function Navbar() {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[var(--color-bg)]/95 backdrop-blur-sm">
-      <div className="wrap flex h-16 items-center justify-between gap-6 lg:h-[4.5rem]">
+    <header className="sticky top-0 z-50 border-b border-line bg-chalk/95 backdrop-blur-sm">
+      <div className="wrap flex h-16 items-center justify-between gap-6 lg:h-20">
         <Link to="/" className="shrink-0" aria-label={`${business.name} home`}>
-          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-10 w-auto lg:h-11" />
+          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-10 w-auto lg:h-12" />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
@@ -24,11 +24,12 @@ export default function Navbar() {
             <NavLink
               key={item.path}
               to={item.path}
+              end
               className={({ isActive }) =>
-                `relative py-1 text-[0.9375rem] font-medium transition-colors ${
+                `relative py-1 text-[0.9375rem] font-semibold [font-stretch:108%] transition-colors ${
                   isActive
-                    ? "text-[var(--color-ink)] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-[var(--color-accent)]"
-                    : "text-[var(--color-text-muted)] hover:text-[var(--color-ink)]"
+                    ? "text-iron after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:bg-brand"
+                    : "text-steel hover:text-iron"
                 }`
               }
             >
@@ -37,42 +38,44 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <Link to={business.consultationPath} className="btn-primary hidden !min-h-10 !px-5 !text-[0.9375rem] lg:inline-flex">
-          Book Consultation
-        </Link>
-
-        <button
-          type="button"
-          onClick={() => setIsOpen((open) => !open)}
-          className="-mr-2 inline-flex h-11 w-11 shrink-0 items-center justify-center text-[var(--color-ink)] lg:hidden"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <Link to={business.consultationPath} className="btn btn-brand !min-h-11 !px-4 !text-[0.8125rem] sm:!px-5">
+            <span className="sm:hidden">Book</span>
+            <span className="hidden sm:inline">Book a consult</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setIsOpen((open) => !open)}
+            className="-mr-2 inline-flex h-11 w-11 items-center justify-center lg:hidden"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {isOpen ? (
-        <div className="border-t border-[var(--color-line)] bg-[var(--color-bg)] lg:hidden">
-          <nav className="wrap flex flex-col py-3" aria-label="Main">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `border-b border-[var(--color-line)] py-3.5 font-[family-name:var(--font-display)] text-xl font-semibold transition-colors ${
-                    isActive ? "text-[var(--color-accent-strong)]" : "text-[var(--color-ink)]"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
+        <nav className="border-t border-line bg-chalk lg:hidden" aria-label="Main">
+          <ul className="wrap py-2">
+            {navigation.map((item, index) => (
+              <li key={item.path} className="border-b border-line last:border-0">
+                <NavLink
+                  to={item.path}
+                  end
+                  className={({ isActive }) =>
+                    `flex items-baseline gap-4 py-4 ${isActive ? "text-brand" : "text-iron"}`
+                  }
+                >
+                  <span className="mono text-steel" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="heading text-2xl uppercase">{item.label}</span>
+                </NavLink>
+              </li>
             ))}
-            <Link to={business.consultationPath} className="btn-primary mb-2 mt-5 justify-center">
-              Book Consultation
-            </Link>
-          </nav>
-        </div>
+          </ul>
+        </nav>
       ) : null}
     </header>
   );

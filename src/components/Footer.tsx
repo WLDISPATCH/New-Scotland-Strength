@@ -2,53 +2,47 @@ import { NavLink } from "react-router-dom";
 import { brandPhotos } from "../assets/photoLibrary";
 import { business, navigation, socialLinks } from "../content/siteData";
 
-const headingClass = "eyebrow !text-[var(--color-text-subtle)]";
-const linkClass = "text-[0.9375rem] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-ink)]";
-
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-bg-alt)]">
-      <div className="wrap grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_1fr_0.7fr] lg:gap-12 lg:py-16">
-        <div className="sm:col-span-2 lg:col-span-1">
-          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-14 w-auto lg:h-16" />
-          <p className="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-[var(--color-text-muted)]">
-            Personal training and strength coaching with {business.owner} in {business.city}, {business.region}.
+    <footer className="on-dark bg-iron text-chalk">
+      <div className="wrap grid gap-10 py-14 md:grid-cols-[1.5fr_1fr_1fr_1fr] lg:py-16">
+        <div>
+          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-14 w-auto invert" />
+          <p className="mt-5 max-w-sm leading-relaxed text-steel-light">
+            Personal training and strength coaching with {business.owner}. In person across the HRM, online anywhere.
           </p>
         </div>
-
-        <div className="hidden lg:block">
-          <p className={headingClass}>Pages</p>
-          <ul className="mt-4 space-y-2.5">
+        <div>
+          <p className="mono text-steel-light">Pages</p>
+          <ul className="mt-4 space-y-2">
             {navigation.map((item) => (
               <li key={item.path}>
-                <NavLink to={item.path} className={linkClass}>
+                <NavLink to={item.path} end className="transition-colors hover:text-brand-light">
                   {item.label}
                 </NavLink>
               </li>
             ))}
           </ul>
         </div>
-
         <div>
-          <p className={headingClass}>Contact</p>
-          <ul className="mt-4 space-y-2.5">
-            <li className="text-[0.9375rem] text-[var(--color-text-muted)]">
-              {business.city}, {business.region}, {business.country}
+          <p className="mono text-steel-light">Contact</p>
+          <ul className="mt-4 space-y-2">
+            <li className="text-steel-light">
+              {business.city}, {business.region}
             </li>
             <li>
-              <a href={`mailto:${business.email}`} className={`${linkClass} break-all`}>
+              <a href={`mailto:${business.email}`} className="break-all transition-colors hover:text-brand-light">
                 {business.email}
               </a>
             </li>
           </ul>
         </div>
-
         <div>
-          <p className={headingClass}>Follow</p>
-          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2.5 lg:flex-col">
+          <p className="mono text-steel-light">Follow</p>
+          <ul className="mt-4 space-y-2">
             {socialLinks.map((item) => (
               <li key={item.label}>
-                <a href={item.href} target="_blank" rel="noreferrer" className={linkClass}>
+                <a href={item.href} target="_blank" rel="noreferrer" className="transition-colors hover:text-brand-light">
                   {item.label}
                 </a>
               </li>
@@ -56,10 +50,12 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-[var(--color-line)]">
-        <div className="wrap flex flex-col gap-1.5 py-5 pb-24 text-[0.8125rem] text-[var(--color-text-subtle)] md:flex-row md:justify-between md:gap-6 lg:pb-5">
-          <p>© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
-          <p>Serving Halifax, Dartmouth, Bedford, Sackville, and the wider Halifax Regional Municipality (HRM).</p>
+      <div className="border-t border-line-dark">
+        <div className="wrap flex flex-col gap-2 py-5 pb-24 text-steel-light md:flex-row md:justify-between md:gap-8 lg:pb-5">
+          <p className="mono">
+            © {new Date().getFullYear()} {business.name}
+          </p>
+          <p className="mono">Serving Halifax, Dartmouth, Bedford, Sackville &amp; the wider HRM</p>
         </div>
       </div>
     </footer>

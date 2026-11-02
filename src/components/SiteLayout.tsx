@@ -6,7 +6,7 @@ import StickyBar from "./StickyBar";
 
 export default function SiteLayout() {
   return (
-    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
+    <div className="min-h-screen bg-chalk text-iron">
       <ScrollToTop />
       <Navbar />
       <main>

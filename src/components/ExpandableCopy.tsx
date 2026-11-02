@@ -15,7 +15,7 @@ export default function ExpandableCopy({
   full,
   buttonLabel = "Read more",
   className = "",
-  textClassName = "text-lg leading-relaxed text-[var(--color-text-muted)] sm:text-xl",
+  textClassName = "text-lg leading-relaxed text-steel",
 }: ExpandableCopyProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -27,13 +27,10 @@ export default function ExpandableCopy({
           type="button"
           onClick={() => setExpanded((value) => !value)}
           aria-expanded={expanded}
-          className="mt-2 inline-flex min-h-11 items-center gap-1.5 text-[0.9375rem] font-semibold text-[var(--color-ink)]"
+          className="mono mt-3 inline-flex min-h-11 items-center gap-2 text-brand"
         >
           {expanded ? "Show less" : buttonLabel}
-          <ChevronDown
-            className={`h-4 w-4 text-[var(--color-accent)] transition-transform ${expanded ? "rotate-180" : ""}`}
-            aria-hidden="true"
-          />
+          <ChevronDown className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`} aria-hidden="true" />
         </button>
       </div>
 

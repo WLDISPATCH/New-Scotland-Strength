@@ -1,37 +1,73 @@
-import { useState } from "react";
-import { Plus } from "lucide-react";
+import { ArrowDown, Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 import CTASection from "../components/CTASection";
+import PageHero from "../components/PageHero";
 import PageMeta from "../components/PageMeta";
-import Section from "../components/Section";
 import { faqItems } from "../content/siteData";
 
-function FaqItem({ question, answer, index }: { question: string; answer: string; index: number }) {
-  const [isOpen, setIsOpen] = useState(index === 0);
+// Topic for each question. Any question not listed here falls into "More questions",
+// so new FAQ entries still appear.
+const topics: { id: string; title: string; questions: string[] }[] = [
+  {
+    id: "location",
+    title: "Location",
+    questions: ["Where is New Scotland Strength located?", "Do you offer personal training in Dartmouth or Bedford?"],
+  },
+  {
+    id: "coach",
+    title: "The coach",
+    questions: [
+      "What experience does Josh Dunbar have as a coach?",
+      "What makes New Scotland Strength different from a regular gym trainer?",
+      "Should I hire a personal trainer or follow a free program online?",
+    ],
+  },
+  {
+    id: "who",
+    title: "Who it's for",
+    questions: [
+      "Do you work with beginners?",
+      "Do you train older adults?",
+      "Can you help with weight loss, not just strength training?",
+      "Do you train athletes preparing for competition?",
+      "What if I have an injury or physical limitation?",
+    ],
+  },
+  {
+    id: "training",
+    title: "Training",
+    questions: [
+      "What happens in the first session or check-in?",
+      "How long does it take to see results?",
+      "How often should I train per week with a coach?",
+    ],
+  },
+  {
+    id: "online",
+    title: "Online coaching",
+    questions: [
+      "Is online coaching available outside Halifax?",
+      "What equipment do I need for online coaching?",
+      "How do online check-ins work?",
+    ],
+  },
+  {
+    id: "logistics",
+    title: "Logistics",
+    questions: [
+      "Do I need my own gym membership for in-person sessions?",
+      "How do I pay for coaching?",
+      "Can I pause or change my plan?",
+    ],
+  },
+];
 
-  return (
-    <div className="border-b border-[var(--color-line-strong)]">
-      <h2 className="[text-wrap:pretty]">
-        <button
-          type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-expanded={isOpen}
-          className="flex w-full items-center justify-between gap-6 py-5 text-left font-[family-name:var(--font-sans)] text-lg font-semibold leading-snug text-[var(--color-ink)] transition-colors hover:text-[var(--color-accent-strong)]"
-        >
-          {question}
-          <Plus
-            className={`h-5 w-5 shrink-0 text-[var(--color-accent)] transition-transform duration-200 ${isOpen ? "rotate-45" : ""}`}
-            aria-hidden="true"
-          />
-        </button>
-      </h2>
-      {/* Always in the HTML (just hidden when collapsed) so crawlers can read every answer. */}
-      <div hidden={!isOpen} className="pb-6 pr-10">
-        <p className="leading-relaxed text-[var(--color-text-muted)]">{answer}</p>
-      </div>
-    </div>
-  );
-}
+const assigned = new Set(topics.flatMap((t) => t.questions));
+const leftovers = faqItems.filter((f) => !assigned.has(f.question));
+const groups = [
+  ...topics.map((t) => ({ ...t, items: faqItems.filter((f) => t.questions.includes(f.question)) })),
+  ...(leftovers.length ? [{ id: "more", title: "More questions", questions: [], items: leftovers }] : []),
+].filter((g) => g.items.length > 0);
 
 export default function FaqPage() {
   // Build JSON-LD FAQ schema for rich search result snippets
@@ -47,6 +83,20 @@ export default function FaqPage() {
       },
     })),
   };
+
+  const topicIndex = (
+    <ol>
+      {groups.map((g, i) => (
+        <li key={g.id} className="border-b border-line last:border-0">
+          <a href={`#${g.id}`} className="group grid grid-cols-[3rem_1fr_auto] items-center gap-3 px-4 py-3 transition-colors hover:bg-chalk-2">
+            <span className="mono text-brand">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-semibold">{g.title}</span>
+            <span className="mono text-steel">{g.items.length}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  );
 
   return (
     <>
@@ -68,33 +118,73 @@ export default function FaqPage() {
       />
 
       {/* FAQ schema for rich search snippets */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      <PageHero
+        label="Questions"
+        kicker="Fair questions"
+        title="Personal Training FAQ — Halifax, NS"
+        lede={
+          <p>
+            If something is not covered here, use the{" "}
+            <Link to="/contact/" className="text-link text-iron">
+              contact page
+            </Link>{" "}
+            to ask directly.
+          </p>
+        }
+        aside={
+          <nav aria-label="FAQ topics" className="border-2 border-iron">
+            <p className="mono flex justify-between bg-iron px-4 py-2 text-chalk">
+              <span>Topics</span>
+              <span className="text-brand-light">{faqItems.length} answers</span>
+            </p>
+            {topicIndex}
+          </nav>
+        }
       />
 
-      <Section spacing="page">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-          <header className="lg:sticky lg:top-28 lg:self-start">
-            <p className="eyebrow mb-3">FAQ</p>
-            <h1 className="font-[family-name:var(--font-display)] text-[2.5rem] font-bold leading-[0.98] tracking-[-0.01em] sm:text-[3.25rem] lg:text-[3.5rem]">
-              Personal Training FAQ&nbsp;— Halifax, NS
-            </h1>
-            <p className="mt-5 max-w-md text-lg leading-relaxed text-[var(--color-text-muted)]">
-              If something is not covered here, use the{" "}
-              <Link to="/contact/" className="text-link">
-                contact page
-              </Link>{" "}
-              to ask directly.
-            </p>
-          </header>
-          <div className="border-t-2 border-[var(--color-ink)]">
-            {faqItems.map((item, index) => (
-              <FaqItem key={item.question} question={item.question} answer={item.answer} index={index} />
+      <div className="border-t-2 border-iron">
+        <div className="wrap grid gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-24">
+          <aside className="hidden lg:col-span-3 lg:block">
+            <nav aria-label="Jump to topic" className="sticky top-28">
+              <p className="mono text-steel">Jump to</p>
+              <ul className="mt-4 border-t-2 border-iron">
+                {groups.map((g) => (
+                  <li key={g.id} className="border-b border-line">
+                    <a href={`#${g.id}`} className="flex items-center justify-between py-3 font-semibold transition-colors hover:text-brand">
+                      {g.title}
+                      <ArrowDown className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
+
+          <div className="space-y-16 lg:col-span-9 lg:pl-8 xl:pl-12">
+            {groups.map((g, gi) => (
+              <section key={g.id} id={g.id} aria-labelledby={`${g.id}-title`} className="scroll-mt-24">
+                <div className="flex items-baseline gap-4 border-b-2 border-iron pb-3">
+                  <span className="mono text-brand">{String(gi + 1).padStart(2, "0")}</span>
+                  <h2 id={`${g.id}-title`} className="display text-[clamp(1.75rem,7vw,2.75rem)]">
+                    {g.title}
+                  </h2>
+                </div>
+                {g.items.map((item) => (
+                  <details key={item.question} className="border-b border-line">
+                    <summary className="flex items-center justify-between gap-6 py-5">
+                      <h3 className="heading text-[1.25rem] [font-stretch:100%] [text-wrap:pretty] sm:text-[1.5rem]">{item.question}</h3>
+                      <Plus className="faq-icon h-6 w-6 shrink-0 text-brand" aria-hidden="true" />
+                    </summary>
+                    <p className="max-w-3xl pb-6 text-lg leading-relaxed text-steel">{item.answer}</p>
+                  </details>
+                ))}
+              </section>
             ))}
           </div>
         </div>
-      </Section>
+      </div>
 
       <CTASection
         title="Still have a question?"
