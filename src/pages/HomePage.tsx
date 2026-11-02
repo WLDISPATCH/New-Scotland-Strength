@@ -36,7 +36,9 @@ const faqPicks = [
   "How do online check-ins work?",
 ];
 
-const shortReviews = googleReviews.filter((r) => r.author === "Andrew Foley" || r.author === "Nicholas Peters");
+// Two reviews shown beside the rating on the home page.
+const homeReviewAuthors = ["Lee MacDonald", "matthew english"];
+const shortReviews = googleReviews.filter((r) => homeReviewAuthors.includes(r.author));
 
 function EntryCard({ className = "" }: { className?: string }) {
   const rows = [
@@ -261,7 +263,7 @@ export default function HomePage() {
             <ul className="mt-6 space-y-6">
               {shortReviews.map((r) => (
                 <li key={r.author} className="border-l-2 border-brand pl-5">
-                  <p className="leading-relaxed">“{r.text}”</p>
+                  <p className="whitespace-pre-line leading-relaxed">“{r.text}”</p>
                   <p className="mono mt-2 text-steel">{r.author} · Google</p>
                 </li>
               ))}

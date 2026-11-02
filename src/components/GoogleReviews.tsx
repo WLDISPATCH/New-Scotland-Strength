@@ -18,9 +18,11 @@ export function Stars({ rating = 5, className = "h-5 w-5" }: { rating?: number; 
   );
 }
 
+// Google only shows relative dates, so we store the approximate year posted.
 function timeAgo(year: number) {
   const years = new Date().getFullYear() - year;
-  return years <= 1 ? "a year ago" : `${years} years ago`;
+  if (years <= 0) return "this year";
+  return years === 1 ? "a year ago" : `${years} years ago`;
 }
 
 // Big "5.0" scoreboard that links to the Google profile.
