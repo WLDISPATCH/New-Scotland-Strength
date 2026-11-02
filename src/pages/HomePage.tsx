@@ -78,7 +78,9 @@ export default function HomePage() {
         </div>
 
         <div className="relative mt-8 sm:mt-10">
-          <p className="display text-[clamp(2.6rem,12.5vw,3.5rem)] sm:text-[clamp(3.1rem,9.4vw,9.25rem)]">
+          {/* From xl the first line shares its row with the entry card (62% of the width), so the
+              size tracks the content width: "STRONG." is ~6em wide and must fit in that 62%. */}
+          <p className="display text-[clamp(2.6rem,12.5vw,3.5rem)] sm:text-[clamp(3.1rem,9.4vw,8.25rem)] xl:text-[clamp(3.1rem,calc(9.6vw-8px),8.25rem)]">
             <span className="block xl:max-w-[62%]">Start strong.</span>
             <span className="block text-brand">Stay strong.</span>
           </p>
