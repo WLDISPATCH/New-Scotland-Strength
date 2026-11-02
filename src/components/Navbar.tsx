@@ -13,30 +13,23 @@ export default function Navbar() {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[rgba(247,241,231,0.88)] backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-3">
-          <img
-            src={brandPhotos.brandLogo}
-            alt="New Scotland Strength logo"
-            className="h-10 w-auto shrink-0 sm:h-12"
-          />
-          <div className="min-w-0">
-            <p className="hidden text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-[var(--color-text-subtle)] sm:block">
-              {business.city}, {business.region}
-            </p>
-            <p className="truncate text-sm font-semibold text-[var(--color-ink)] sm:text-base">{business.name}</p>
-          </div>
+    <header className="sticky top-0 z-50 border-b border-line bg-chalk/95 backdrop-blur-sm">
+      <div className="wrap flex h-16 items-center justify-between gap-6 lg:h-20">
+        <Link to="/" className="shrink-0" aria-label={`${business.name} home`}>
+          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-10 w-auto lg:h-12" />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
           {navigation.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
+              end
               className={({ isActive }) =>
-                `text-sm font-medium transition ${
-                  isActive ? "text-[var(--color-accent-strong)]" : "text-[var(--color-text-subtle)] hover:text-[var(--color-ink)]"
+                `relative py-1 text-[0.9375rem] font-semibold [font-stretch:108%] transition-colors ${
+                  isActive
+                    ? "text-iron after:absolute after:inset-x-0 after:-bottom-1 after:h-[3px] after:bg-brand"
+                    : "text-steel hover:text-iron"
                 }`
               }
             >
@@ -45,46 +38,44 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Link to={business.consultationPath} className="btn-primary">
-            Book Consultation
+        <div className="flex items-center gap-2">
+          <Link to={business.consultationPath} className="btn btn-brand !min-h-11 !px-4 !text-[0.8125rem] sm:!px-5">
+            <span className="sm:hidden">Book</span>
+            <span className="hidden sm:inline">Book a consult</span>
           </Link>
+          <button
+            type="button"
+            onClick={() => setIsOpen((open) => !open)}
+            className="-mr-2 inline-flex h-11 w-11 items-center justify-center lg:hidden"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setIsOpen((open) => !open)}
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-line)] bg-[rgba(255,250,242,0.84)] text-[var(--color-ink)] md:hidden"
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
       </div>
 
       {isOpen ? (
-        <div className="border-t border-[var(--color-line)] bg-[rgba(247,241,231,0.98)] md:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `rounded-2xl px-4 py-3 text-sm font-medium transition ${
-                    isActive
-                      ? "bg-[rgba(159,103,52,0.12)] text-[var(--color-accent-strong)]"
-                      : "text-[var(--color-text-subtle)] hover:bg-[rgba(159,103,52,0.08)] hover:text-[var(--color-ink)]"
-                  }`
-                }
-              >
-                {item.label}
-              </NavLink>
+        <nav className="border-t border-line bg-chalk lg:hidden" aria-label="Main">
+          <ul className="wrap py-2">
+            {navigation.map((item, index) => (
+              <li key={item.path} className="border-b border-line last:border-0">
+                <NavLink
+                  to={item.path}
+                  end
+                  className={({ isActive }) =>
+                    `flex items-baseline gap-4 py-4 ${isActive ? "text-brand" : "text-iron"}`
+                  }
+                >
+                  <span className="mono text-steel" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="heading text-2xl uppercase">{item.label}</span>
+                </NavLink>
+              </li>
             ))}
-            <Link to={business.consultationPath} className="btn-primary mt-4 justify-center">
-              Book Consultation
-            </Link>
-          </nav>
-        </div>
+          </ul>
+        </nav>
       ) : null}
     </header>
   );

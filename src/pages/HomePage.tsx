@@ -1,215 +1,315 @@
-import { ArrowRight, CheckCircle2, Compass, MapPin, MoveRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import heroPhoto from "../assets/photos/optimized/josh-log-press.jpg";
+import joshPortrait from "../assets/photos/optimized/showcase-deadlift.jpg";
+import joshKeg from "../assets/photos/optimized/josh-keg-overhead.jpg";
+import joshYoke from "../assets/photos/optimized/contact-yk.jpg";
+import clientPlateLift from "../assets/photos/optimized/client-plate-lift.jpg";
+import clientKegRun from "../assets/photos/optimized/client-keg-run.jpg";
+import truckPull from "../assets/photos/optimized/truck-pull.jpg";
+import teamTrophies from "../assets/photos/optimized/team-trophies.jpg";
+import CredentialTicker from "../components/CredentialTicker";
 import CTASection from "../components/CTASection";
-import ExpandableCopy from "../components/ExpandableCopy";
-import GoogleReviews from "../components/GoogleReviews";
+import { averageRating, RatingBoard, reviewCount } from "../components/GoogleReviews";
+import Label from "../components/Label";
 import PageMeta from "../components/PageMeta";
-import Reveal from "../components/Reveal";
-import Section from "../components/Section";
-import SwipeRow from "../components/SwipeRow";
-import { brandPhotos, joshPhotos, shuffled } from "../assets/photoLibrary";
-import {
-  homeStats,
-  processSteps,
-  services,
-} from "../content/siteData";
+import ProcessSteps from "../components/ProcessSteps";
+import ProgramCards from "../components/ProgramCards";
+import SectionHead from "../components/SectionHead";
+import { audiences } from "../content/programs";
+import { business, clientTestimonial, credentials, faqItems, googleReviews } from "../content/siteData";
+
+const stripPhotos = [
+  { src: joshKeg, alt: "Josh Dunbar lifting a keg overhead at an outdoor strongman competition" },
+  { src: clientPlateLift, alt: "New Scotland Strength client lifting a stack of plates by the handle" },
+  { src: truckPull, alt: "Athlete in a New Scotland Strength hat pulling a truck" },
+  { src: joshYoke, alt: "Josh Dunbar carrying a yoke during competition" },
+  { src: clientKegRun, alt: "New Scotland Strength client running with a keg at a strongman competition" },
+  { src: teamTrophies, alt: "New Scotland Strength athletes with their trophies at Nova Scotia's Strongest 2026" },
+];
+
+const faqPicks = [
+  "Do you work with beginners?",
+  "Do you train older adults?",
+  "Do I need my own gym membership for in-person sessions?",
+  "How do online check-ins work?",
+];
+
+const shortReviews = googleReviews.filter((r) => r.author === "Andrew Foley" || r.author === "Nicholas Peters");
+
+function EntryCard({ className = "" }: { className?: string }) {
+  const rows = [
+    ["In person", "Herring Cove + HRM gyms"],
+    ["Online", "Anywhere"],
+    ["On Google", `${averageRating.toFixed(1)} ★ · ${reviewCount} reviews`],
+  ];
+
+  return (
+    <div className={`border-2 border-iron bg-chalk ${className}`}>
+      <p className="mono flex items-center justify-between bg-iron px-4 py-2 text-chalk">
+        <span>Entry card</span>
+        <span className="text-brand-light">Coach · {business.owner}</span>
+      </p>
+      <dl>
+        {rows.map(([k, v]) => (
+          <div key={k} className="grid grid-cols-[6rem_1fr] gap-3 border-b border-line px-4 py-2.5 last:border-0">
+            <dt className="mono pt-0.5 text-steel">{k}</dt>
+            <dd className="font-semibold leading-snug">{v}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
 
 export default function HomePage() {
-  const [[heroSmall, heroLarge]] = useState(() => shuffled(joshPhotos));
-  const trustPoints = [
-    {
-      icon: MapPin,
-      title: "Halifax-based",
-      text: "Local coaching for Halifax, Dartmouth, Bedford, Sackville, and wider HRM.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Structured process",
-      text: "Assessment, programming, accountability, and clear progression.",
-    },
-    {
-      icon: Compass,
-      title: "Flexible",
-      text: "Programs that will help you accomplish your goals, regardless of your schedule.",
-    },
-  ];
+  const [active, setActive] = useState(0);
 
   return (
     <>
       <PageMeta path="/" />
 
-      <section className="relative overflow-hidden border-b border-[var(--color-line)]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(159,103,52,0.14),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(110,85,48,0.1),transparent_30%)]" />
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:px-8 lg:py-28">
-          <div className="relative z-10 flex flex-col justify-center">
-            <p className="inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-[var(--color-line)] bg-[rgba(255,250,242,0.74)] px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-text-muted)] sm:px-4 sm:text-xs sm:tracking-[0.28em]">
-              <MapPin className="h-4 w-4 text-[var(--color-accent)]" />
-              Personal trainer/strength coach in the Halifax area
-            </p>
-            <h1 className="mt-5 max-w-4xl text-3xl font-semibold tracking-tight text-[var(--color-ink)] sm:mt-6 sm:text-5xl lg:text-6xl">
-              Coaching for people who want to get stronger and train with more direction.
-            </h1>
-            <ExpandableCopy
-              className="mt-5 max-w-2xl sm:mt-6"
-              preview="New Scotland Strength is for people who want clear coaching, a realistic plan, and steady progress without all the noise."
-              full="New Scotland Strength helps busy people build strength, improve movement quality, and stay consistent with coaching that fits real schedules in Halifax and the surrounding areas. Online training available worldwide!"
-              buttonLabel="See full intro"
+      {/* Hero */}
+      <section className="wrap pb-16 pt-8 sm:pt-12 lg:pb-24">
+        <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-b-2 border-iron pb-3 text-steel">
+          <Label>Personal training &amp; strength coaching</Label>
+          <p className="mono">Halifax, N.S. · In person &amp; online</p>
+        </div>
+
+        <div className="relative mt-8 sm:mt-10">
+          <p className="display text-[clamp(2.6rem,12.5vw,3.5rem)] sm:text-[clamp(3.1rem,9.4vw,9.25rem)]">
+            <span className="block xl:max-w-[62%]">Start strong.</span>
+            <span className="block text-brand">Stay strong.</span>
+          </p>
+          {/* Sits in the space beside the first two lines on wide screens */}
+          <EntryCard className="absolute right-0 top-2 hidden w-[34%] max-w-[26rem] xl:block" />
+        </div>
+
+        <div className="mt-10 grid gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-8">
+          <figure className="lg:col-span-6">
+            <img
+              src={heroPhoto}
+              alt="Josh Dunbar pressing a log overhead at an outdoor strongman competition"
+              className="aspect-[4/5] w-full object-cover object-top sm:aspect-[5/4] lg:aspect-[6/5]"
             />
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact/" className="btn-primary justify-center sm:justify-start">
-                Book a Consultation
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/services/" className="btn-secondary justify-center sm:justify-start">
-                Explore Services
-              </Link>
-            </div>
-            <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4">
-              {homeStats.map((stat) => (
-                <Reveal key={stat.value} delayMs={80} className="h-full">
-                  <div className="panel h-full p-4 sm:p-5">
-                  <p className="text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">{stat.value}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{stat.label}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
+            <figcaption className="mono mt-3 text-steel">Josh Dunbar · log press · outdoor strongman</figcaption>
+          </figure>
 
-          <div className="relative">
-            <div className="absolute -left-6 top-8 hidden h-36 w-36 rounded-full bg-[var(--color-accent)]/10 blur-3xl sm:block" />
-            <div className="grid gap-4 sm:grid-cols-[0.9fr_1fr] sm:gap-5">
-              <div className="hidden gap-4 sm:grid sm:translate-y-10">
-                <div className="panel flex items-center justify-center p-6">
+          <div className="flex flex-col gap-10 lg:col-span-6 lg:pl-8 xl:pl-16">
+            <div>
+              <h1 className="heading text-[1.75rem] sm:text-[2.25rem]">
+                Coaching for people who want to get stronger and train with more direction.
+              </h1>
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-steel">
+                New Scotland Strength helps busy people build strength, improve movement quality, and stay consistent
+                with coaching that fits real schedules in Halifax and the surrounding areas. Online training available
+                worldwide!
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link to="/contact/" className="btn btn-brand">
+                  Book a consultation <ArrowRight className="arrow h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link to="/services/" className="btn btn-line">
+                  Explore services
+                </Link>
+              </div>
+            </div>
+            <EntryCard className="xl:hidden" />
+          </div>
+        </div>
+      </section>
+
+      <CredentialTicker />
+
+      {/* Who it's for */}
+      <section className="wrap py-20 lg:py-28">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28">
+              <Label className="text-brand">Who it's for</Label>
+              <h2 className="display display-section mt-4">Built for every&shy;day strong.</h2>
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-steel">
+                Strongman is where Josh proves the methods. The coaching is for anyone who wants to get stronger,
+                wherever they're starting from.
+              </p>
+              <div className="relative mt-8 hidden aspect-[4/5] max-h-[30rem] overflow-hidden bg-chalk-2 lg:block">
+                {audiences.map((a, i) => (
                   <img
-                    src={brandPhotos.brandLogo}
-                    alt="New Scotland Strength logo"
-                    className="w-full max-w-[16rem] object-contain"
+                    key={a.title}
+                    src={a.photo}
+                    alt={i === active ? a.alt : ""}
+                    aria-hidden={i !== active}
+                    loading="lazy"
+                    className={`photo-swap absolute inset-0 h-full w-full object-cover ${i === active ? "opacity-100" : "opacity-0"}`}
                   />
-                </div>
-                <div className="panel overflow-hidden p-3">
-                <img
-                  src={heroSmall.src}
-                  alt={heroSmall.alt}
-                  loading="lazy"
-                  className="h-full min-h-[320px] w-full rounded-[1.5rem] object-cover"
-                />
-                </div>
-              </div>
-              <div className="panel overflow-hidden p-3">
-                <img
-                  src={heroLarge.src}
-                  alt={heroLarge.alt}
-                  loading="lazy"
-                  className="h-full max-h-[260px] min-h-[240px] w-full rounded-[1.5rem] object-cover sm:max-h-none sm:min-h-[420px]"
-                />
+                ))}
               </div>
             </div>
-            <div className="panel mt-4 hidden p-5 sm:absolute sm:-bottom-6 sm:right-6 sm:mt-0 sm:block sm:max-w-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
-                How It Works
-              </p>
-              <p className="mt-3 text-base font-semibold text-[var(--color-ink)] sm:text-lg">
-                Start with a conversation, build the plan, and keep adjusting it as you go.
-              </p>
-            </div>
+          </div>
+
+          <ol className="border-t-2 border-iron lg:col-span-7">
+            {audiences.map((a, i) => (
+              <li
+                key={a.title}
+                onMouseEnter={() => setActive(i)}
+                className={`grid grid-cols-[3rem_1fr] gap-x-4 border-b border-line py-7 transition-colors sm:grid-cols-[4.5rem_1fr] lg:py-9 ${
+                  i === active ? "lg:bg-chalk-2" : ""
+                }`}
+              >
+                <span className="mono pt-2 text-brand lg:pl-4">{String(i + 1).padStart(2, "0")}</span>
+                <div className="lg:pr-6">
+                  <h3 className="heading text-[1.75rem] uppercase sm:text-[2.5rem]">{a.title}</h3>
+                  <p className="mt-2 max-w-xl text-lg leading-relaxed text-steel">{a.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Programs */}
+      <section id="programs" className="scroll-mt-24 bg-chalk-2 py-20 lg:py-28">
+        <div className="wrap">
+          <SectionHead
+            label="The programs"
+            title="Pick your event."
+            intro={
+              <>
+                Four ways to train with Josh. Not sure which fits?{" "}
+                <Link to="/services/" className="text-link text-iron">
+                  Compare them
+                </Link>{" "}
+                or let the consultation sort it out.
+              </>
+            }
+          />
+          <div className="mt-12">
+            <ProgramCards />
           </div>
         </div>
       </section>
 
-      <section className="py-6 sm:py-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-3 md:grid-cols-3">
-            {trustPoints.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <Reveal key={item.title} delayMs={index * 90}>
-                  <article className="panel flex h-full items-start gap-4 p-5">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/10">
-                      <Icon className="h-5 w-5 text-[var(--color-accent)]" />
-                    </div>
-                    <div>
-                      <h2 className="text-base font-semibold text-[var(--color-ink)]">{item.title}</h2>
-                      <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">{item.text}</p>
-                    </div>
-                  </article>
-                </Reveal>
-              );
-            })}
+      {/* Meet Josh */}
+      <section className="on-dark bg-iron py-20 text-chalk lg:py-28">
+        <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <img
+              src={joshPortrait}
+              alt="Josh Dunbar pulling a heavy deadlift during competition"
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover object-top"
+            />
           </div>
-        </div>
-      </section>
+          <div className="flex flex-col lg:col-span-7 lg:pl-8 xl:pl-16">
+            <Label className="text-brand-light">The coach</Label>
+            <h2 className="display display-section mt-4">Josh Dunbar</h2>
+            <p className="heading mt-8 max-w-2xl text-[1.5rem] font-medium leading-snug [font-stretch:100%] sm:text-[1.875rem]">
+              “I am devoted to using the same principles that built my success to help you reach yours.”
+            </p>
 
-      <Section
-        eyebrow="What You Get"
-        title="Coaching options that are easy to understand and easier to stick with"
-        description={
-          <>
-            Decide which option is best for you or{" "}
-            <Link to="/contact/" className="font-semibold text-[var(--color-ink)] underline decoration-[var(--color-accent)] underline-offset-4">
-              reach out
-            </Link>{" "}
-            if you need help!
-          </>
-        }
-      >
-        <SwipeRow desktopClassName="lg:grid-cols-3 lg:gap-6">
-          {services.map((service, index) => (
-            <Reveal key={service.title} delayMs={index * 90} className="h-full">
-              <article className="panel flex h-full flex-col p-6 lg:p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
-                {service.title}
-              </p>
-              <p className="mt-4 text-lg font-semibold text-[var(--color-ink)] lg:text-xl">{service.summary}</p>
-              <p className="mt-4 hidden text-sm leading-7 text-[var(--color-text-muted)] lg:block">{service.details}</p>
-              <ul className="mt-6 space-y-3 text-sm text-[var(--color-text-muted)]">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-                    <span>{feature}</span>
+            <div className="mt-10 grid gap-8 sm:grid-cols-[auto_1fr] sm:gap-12">
+              <div>
+                <p className="display text-[5.5rem] text-brand-light sm:text-[7rem]">20+</p>
+                <p className="mono mt-2 text-steel-light">Years of strength training</p>
+              </div>
+              <ul className="border-t border-line-dark">
+                {credentials.map((c) => (
+                  <li key={c} className="flex gap-3 border-b border-line-dark py-3 leading-snug">
+                    <span className="mono pt-0.5 text-brand-light" aria-hidden="true">
+                      ✕
+                    </span>
+                    {c}
                   </li>
                 ))}
               </ul>
-              <Link to="/services/" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)]">
-                View service details
-                <MoveRight className="h-4 w-4 text-[var(--color-accent)]" />
-              </Link>
-              </article>
-            </Reveal>
-          ))}
-        </SwipeRow>
-      </Section>
+            </div>
 
-      <Section
-        eyebrow="How It Works"
-        title="A simple step-by-step process, from consultation to results."
-      >
-        <div className="grid gap-3 md:grid-cols-2 md:gap-5 xl:grid-cols-4">
-          {processSteps.map((step, index) => (
-            <Reveal key={step} delayMs={index * 80}>
-              <article className="panel flex items-baseline gap-4 rounded-2xl p-4 md:block md:rounded-[2rem] md:p-6">
-              <p className="w-6 shrink-0 text-sm font-semibold text-[var(--color-accent)]">0{index + 1}</p>
-              <p className="text-base font-semibold text-[var(--color-ink)] md:mt-4 md:text-lg">{step}</p>
-              </article>
-            </Reveal>
+            <Link to="/about/" className="btn btn-chalk-line mt-10 self-start">
+              Read Josh's story <ArrowRight className="arrow h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="wrap py-20 lg:py-28">
+        <SectionHead label="How it works" title="From first chat to new PRs." />
+        <div className="mt-14">
+          <ProcessSteps />
+        </div>
+      </section>
+
+      {/* Proof */}
+      <section className="border-t-2 border-iron py-20 lg:py-28">
+        <div className="wrap grid gap-14 lg:grid-cols-12 lg:gap-8">
+          <figure className="min-w-0 lg:col-span-7">
+            <Label className="text-brand">Client results</Label>
+            <blockquote className="heading mt-6 text-[1.625rem] font-semibold leading-[1.2] [font-stretch:100%] sm:text-[2.125rem]">
+              “{clientTestimonial.quote}”
+            </blockquote>
+            <figcaption className="mono mt-6 text-steel">{clientTestimonial.author} · New Scotland Strength client</figcaption>
+            <Link to="/results/" className="btn btn-line mt-10">
+              See client results <ArrowRight className="arrow h-4 w-4" aria-hidden="true" />
+            </Link>
+          </figure>
+
+          <div className="min-w-0 lg:col-span-4 lg:col-start-9">
+            <RatingBoard />
+            <ul className="mt-6 space-y-6">
+              {shortReviews.map((r) => (
+                <li key={r.author} className="border-l-2 border-brand pl-5">
+                  <p className="leading-relaxed">“{r.text}”</p>
+                  <p className="mono mt-2 text-steel">{r.author} · Google</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="scroll-strip mt-16 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-4 sm:px-8 lg:mt-20">
+          {stripPhotos.map((p) => (
+            <img
+              key={p.src}
+              src={p.src}
+              alt={p.alt}
+              loading="lazy"
+              className="aspect-[4/5] w-[72vw] shrink-0 snap-start object-cover sm:w-[22rem]"
+            />
           ))}
         </div>
-      </Section>
+      </section>
 
-      <Section
-        eyebrow="What Clients Say"
-        title="Coaching that fits real life, not just perfect conditions"
-        className="border-y border-[var(--color-line)] bg-[rgba(255,250,242,0.26)]"
-      >
-        <GoogleReviews limit={3} gridClassName="lg:grid-cols-3" />
-      </Section>
+      {/* FAQ */}
+      <section className="bg-chalk-2 py-20 lg:py-28">
+        <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <Label className="text-brand">Questions</Label>
+            <h2 className="display mt-4 text-[clamp(1.75rem,9vw,3rem)] lg:text-[clamp(2.5rem,4.2vw,4rem)]">Fair questions.</h2>
+            <Link to="/faq/" className="btn btn-line mt-8">
+              All {faqItems.length} answers <ArrowRight className="arrow h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="border-t-2 border-iron lg:col-span-7">
+            {faqItems
+              .filter((f) => faqPicks.includes(f.question))
+              .map((f, i) => (
+                <details key={f.question} className="border-b border-line" open={i === 0}>
+                  <summary className="flex items-center justify-between gap-6 py-6">
+                    <span className="heading text-[1.375rem] [font-stretch:100%] [text-wrap:pretty] sm:text-[1.625rem]">{f.question}</span>
+                    <Plus className="faq-icon h-6 w-6 shrink-0 text-brand" aria-hidden="true" />
+                  </summary>
+                  <p className="max-w-2xl pb-6 text-lg leading-relaxed text-steel">{f.answer}</p>
+                </details>
+              ))}
+          </div>
+        </div>
+      </section>
 
       <CTASection
-        title="Don't Just Start Strong — Stay Strong."
-        description="Reach your health and fitness goals with a sustainable plan that is tailored for you!"
-        secondaryLabel="See Results"
+        title="It starts with a conversation."
+        description="Tell Josh about your goals, your schedule, and your training history. He'll follow up within 48 hours."
+        secondaryLabel="See results"
         secondaryTo="/results/"
       />
     </>

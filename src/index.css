@@ -1,114 +1,128 @@
 @import "tailwindcss";
 
-:root {
-  font-family: "Aptos", "Trebuchet MS", "Segoe UI", sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #1f1a15;
-  background:
-    radial-gradient(circle at top, rgba(164, 110, 52, 0.1), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(110, 85, 48, 0.08), transparent 32%),
-    linear-gradient(180deg, #f7f1e7 0%, #efe4d4 100%);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  --font-heading: "Rockwell", "Georgia", serif;
-  --color-bg: #f7f1e7;
-  --color-bg-alt: #ecdfcc;
-  --color-surface: rgba(255, 250, 242, 0.86);
-  --color-surface-strong: #fffaf2;
-  --color-accent: #9f6734;
-  --color-accent-strong: #7b4519;
-  --color-ink: #1f1a15;
-  --color-ink-soft: #40352a;
-  --color-text-muted: rgba(48, 39, 30, 0.78);
-  --color-text-subtle: rgba(48, 39, 30, 0.58);
-  --color-line: rgba(71, 51, 28, 0.14);
-  --shadow-soft: 0 22px 60px rgba(78, 51, 25, 0.12);
+/*
+  New Scotland Strength — "The Meet Program" theme.
+  Chalk, iron and one blue accent. Archivo (variable width) for everything,
+  stretched wide and heavy for banner headlines; IBM Plex Mono for
+  scoresheet-style labels.
+*/
+@theme {
+  --font-sans: "Archivo Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-chalk: #f2f0eb;
+  --color-chalk-2: #e6e3db;
+  --color-iron: #111214;
+  --color-iron-2: #1d1f22;
+  --color-steel: #55595f;
+  --color-steel-light: #a9adb3;
+  --color-brand: #1d4fa0;
+  --color-brand-deep: #163d7d;
+  --color-brand-light: #8fb3ef;
+  --color-line: rgba(17, 18, 20, 0.18);
+  --color-line-dark: rgba(242, 240, 235, 0.18);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-html,
-body,
-#root {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100%;
-  background: var(--color-bg);
-}
-
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(164, 110, 52, 0.1), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(110, 85, 48, 0.08), transparent 32%),
-    linear-gradient(180deg, #f7f1e7 0%, #efe4d4 100%);
-  color: var(--color-ink);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  color: var(--color-ink);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-  transition:
-    opacity 560ms ease,
-    transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: opacity, transform;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    font-stretch: 100%;
+    line-height: 1.55;
+    color: var(--color-iron);
+    background: var(--color-chalk);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .reveal,
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #root {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--color-chalk);
+  }
+
+  body {
+    min-height: 100vh;
+    font-size: 1.0625rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  .on-dark :focus-visible,
+  .on-brand :focus-visible {
+    outline-color: var(--color-brand-light);
+  }
+
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation: none !important;
+    }
   }
 }
 
@@ -120,50 +134,226 @@ h6 {
 }
 
 @layer components {
-  .panel {
-    @apply rounded-[2rem] border backdrop-blur-sm;
-    border-color: var(--color-line);
-    background: linear-gradient(180deg, rgba(255, 251, 245, 0.94), rgba(251, 243, 231, 0.88));
-    box-shadow: var(--shadow-soft);
+  .wrap {
+    width: 100%;
+    max-width: 88rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
   }
 
-  .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-semibold text-[#fff9f1] transition duration-200 hover:-translate-y-0.5;
-    background: linear-gradient(135deg, var(--color-accent-strong), var(--color-accent));
-    box-shadow: 0 16px 34px rgba(123, 69, 25, 0.2);
+  @media (min-width: 640px) {
+    .wrap {
+      padding-inline: 2rem;
+    }
   }
 
-  .btn-secondary {
-    @apply inline-flex items-center gap-2 rounded-2xl border px-6 py-3.5 text-sm font-semibold transition duration-200 hover:-translate-y-0.5;
-    border-color: rgba(123, 69, 25, 0.24);
-    background: rgba(255, 249, 239, 0.76);
-    color: var(--color-ink);
+  /* Wide, heavy banner type. */
+  .display {
+    font-stretch: 125%;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.012em;
+    /* Last-resort wrap so one long word can never push the page sideways on tiny screens. */
+    overflow-wrap: anywhere;
+  }
+
+  /* Section display size, shared so every section title matches. */
+  .display-section {
+    font-size: clamp(1.75rem, 9vw, 3rem);
+  }
+
+  @media (min-width: 640px) {
+    .display-section {
+      font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+    }
+  }
+
+  .heading {
+    font-stretch: 112%;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+  }
+
+  /* Scoresheet labels. */
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-inline: 1.5rem;
+    border: 2px solid var(--color-iron);
+    font-stretch: 112%;
+    font-weight: 800;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  /* Labels may wrap on small phones; keep them on one line from sm up. */
+  @media (min-width: 640px) {
+    .btn {
+      white-space: nowrap;
+    }
+  }
+
+  .btn .arrow {
+    flex-shrink: 0;
+    transition: transform 160ms ease;
+  }
+
+  .btn:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+
+  .btn-brand {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: #fff;
+  }
+
+  .btn-brand:hover {
+    background: var(--color-brand-deep);
+    border-color: var(--color-brand-deep);
+  }
+
+  .btn-line {
+    color: var(--color-iron);
+  }
+
+  .btn-line:hover {
+    background: var(--color-iron);
+    color: var(--color-chalk);
+  }
+
+  /* On iron or blue backgrounds. */
+  .btn-chalk {
+    background: var(--color-chalk);
+    border-color: var(--color-chalk);
+    color: var(--color-brand-deep);
+  }
+
+  .btn-chalk:hover {
+    background: #fff;
+    border-color: #fff;
+  }
+
+  .btn-chalk-line {
+    border-color: var(--color-chalk);
+    color: var(--color-chalk);
+  }
+
+  .btn-chalk-line:hover {
+    background: var(--color-chalk);
+    color: var(--color-iron);
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    text-decoration-color: var(--color-brand);
+  }
+
+  .text-link:hover {
+    color: var(--color-brand);
   }
 
   .field-label {
-    @apply flex flex-col gap-2 text-sm font-medium;
-    color: var(--color-ink-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .field-input {
-    @apply w-full rounded-2xl border px-4 py-3.5 outline-none transition;
-    border-color: var(--color-line);
-    background: rgba(255, 252, 247, 0.92);
-    color: var(--color-ink);
+    width: 100%;
+    min-height: 3.25rem;
+    border: 2px solid var(--color-iron);
+    border-radius: 0;
+    background: #fff;
+    padding: 0.75rem 1rem;
+    color: var(--color-iron);
+    outline: none;
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease;
   }
 
   .field-input::placeholder {
-    color: rgba(48, 39, 30, 0.38);
+    color: rgba(85, 89, 95, 0.7);
   }
 
   .field-input:focus {
-    border-color: rgba(159, 103, 52, 0.6);
-    background: rgba(255, 255, 255, 0.98);
+    border-color: var(--color-brand);
+    box-shadow: 4px 4px 0 var(--color-brand);
   }
 
-  .placeholder-card {
-    border-color: rgba(177, 45, 45, 0.28);
-    background: linear-gradient(180deg, rgba(255, 244, 244, 0.96), rgba(255, 235, 235, 0.92));
-    box-shadow: 0 18px 44px rgba(140, 29, 29, 0.08);
+  /* Credential ticker; static and wrapped when motion is reduced. */
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 48s linear infinite;
+  }
+
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      width: auto;
+      flex-wrap: wrap;
+    }
+
+    .ticker-copy {
+      display: none;
+    }
+  }
+
+  .photo-swap {
+    transition: opacity 260ms ease;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-icon {
+    transition: transform 180ms ease;
+  }
+
+  .scroll-strip {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-iron) transparent;
   }
 }

@@ -1,80 +1,61 @@
-import { Mail, MapPin } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { brandPhotos } from "../assets/photoLibrary";
 import { business, navigation, socialLinks } from "../content/siteData";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(239,228,212,0.72),rgba(229,215,195,0.9))]">
-      <div className="mx-auto grid max-w-7xl gap-7 px-5 py-9 sm:px-6 lg:grid-cols-[1.2fr_0.7fr_0.8fr_0.8fr] lg:gap-10 lg:px-8 lg:py-12">
-        <div className="flex items-start">
-          <img
-            src={brandPhotos.brandLogo}
-            alt="New Scotland Strength logo"
-            className="h-14 w-auto shrink-0 lg:h-20"
-          />
-        </div>
-
-        <div className="hidden lg:block">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-            Navigation
-          </p>
-          <div className="mt-4 flex flex-col gap-3">
-            {navigation.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className="text-sm text-[var(--color-text-muted)] transition hover:text-[var(--color-ink)]"
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </div>
-        </div>
-
+    <footer className="on-dark bg-iron text-chalk">
+      <div className="wrap grid gap-10 py-14 md:grid-cols-[1.5fr_1fr_1fr_1fr] lg:py-16">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-            Contact
+          <img src={brandPhotos.brandLogo} alt={`${business.name} logo`} className="h-14 w-auto invert" />
+          <p className="mt-5 max-w-sm leading-relaxed text-steel-light">
+            Personal training and strength coaching with {business.owner}. In person across the HRM, online anywhere.
           </p>
-          <div className="mt-4 space-y-4 text-sm text-[var(--color-text-muted)]">
-            <div className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-              <span>
-                {business.city}, {business.region}, {business.country}
-              </span>
-            </div>
-            <div className="flex items-start gap-3">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
-              <a href={`mailto:${business.email}`} className="transition hover:text-[var(--color-ink)]">
+        </div>
+        <div>
+          <p className="mono text-steel-light">Pages</p>
+          <ul className="mt-4 space-y-2">
+            {navigation.map((item) => (
+              <li key={item.path}>
+                <NavLink to={item.path} end className="transition-colors hover:text-brand-light">
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="mono text-steel-light">Contact</p>
+          <ul className="mt-4 space-y-2">
+            <li className="text-steel-light">
+              {business.city}, {business.region}
+            </li>
+            <li>
+              <a href={`mailto:${business.email}`} className="break-all transition-colors hover:text-brand-light">
                 {business.email}
               </a>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
-
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--color-text-subtle)]">
-            Social
-          </p>
-          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 lg:flex-col lg:gap-x-0">
+          <p className="mono text-steel-light">Follow</p>
+          <ul className="mt-4 space-y-2">
             {socialLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm text-[var(--color-text-muted)] transition hover:text-[var(--color-ink)]"
-              >
-                {item.label}
-              </a>
+              <li key={item.label}>
+                <a href={item.href} target="_blank" rel="noreferrer" className="transition-colors hover:text-brand-light">
+                  {item.label}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
-      <div className="border-t border-[var(--color-line)]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[var(--color-text-subtle)] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-          <p>© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
-          <p>Serving Halifax, Dartmouth, Bedford, Sackville, and the wider Halifax Regional Municipality (HRM).</p>
+      <div className="border-t border-line-dark">
+        <div className="wrap flex flex-col gap-2 py-5 pb-24 text-steel-light md:flex-row md:justify-between md:gap-8 lg:pb-5">
+          <p className="mono">
+            © {new Date().getFullYear()} {business.name}
+          </p>
+          <p className="mono">Serving Halifax, Dartmouth, Bedford, Sackville &amp; the wider HRM</p>
         </div>
       </div>
     </footer>
