@@ -177,15 +177,72 @@ export const clientTestimonial = {
 
 export const googleProfileUrl = "https://share.google/cfzvPC917do13ClwO";
 
-// Copied verbatim from the Google Business Profile. Keep wording exactly as posted.
+// Copied verbatim from the Google Business Profile (13 reviews, all 5 stars, checked 2026-11-02).
+// Keep wording, capitalisation and line breaks exactly as posted. Newest detailed reviews first.
 export const googleReviews: GoogleReview[] = [
+  {
+    author: "Michael Hamm",
+    meta: "3 reviews",
+    avatarColor: "#3949AB",
+    rating: 5,
+    year: 2026,
+    text: "I’ve been working with Josh Dunbar at New Scotland Strength for the past five or six years, and I can’t recommend him highly enough. When I started, I was essentially a hobbyist weightlifter. With Josh’s coaching, knowledge and support, I’ve become a competitive strength athlete having competed in six competitions, including winning provincial and atlantic titles. I’m grateful to Josh for helping me get there.\n\nJosh can coach people at every level, whether you’re simply looking to get stronger or you’re serious about competing in strength sports. He knows how to meet you where you are and help you make real progress. If you’re looking for a great coach and a place to build strength, New Scotland Strength is where you want to be.",
+  },
+  {
+    author: "Allison Thorne",
+    meta: "6 reviews",
+    avatarColor: "#D81B60",
+    rating: 5,
+    year: 2026,
+    text: "I've been working with Josh since 2023 first as a competitive athlete where he coached me to Strongman Nationals in 2024 and more recently through major surgery recovery and back to athlete. All along he's been attentive to my goals, strengths and limitations (which are many after years of being a strength athlete) providing intelligent programming and helpful guidance. I appreciate his knowledge, patience and ability to adapt and make changes to suit my needs. Also he's just a genuinely nice guy (with the appropriate amount of evil coachiness to push you further) who's a pleasure to work with. Definitely recommend to anyone looking for help with their fitness goals.",
+  },
+  {
+    author: "Lee MacDonald",
+    meta: "1 review",
+    avatarColor: "#F4511E",
+    rating: 5,
+    year: 2026,
+    text: "I had taken years off of lifting due to a lower back injury and Josh helped me get back to full strength in no time! He’s knowledgeable about proper form and also sees the big picture in terms of client overall health. He’s also really approachable and easy-going, which makes it a super comfortable environment to work out in.\nFrom the trophies on the wall you’ll see- he’s a champ too!!",
+  },
+  {
+    author: "liam keay",
+    meta: "9 reviews",
+    avatarColor: "#00ACC1",
+    rating: 5,
+    year: 2026,
+    text: "New Scotland strength took me from a triscuit to a brisket. Great informative workouts, really makes the progressive overload make sense. Highly adaptive programs if your schedule changes up, Josh can change them on the fly. Besides the obvious powerlifting, bodybuilding and strongman programs, Josh can incorporate your lifting program to compliment whatever other sport/running/hunting you may already be doing. Highly recommend if you are a complete beginner or already a long time gym goer, New Scotland Strength can push you past all your plateaus.",
+  },
+  {
+    author: "Ryan Dunbar",
+    meta: "7 reviews",
+    avatarColor: "#6D4C41",
+    rating: 5,
+    year: 2026,
+    text: "I leaned on Josh's expertise and experience in weight training to support my goals in Alberta. He set up my entire weekly plan based on my goals and time lines. Would highly recommend if you are serious about legitimate gains and strength increase.",
+  },
+  {
+    author: "Bradley Tremblett",
+    meta: "4 reviews",
+    avatarColor: "#7CB342",
+    rating: 5,
+    year: 2026,
+    text: "High quality Coaching with an experienced well educated approach sure to help you reach your goals!",
+  },
+  {
+    author: "matthew english",
+    meta: "9 reviews",
+    avatarColor: "#8E24AA",
+    rating: 5,
+    year: 2026,
+    text: "Josh is a great trainer and develops custom programs to meet his clients' needs.",
+  },
   {
     author: "Ashley Josephson",
     meta: "Local Guide · 22 reviews",
     avatarColor: "#795548",
     rating: 5,
     year: 2023,
-    text: "The folks at New Scotland Strength have amazing experience and provide safe and proper technique for all styles of training offered. I have been working with them for several years now and I have never felt more confident in my fitness and strength! They are always knowledgeable, focused on your goals, and most importantly create such a fun environment!",
+    text: "The folks at New Scotland Strength have amazing experience and provide safe and proper technique for all styles of training offered. I have been working with them for several years now and I have never felt more confident in my fitness and strength!\nThey are always knowledgeable, focused on your goals, and most importantly create such a fun environment!",
   },
   {
     author: "Andrew Foley",
@@ -201,7 +258,7 @@ export const googleReviews: GoogleReview[] = [
     avatarColor: "#1E88E5",
     rating: 5,
     year: 2022,
-    text: "Awesome set up and great personnel. Haven't hit the gym in years and as a 30yo had my reservations. Josh made me feel comfortable going at my own pace and offered tons of expertise and encouragement. Highly recommend NSS!",
+    text: "Awesome set up and great personnel. Haven’t hit the gym in years and as a 30yo had my reservations. Josh made me feel comfortable going at my own pace and offered tons of expertise and encouragement. Highly recommend NSS!",
   },
   {
     author: "Steve Gaudon",

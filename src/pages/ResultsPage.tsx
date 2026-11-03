@@ -74,9 +74,12 @@ export default function ResultsPage() {
       {/* Google reviews */}
       <section id="reviews" className="wrap scroll-mt-20 py-20 lg:py-28">
         <SectionHead label="On Google" title="In their words." intro="What clients have written about training with Josh." />
-        <div className="mt-12 grid gap-4 md:grid-cols-2">
+        {/* Staggered columns so reviews of very different lengths pack neatly at any count */}
+        <div className="mt-12 gap-4 md:columns-2 xl:columns-3">
           {writtenReviews.map((review, i) => (
-            <ReviewCard key={review.author} review={review} index={i} />
+            <div key={review.author} className="mb-4 break-inside-avoid">
+              <ReviewCard review={review} index={i} />
+            </div>
           ))}
         </div>
       </section>

@@ -80,7 +80,7 @@ export default function AboutPage() {
               } ${i === 2 ? "lg:border-l lg:pl-8" : ""}`}
             >
               <dt className="mono order-2 mt-3 text-steel-light">{s.label}</dt>
-              <dd className="display order-1 text-[clamp(2rem,9vw,4.5rem)] text-brand-light">{s.value}</dd>
+              <dd className="display order-1 text-[clamp(1.5rem,8vw,3rem)] text-brand-light lg:text-[clamp(2.25rem,3.6vw,3.5rem)]">{s.value}</dd>
             </div>
           ))}
         </dl>
@@ -144,7 +144,7 @@ export default function AboutPage() {
       <section className="bg-chalk-2 py-20 lg:py-28">
         <div className="wrap">
           <SectionHead label="Coaching philosophy" title="House rules." intro="What the coaching should feel like in practice." />
-          <ol className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+          <ol className="mt-14 grid gap-10 lg:grid-cols-3 lg:gap-8">
             {coachingValues.map((v, i) => (
               <li key={v.title} className="border-t-[6px] border-iron pt-6">
                 <p className="display text-[3.5rem] text-brand">{String(i + 1).padStart(2, "0")}</p>
